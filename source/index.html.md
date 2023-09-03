@@ -1,6 +1,11 @@
----
-title: WebSocket API Reference
----
+language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
+
+- json
+- python
+
+search: true
+
+code_clipboard: true
 
 # Introduction
 
@@ -22,8 +27,6 @@ Searches for a symbol based on the provided pattern.
 - `scope`: (SymScope) The search scope.
 - `type`: (string) Set to "SearchSymbol".
 
-### Example JSON
-
 ```json
 {
   "id": 1,
@@ -33,8 +36,6 @@ Searches for a symbol based on the provided pattern.
   "type": "SearchSymbol"
 }
 ```
-
----
 
 ## QueryTradableProductIndex
 
@@ -48,8 +49,6 @@ Queries tradable product index based on the given query.
 - `query`: (Query) The query to perform.
 - `type`: (string) Set to "QueryTradableProductIndex".
 
-### Example JSON
-
 ```json
 {
   "id": 2,
@@ -59,8 +58,6 @@ Queries tradable product index based on the given query.
   "type": "QueryTradableProductIndex"
 }
 ```
-
----
 
 ## GetRouteDetails
 
@@ -74,8 +71,6 @@ Retrieve details for the given routes.
 - `route`: (RouteId[]) An array of route IDs.
 - `type`: (string) Set to "GetRouteDetails".
 
-### Example JSON
-
 ```json
 {
   "id": 3,
@@ -83,8 +78,6 @@ Retrieve details for the given routes.
   "type": "GetRouteDetails"
 }
 ```
-
----
 
 ## GetVenueDetails
 
@@ -98,8 +91,6 @@ Retrieve details for the given venues.
 - `venue`: (VenueId[]) An array of venue IDs.
 - `type`: (string) Set to "GetVenueDetails".
 
-### Example JSON
-
 ```json
 {
   "id": 4,
@@ -107,8 +98,6 @@ Retrieve details for the given venues.
   "type": "GetVenueDetails"
 }
 ```
-
----
 
 ## GetProductDetails
 
@@ -122,8 +111,6 @@ Retrieve details for the given products.
 - `product`: (ProductId[]) An array of product IDs.
 - `type`: (string) Set to "GetProductDetails".
 
-### Example JSON
-
 ```json
 {
   "id": 5,
@@ -131,8 +118,6 @@ Retrieve details for the given products.
   "type": "GetProductDetails"
 }
 ```
-
----
 
 ## GetTradableProductDetails
 
@@ -146,8 +131,6 @@ Retrieve details for the given tradable products.
 - `tradable_product`: (TradableProductId[]) An array of tradable product IDs.
 - `type`: (string) Set to "GetTradableProductDetails".
 
-### Example JSON
-
 ```json
 {
   "id": 6,
@@ -155,8 +138,6 @@ Retrieve details for the given tradable products.
   "type": "GetTradableProductDetails"
 }
 ```
-
----
 
 ## GetCanonicalTradableProduct
 
@@ -170,8 +151,6 @@ Retrieve the canonical tradable product for the given products.
 - `product`: (ProductId[]) An array of product IDs.
 - `type`: (string) Set to "GetCanonicalTradableProduct".
 
-### Example JSON
-
 ```json
 {
   "id": 7,
@@ -179,8 +158,6 @@ Retrieve the canonical tradable product for the given products.
   "type": "GetCanonicalTradableProduct"
 }
 ```
-
----
 
 # Orderflow
 
@@ -202,8 +179,6 @@ Send a limit order with the given parameters.
 - `target`: (TradableProductId) The target tradable product.
 - `type`: (string) Set to "SendLimitOrder".
 
-### Example JSON
-
 ```json
 {
   "account": "account1",
@@ -218,8 +193,6 @@ Send a limit order with the given parameters.
 }
 ```
 
----
-
 ## CancelOrder
 
 ### Description
@@ -232,8 +205,6 @@ Cancel the order with the given order ID.
 - `order_id`: (OrderId) The ID of the order to cancel.
 - `type`: (string) Set to "CancelOrder".
 
-### Example JSON
-
 ```json
 {
   "id": 9,
@@ -241,8 +212,6 @@ Cancel the order with the given order ID.
   "type": "CancelOrder"
 }
 ```
-
----
 
 ## ListOpen
 
@@ -257,8 +226,6 @@ List open orders based on the given scope and set.
 - `set`: (LimitSet) The set to search within.
 - `type`: (string) Set to "ListOpen".
 
-### Example JSON
-
 ```json
 {
   "id": 10,
@@ -267,8 +234,6 @@ List open orders based on the given scope and set.
   "type": "ListOpen"
 }
 ```
-
----
 
 ## GetOrderState
 
@@ -282,8 +247,6 @@ Retrieve the state of orders based on the given order IDs.
 - `order_ids`: (OrderId[]) An array of order IDs.
 - `type`: (string) Set to "GetOrderState".
 
-### Example JSON
-
 ```json
 {
   "id": 11,
@@ -291,8 +254,6 @@ Retrieve the state of orders based on the given order IDs.
   "type": "GetOrderState"
 }
 ```
-
----
 
 ## SubscribeOrderState
 
@@ -305,16 +266,12 @@ Subscribe to order state updates.
 - `id`: (number) Unique identifier for the request.
 - `type`: (string) Set to "SubscribeOrderState".
 
-### Example JSON
-
 ```json
 {
   "id": 12,
   "type": "SubscribeOrderState"
 }
 ```
-
----
 
 ## GetRejectReason
 
@@ -328,8 +285,6 @@ Retrieve the reason for order rejection based on the given order IDs.
 - `order_ids`: (OrderId[]) An array of order IDs.
 - `type`: (string) Set to "GetRejectReason".
 
-### Example JSON
-
 ```json
 {
   "id": 13,
@@ -337,8 +292,6 @@ Retrieve the reason for order rejection based on the given order IDs.
   "type": "GetRejectReason"
 }
 ```
-
----
 
 ## GetOrderDetails
 
@@ -352,8 +305,6 @@ Retrieve details of orders based on the given order IDs.
 - `order_ids`: (OrderId[]) An array of order IDs.
 - `type`: (string) Set to "GetOrderDetails".
 
-### Example JSON
-
 ```json
 {
   "id": 14,
@@ -361,8 +312,6 @@ Retrieve details of orders based on the given order IDs.
   "type": "GetOrderDetails"
 }
 ```
-
----
 
 ## ListFills
 
@@ -377,8 +326,6 @@ List fills based on the given scope and set.
 - `set`: (LimitSet) The set to search within.
 - `type`: (string) Set to "ListFills".
 
-### Example JSON
-
 ```json
 {
   "id": 15,
@@ -387,8 +334,6 @@ List fills based on the given scope and set.
   "type": "ListFills"
 }
 ```
-
----
 
 ## GetFillDetails
 
@@ -402,8 +347,6 @@ Retrieve details of fills based on the given fill IDs.
 - `fill_ids`: (FillId[]) An array of fill IDs.
 - `type`: (string) Set to "GetFillDetails".
 
-### Example JSON
-
 ```json
 {
   "id": 16,
@@ -411,8 +354,6 @@ Retrieve details of fills based on the given fill IDs.
   "type": "GetFillDetails"
 }
 ```
-
----
 
 # Limits
 
@@ -428,8 +369,6 @@ Set limits based on the given Limit array.
 - `limits`: (Limit[]) An array of Limit objects.
 - `type`: (string) Set to "SetLimits".
 
-### Example JSON
-
 ```json
 {
   "id": 17,
@@ -439,8 +378,6 @@ Set limits based on the given Limit array.
   "type": "SetLimits"
 }
 ```
-
----
 
 ## GetLimits
 
@@ -454,8 +391,6 @@ Retrieve limits based on the given LimitSet and LimitScope arrays.
 - `limits`: ([LimitSet, LimitScope][]) An array of pairs containing LimitSet and LimitScope.
 - `type`: (string) Set to "GetLimits".
 
-### Example JSON
-
 ```json
 {
   "id": 18,
@@ -466,8 +401,6 @@ Retrieve limits based on the given LimitSet and LimitScope arrays.
   "type": "GetLimits"
 }
 ```
-
----
 
 ## GetGlobalLimits
 
@@ -481,8 +414,6 @@ Retrieve global limits based on the given GlobalLimitName array.
 - `limits`: (GlobalLimitName[]) An array of global limit names.
 - `type`: (string) Set to "GetGlobalLimits".
 
-### Example JSON
-
 ```json
 {
   "id": 19,
@@ -490,8 +421,6 @@ Retrieve global limits based on the given GlobalLimitName array.
   "type": "GetGlobalLimits"
 }
 ```
-
----
 
 # Halts
 
@@ -506,16 +435,12 @@ Retrieve information about trading halts.
 - `id`: (number) Unique identifier for the request.
 - `type`: (string) Set to "GetHalts".
 
-### Example JSON
-
 ```json
 {
   "id": 20,
   "type": "GetHalts"
 }
 ```
-
----
 
 ## Halt
 
@@ -529,8 +454,6 @@ Initiate a trading halt for a given condition.
 - `halt`: (Halt) The condition for initiating the halt.
 - `type`: (string) Set to "Halt".
 
-### Example JSON
-
 ```json
 {
   "id": 21,
@@ -538,8 +461,6 @@ Initiate a trading halt for a given condition.
   "type": "Halt"
 }
 ```
-
----
 
 ## Resume
 
@@ -553,8 +474,6 @@ Resume trading after a halt for a given condition.
 - `resume`: (Halt) The condition for resuming trading.
 - `type`: (string) Set to "Resume".
 
-### Example JSON
-
 ```json
 {
   "id": 22,
@@ -562,8 +481,6 @@ Resume trading after a halt for a given condition.
   "type": "Resume"
 }
 ```
-
----
 
 # Alerts
 
@@ -580,8 +497,6 @@ Subscribe to alerts based on the given path and seek string.
 - `seek`: (string) The seek string.
 - `type`: (string) Set to "SubscribeAlerts".
 
-### Example JSON
-
 ```json
 {
   "id": 24,
@@ -590,8 +505,6 @@ Subscribe to alerts based on the given path and seek string.
   "type": "SubscribeAlerts"
 }
 ```
-
----
 
 # DeFi
 
@@ -610,8 +523,6 @@ Retrieve allowance based on the given account, route, token, and venue.
 - `venue`: (VenueId) Venue ID.
 - `type`: (string) Set to "GetAllowance".
 
-### Example JSON
-
 ```json
 {
   "id": 25,
@@ -622,8 +533,6 @@ Retrieve allowance based on the given account, route, token, and venue.
   "type": "GetAllowance"
 }
 ```
-
----
 
 ## SetAllowance
 
@@ -641,8 +550,6 @@ Set allowance based on the given account, route, amount, token, and venue.
 - `venue`: (VenueId) Venue ID.
 - `type`: (string) Set to "SetAllowance".
 
-### Example JSON
-
 ```json
 {
   "id": 26,
@@ -654,8 +561,6 @@ Set allowance based on the given account, route, amount, token, and venue.
   "type": "SetAllowance"
 }
 ```
-
----
 
 ## GetOrderTransaction
 
@@ -669,8 +574,6 @@ Get transaction information for given order IDs.
 - `order_ids`: (OrderId[]) Array of Order IDs.
 - `type`: (string) Set to "GetOrderTransaction".
 
-### Example JSON
-
 ```json
 {
   "id": 38,
@@ -678,8 +581,6 @@ Get transaction information for given order IDs.
   "type": "GetOrderTransaction"
 }
 ```
-
----
 
 ## EstimateOrderParams
 
@@ -693,8 +594,6 @@ Estimate order parameters based on an order prototype.
 - `order`: (OrderPrototype) Prototype of the order.
 - `type`: (string) Set to "EstimateOrderParams".
 
-### Example JSON
-
 ```json
 {
 "id": 39,
@@ -702,8 +601,6 @@ Estimate order parameters based on an order prototype.
 "type": "EstimateOrderParams"
 }
 ```
-
----
 
 ## GetEVMAttempts
 
@@ -717,8 +614,6 @@ Get the attempts for an EVM transaction.
 - `transaction`: (TransactionHandle) Handle for the transaction.
 - `type`: (string) Set to "GetEVMAttempts".
 
-### Example JSON
-
 ```json
 {
   "id": 40,
@@ -726,8 +621,6 @@ Get the attempts for an EVM transaction.
   "type": "GetEVMAttempts"
 }
 ```
-
----
 
 ## EstimateEVMRetryParams
 
@@ -741,8 +634,6 @@ Estimate retry parameters for an EVM transaction.
 - `transaction`: (TransactionHandle) Handle for the transaction.
 - `type`: (string) Set to "EstimateEVMRetryParams".
 
-### Example JSON
-
 ```json
 {
   "id": 41,
@@ -750,8 +641,6 @@ Estimate retry parameters for an EVM transaction.
   "type": "EstimateEVMRetryParams"
 }
 ```
-
----
 
 ## RetryEVMTransaction
 
@@ -767,8 +656,6 @@ Retry an EVM transaction with optional gas parameters.
 - `gas_price`: ([number, number]|null) Gas price range (optional).
 - `type`: (string) Set to "RetryEVMTransaction".
 
-### Example JSON
-
 ```json
 {
   "id": 42,
@@ -778,8 +665,6 @@ Retry an EVM transaction with optional gas parameters.
   "type": "RetryEVMTransaction"
 }
 ```
-
----
 
 # Market Data
 
@@ -798,8 +683,6 @@ Retrieve historical candle data based on the given tradable product, start time,
 - `width`: (CandleWidth) Width.
 - `type`: (string) Set to "GetHistoricalCandles".
 
-### Example JSON
-
 ```json
 {
   "id": 27,
@@ -810,8 +693,6 @@ Retrieve historical candle data based on the given tradable product, start time,
   "type": "GetHistoricalCandles"
 }
 ```
-
----
 
 ## SubscribeTrades
 
@@ -825,8 +706,6 @@ Subscribe to trades for a given tradable product.
 - `tradable_product`: (TradableProductId) Tradable Product ID.
 - `type`: (string) Set to "SubscribeTrades".
 
-### Example JSON
-
 ```json
 {
   "id": 28,
@@ -834,8 +713,6 @@ Subscribe to trades for a given tradable product.
   "type": "SubscribeTrades"
 }
 ```
-
----
 
 ## SubscribeBook
 
@@ -850,8 +727,6 @@ Subscribe to the order book for a given tradable product and width.
 - `width`: (number) Width.
 - `type`: (string) Set to "SubscribeBook".
 
-### Example JSON
-
 ```json
 {
   "id": 29,
@@ -860,8 +735,6 @@ Subscribe to the order book for a given tradable product and width.
   "type": "SubscribeBook"
 }
 ```
-
----
 
 ## SubscribeCandles
 
@@ -876,8 +749,6 @@ Subscribe to candles for a given tradable product and width.
 - `width`: (CandleWidth) Width.
 - `type`: (string) Set to "SubscribeCandles".
 
-### Example JSON
-
 ```json
 {
   "id": 32,
@@ -886,8 +757,6 @@ Subscribe to candles for a given tradable product and width.
   "type": "SubscribeCandles"
 }
 ```
-
----
 
 ## SubscribeConsolidatedBook
 
@@ -902,8 +771,6 @@ Subscribe to the consolidated book for given tradable products with specified pr
 - `precision`: (Decimal) Precision.
 - `type`: (string) Set to "SubscribeConsolidatedBook".
 
-### Example JSON
-
 ```json
 {
   "id": 30,
@@ -912,8 +779,6 @@ Subscribe to the consolidated book for given tradable products with specified pr
   "type": "SubscribeConsolidatedBook"
 }
 ```
-
----
 
 ## Unsubscribe
 
@@ -926,16 +791,12 @@ Unsubscribe from previous subscriptions.
 - `id`: (number) Unique identifier for the request.
 - `type`: (string) Set to "Unsubscribe".
 
-### Example JSON
-
 ```json
 {
   "id": 33,
   "type": "Unsubscribe"
 }
 ```
-
----
 
 # RFQs
 
@@ -954,8 +815,6 @@ Subscribe to RFQs for given base and quote products, quantity, and venues.
 - `venues`: (VenueId[]) An array of Venue IDs.
 - `type`: (string) Set to "SubscribeRfqs".
 
-### Example JSON
-
 ```json
 {
   "id": 31,
@@ -966,8 +825,6 @@ Subscribe to RFQs for given base and quote products, quantity, and venues.
   "type": "SubscribeRfqs"
 }
 ```
-
----
 
 ## SendRfqs
 
@@ -981,8 +838,6 @@ Send request for quotes based on a query.
 - `query`: (SendRfqsQuery) Query for RFQs.
 - `type`: (string) Set to "SendRfqs".
 
-### Example JSON
-
 ```json
 {
 "id": 43,
@@ -990,8 +845,6 @@ Send request for quotes based on a query.
 "type": "SendRfqs"
 }
 ```
-
----
 
 ## Unsubscribe
 
@@ -1004,16 +857,12 @@ Unsubscribe from previous subscriptions.
 - `id`: (number) Unique identifier for the request.
 - `type`: (string) Set to "Unsubscribe".
 
-### Example JSON
-
 ```json
 {
   "id": 33,
   "type": "Unsubscribe"
 }
 ```
-
----
 
 # Secrets
 
@@ -1028,16 +877,12 @@ List all secrets.
 - `id`: (number) Unique identifier for the request.
 - `type`: (string) Set to "ListSecrets".
 
-### Example JSON
-
 ```json
 {
   "id": 35,
   "type": "ListSecrets"
 }
 ```
-
----
 
 ## AddSecret
 
@@ -1052,8 +897,6 @@ Add a secret with a given key and value.
 - `value`: (number[]) An array of numerical values.
 - `type`: (string) Set to "AddSecret".
 
-### Example JSON
-
 ```json
 {
   "id": 36,
@@ -1062,8 +905,6 @@ Add a secret with a given key and value.
   "type": "AddSecret"
 }
 ```
-
----
 
 ## DeleteSecret
 
@@ -1077,8 +918,6 @@ Delete a secret with a given key.
 - `secret_key`: (SecretKey) Secret key.
 - `type`: (string) Set to "DeleteSecret".
 
-### Example JSON
-
 ```json
 {
   "id": 37,
@@ -1086,8 +925,6 @@ Delete a secret with a given key.
   "type": "DeleteSecret"
 }
 ```
-
----
 
 # System Configuration
 
@@ -1102,13 +939,9 @@ Retrieve the pathmap.
 - `id`: (number) Unique identifier for the request.
 - `type`: (string) Set to "GetPathmap".
 
-### Example JSON
-
 ```json
 {
   "id": 34,
   "type": "GetPathmap"
 }
 ```
-
----
