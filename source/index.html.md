@@ -60,13 +60,15 @@ async def main():
 
 ### Description
 
-Queries tradable product index based on the given query.
+Fast query for Tradable Product IDs that match the given query, which can be a boolean expression.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `query`: (Query) The query to perform.
-- `type`: (string) Set to "QueryTradableProductIndex".
+| Field   | Type   | Required | Description                        |
+| ------- | ------ | -------- | ---------------------------------- |
+| `id`    | number | Yes      | Unique identifier for the request  |
+| `type`  | string | Yes      | Set to "QueryTradableProductIndex" |
+| `query` | string | Yes      | See Query type                     |
 
 ```json
 {
@@ -78,6 +80,18 @@ Queries tradable product index based on the given query.
 }
 ```
 
+```python
+async def main():
+    client = Client()
+    await client.connect()
+    res = await client.query({
+      "id": 1,
+      "type": "QueryTradableProductIndex",
+      "Query": "..."
+    })
+    print(res)
+```
+
 ## GetRouteDetails
 
 ### Description
@@ -86,9 +100,11 @@ Retrieve details for the given routes.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `route`: (RouteId[]) An array of route IDs.
-- `type`: (string) Set to "GetRouteDetails".
+| Field   | Type     | Required | Description                       |
+| ------- | -------- | -------- | --------------------------------- |
+| `id`    | number   | Yes      | Unique identifier for the request |
+| `type`  | string   | Yes      | Set to "GetRouteDetails"          |
+| `route` | string[] | Yes      | An array of route IDs             |
 
 ```json
 {
@@ -106,9 +122,11 @@ Retrieve details for the given venues.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `venue`: (VenueId[]) An array of venue IDs.
-- `type`: (string) Set to "GetVenueDetails".
+| Field   | Type     | Required | Description                       |
+| ------- | -------- | -------- | --------------------------------- |
+| `id`    | number   | Yes      | Unique identifier for the request |
+| `type`  | string   | Yes      | Set to "GetVenueDetails"          |
+| `venue` | string[] | Yes      | An array of venue IDs             |
 
 ```json
 {
@@ -126,9 +144,11 @@ Retrieve details for the given products.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `product`: (ProductId[]) An array of product IDs.
-- `type`: (string) Set to "GetProductDetails".
+| Field     | Type     | Required | Description                       |
+| --------- | -------- | -------- | --------------------------------- |
+| `id`      | number   | Yes      | Unique identifier for the request |
+| `type`    | string   | Yes      | Set to "GetProductDetails"        |
+| `product` | string[] | Yes      | An array of product IDs           |
 
 ```json
 {
@@ -146,9 +166,11 @@ Retrieve details for the given tradable products.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `tradable_product`: (TradableProductId[]) An array of tradable product IDs.
-- `type`: (string) Set to "GetTradableProductDetails".
+| Field              | Type     | Required | Description                        |
+| ------------------ | -------- | -------- | ---------------------------------- |
+| `id`               | number   | Yes      | Unique identifier for the request  |
+| `type`             | string   | Yes      | Set to "GetTradableProductDetails" |
+| `tradable_product` | string[] | Yes      | An array of tradable product IDs   |
 
 ```json
 {
@@ -162,13 +184,15 @@ Retrieve details for the given tradable products.
 
 ### Description
 
-Retrieve the canonical tradable product for the given products.
+Retrieve the canonical tradable product for the given products. A canonical tradable product is an example \*/USD or \*/USDC or \*/USDT pair on a liquid exchange that we support.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `product`: (ProductId[]) An array of product IDs.
-- `type`: (string) Set to "GetCanonicalTradableProduct".
+| Field     | Type     | Required | Description                          |
+| --------- | -------- | -------- | ------------------------------------ |
+| `id`      | number   | Yes      | Unique identifier for the request    |
+| `type`    | string   | Yes      | Set to "GetCanonicalTradableProduct" |
+| `product` | string[] | Yes      | An array of product IDs              |
 
 ```json
 {
