@@ -2,9 +2,11 @@
 title: WebSocket API Reference
 ---
 
-# WebSocket API Reference
+# Introduction
 
 This document describes the WebSocket API for our platform. Below you'll find the supported `Request` types that you can use.
+
+# Symbology
 
 ## SearchSymbol
 
@@ -179,6 +181,8 @@ Retrieve the canonical tradable product for the given products.
 ```
 
 ---
+
+# Orderflow
 
 ## SendLimitOrder
 
@@ -410,6 +414,8 @@ Retrieve details of fills based on the given fill IDs.
 
 ---
 
+# Limits
+
 ## SetLimits
 
 ### Description
@@ -487,6 +493,8 @@ Retrieve global limits based on the given GlobalLimitName array.
 
 ---
 
+# Halts
+
 ## GetHalts
 
 ### Description
@@ -557,31 +565,7 @@ Resume trading after a halt for a given condition.
 
 ---
 
-## DescribeTable
-
-### Description
-
-Retrieve details about a table based on the given path glob.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `path_glob`: (string) Glob pattern for the table path.
-- `change_handle`: (number|null) Optional change handle.
-- `type`: (string) Set to "DescribeTable".
-
-### Example JSON
-
-```json
-{
-  "id": 23,
-  "path_glob": "some/path/*",
-  "change_handle": null,
-  "type": "DescribeTable"
-}
-```
-
----
+# Alerts
 
 ## SubscribeAlerts
 
@@ -608,6 +592,8 @@ Subscribe to alerts based on the given path and seek string.
 ```
 
 ---
+
+# DeFi
 
 ## GetAllowance
 
@@ -666,284 +652,6 @@ Set allowance based on the given account, route, amount, token, and venue.
   "token": "token_id",
   "venue": "venue_id",
   "type": "SetAllowance"
-}
-```
-
----
-
-## GetHistoricalCandles
-
-### Description
-
-Retrieve historical candle data based on the given tradable product, start time, end time, and width.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `start`: (string) Start time.
-- `end`: (string) End time.
-- `tradable_product`: (TradableProductId) Tradable Product ID.
-- `width`: (CandleWidth) Width.
-- `type`: (string) Set to "GetHistoricalCandles".
-
-### Example JSON
-
-```json
-{
-  "id": 27,
-  "start": "2021-01-01T00:00:00Z",
-  "end": "2021-01-02T00:00:00Z",
-  "tradable_product": "product_id",
-  "width": "1h",
-  "type": "GetHistoricalCandles"
-}
-```
-
----
-
-## SubscribeTrades
-
-### Description
-
-Subscribe to trades for a given tradable product.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `tradable_product`: (TradableProductId) Tradable Product ID.
-- `type`: (string) Set to "SubscribeTrades".
-
-### Example JSON
-
-```json
-{
-  "id": 28,
-  "tradable_product": "product_id",
-  "type": "SubscribeTrades"
-}
-```
-
----
-
-## SubscribeBook
-
-### Description
-
-Subscribe to the order book for a given tradable product and width.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `tradable_product`: (TradableProductId) Tradable Product ID.
-- `width`: (number) Width.
-- `type`: (string) Set to "SubscribeBook".
-
-### Example JSON
-
-```json
-{
-  "id": 29,
-  "tradable_product": "product_id",
-  "width": 10,
-  "type": "SubscribeBook"
-}
-```
-
----
-
-## SubscribeConsolidatedBook
-
-### Description
-
-Subscribe to the consolidated book for given tradable products with specified precision.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `tradable_products`: (TradableProductId[]) An array of Tradable Product IDs.
-- `precision`: (Decimal) Precision.
-- `type`: (string) Set to "SubscribeConsolidatedBook".
-
-### Example JSON
-
-```json
-{
-  "id": 30,
-  "tradable_products": ["product_id1", "product_id2"],
-  "precision": "0.01",
-  "type": "SubscribeConsolidatedBook"
-}
-```
-
----
-
-## SubscribeRfqs
-
-### Description
-
-Subscribe to RFQs for given base and quote products, quantity, and venues.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `base`: (ProductId) Base Product ID.
-- `quote`: (ProductId) Quote Product ID.
-- `quantity`: (Decimal) Quantity.
-- `venues`: (VenueId[]) An array of Venue IDs.
-- `type`: (string) Set to "SubscribeRfqs".
-
-### Example JSON
-
-```json
-{
-  "id": 31,
-  "base": "base_product",
-  "quote": "quote_product",
-  "quantity": "10",
-  "venues": ["venue1", "venue2"],
-  "type": "SubscribeRfqs"
-}
-```
-
----
-
-## SubscribeCandles
-
-### Description
-
-Subscribe to candles for a given tradable product and width.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `tradable_product`: (TradableProductId) Tradable Product ID.
-- `width`: (CandleWidth) Width.
-- `type`: (string) Set to "SubscribeCandles".
-
-### Example JSON
-
-```json
-{
-  "id": 32,
-  "tradable_product": "product_id",
-  "width": "1h",
-  "type": "SubscribeCandles"
-}
-```
-
----
-
-## Unsubscribe
-
-### Description
-
-Unsubscribe from previous subscriptions.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `type`: (string) Set to "Unsubscribe".
-
-### Example JSON
-
-```json
-{
-  "id": 33,
-  "type": "Unsubscribe"
-}
-```
-
----
-
-## GetPathmap
-
-### Description
-
-Retrieve the pathmap.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `type`: (string) Set to "GetPathmap".
-
-### Example JSON
-
-```json
-{
-  "id": 34,
-  "type": "GetPathmap"
-}
-```
-
----
-
-## ListSecrets
-
-### Description
-
-List all secrets.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `type`: (string) Set to "ListSecrets".
-
-### Example JSON
-
-```json
-{
-  "id": 35,
-  "type": "ListSecrets"
-}
-```
-
----
-
-## AddSecret
-
-### Description
-
-Add a secret with a given key and value.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `secret_key`: (SecretKey) Secret key.
-- `value`: (number[]) An array of numerical values.
-- `type`: (string) Set to "AddSecret".
-
-### Example JSON
-
-```json
-{
-  "id": 36,
-  "secret_key": "my_secret_key",
-  "value": [1, 2, 3],
-  "type": "AddSecret"
-}
-```
-
----
-
-## DeleteSecret
-
-### Description
-
-Delete a secret with a given key.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `secret_key`: (SecretKey) Secret key.
-- `type`: (string) Set to "DeleteSecret".
-
-### Example JSON
-
-```json
-{
-  "id": 37,
-  "secret_key": "my_secret_key",
-  "type": "DeleteSecret"
 }
 ```
 
@@ -1073,6 +781,194 @@ Retry an EVM transaction with optional gas parameters.
 
 ---
 
+# Market Data
+
+## GetHistoricalCandles
+
+### Description
+
+Retrieve historical candle data based on the given tradable product, start time, end time, and width.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `start`: (string) Start time.
+- `end`: (string) End time.
+- `tradable_product`: (TradableProductId) Tradable Product ID.
+- `width`: (CandleWidth) Width.
+- `type`: (string) Set to "GetHistoricalCandles".
+
+### Example JSON
+
+```json
+{
+  "id": 27,
+  "start": "2021-01-01T00:00:00Z",
+  "end": "2021-01-02T00:00:00Z",
+  "tradable_product": "product_id",
+  "width": "1h",
+  "type": "GetHistoricalCandles"
+}
+```
+
+---
+
+## SubscribeTrades
+
+### Description
+
+Subscribe to trades for a given tradable product.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `tradable_product`: (TradableProductId) Tradable Product ID.
+- `type`: (string) Set to "SubscribeTrades".
+
+### Example JSON
+
+```json
+{
+  "id": 28,
+  "tradable_product": "product_id",
+  "type": "SubscribeTrades"
+}
+```
+
+---
+
+## SubscribeBook
+
+### Description
+
+Subscribe to the order book for a given tradable product and width.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `tradable_product`: (TradableProductId) Tradable Product ID.
+- `width`: (number) Width.
+- `type`: (string) Set to "SubscribeBook".
+
+### Example JSON
+
+```json
+{
+  "id": 29,
+  "tradable_product": "product_id",
+  "width": 10,
+  "type": "SubscribeBook"
+}
+```
+
+---
+
+## SubscribeCandles
+
+### Description
+
+Subscribe to candles for a given tradable product and width.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `tradable_product`: (TradableProductId) Tradable Product ID.
+- `width`: (CandleWidth) Width.
+- `type`: (string) Set to "SubscribeCandles".
+
+### Example JSON
+
+```json
+{
+  "id": 32,
+  "tradable_product": "product_id",
+  "width": "1h",
+  "type": "SubscribeCandles"
+}
+```
+
+---
+
+## SubscribeConsolidatedBook
+
+### Description
+
+Subscribe to the consolidated book for given tradable products with specified precision.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `tradable_products`: (TradableProductId[]) An array of Tradable Product IDs.
+- `precision`: (Decimal) Precision.
+- `type`: (string) Set to "SubscribeConsolidatedBook".
+
+### Example JSON
+
+```json
+{
+  "id": 30,
+  "tradable_products": ["product_id1", "product_id2"],
+  "precision": "0.01",
+  "type": "SubscribeConsolidatedBook"
+}
+```
+
+---
+
+## Unsubscribe
+
+### Description
+
+Unsubscribe from previous subscriptions.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `type`: (string) Set to "Unsubscribe".
+
+### Example JSON
+
+```json
+{
+  "id": 33,
+  "type": "Unsubscribe"
+}
+```
+
+---
+
+# RFQs
+
+## SubscribeRfqs
+
+### Description
+
+Subscribe to RFQs for given base and quote products, quantity, and venues.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `base`: (ProductId) Base Product ID.
+- `quote`: (ProductId) Quote Product ID.
+- `quantity`: (Decimal) Quantity.
+- `venues`: (VenueId[]) An array of Venue IDs.
+- `type`: (string) Set to "SubscribeRfqs".
+
+### Example JSON
+
+```json
+{
+  "id": 31,
+  "base": "base_product",
+  "quote": "quote_product",
+  "quantity": "10",
+  "venues": ["venue1", "venue2"],
+  "type": "SubscribeRfqs"
+}
+```
+
+---
+
 ## SendRfqs
 
 ### Description
@@ -1092,6 +988,126 @@ Send request for quotes based on a query.
 "id": 43,
 "query": {...},
 "type": "SendRfqs"
+}
+```
+
+---
+
+## Unsubscribe
+
+### Description
+
+Unsubscribe from previous subscriptions.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `type`: (string) Set to "Unsubscribe".
+
+### Example JSON
+
+```json
+{
+  "id": 33,
+  "type": "Unsubscribe"
+}
+```
+
+---
+
+# Secrets
+
+## ListSecrets
+
+### Description
+
+List all secrets.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `type`: (string) Set to "ListSecrets".
+
+### Example JSON
+
+```json
+{
+  "id": 35,
+  "type": "ListSecrets"
+}
+```
+
+---
+
+## AddSecret
+
+### Description
+
+Add a secret with a given key and value.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `secret_key`: (SecretKey) Secret key.
+- `value`: (number[]) An array of numerical values.
+- `type`: (string) Set to "AddSecret".
+
+### Example JSON
+
+```json
+{
+  "id": 36,
+  "secret_key": "my_secret_key",
+  "value": [1, 2, 3],
+  "type": "AddSecret"
+}
+```
+
+---
+
+## DeleteSecret
+
+### Description
+
+Delete a secret with a given key.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `secret_key`: (SecretKey) Secret key.
+- `type`: (string) Set to "DeleteSecret".
+
+### Example JSON
+
+```json
+{
+  "id": 37,
+  "secret_key": "my_secret_key",
+  "type": "DeleteSecret"
+}
+```
+
+---
+
+# System Configuration
+
+## GetPathmap
+
+### Description
+
+Retrieve the pathmap.
+
+### Request Fields
+
+- `id`: (number) Unique identifier for the request.
+- `type`: (string) Set to "GetPathmap".
+
+### Example JSON
+
+```json
+{
+  "id": 34,
+  "type": "GetPathmap"
 }
 ```
 
