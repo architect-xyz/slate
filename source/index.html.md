@@ -14,6 +14,53 @@ code_clipboard: true
 
 This document describes the WebSocket API for our platform. Below you'll find the supported `Request` types that you can use.
 
+## Request Types
+
+| Type                                                        | Kind         | Category             |
+| ----------------------------------------------------------- | ------------ | -------------------- |
+| [SearchSymbol](#searchsymbol)                               | Query        | Symbology            |
+| [QueryTradableProductIndex](#querytradableproductindex)     | Query        | Symbology            |
+| [GetRouteDetails](#getroutedetails)                         | Query        | Symbology            |
+| [GetVenueDetails](#getvenuedetails)                         | Query        | Symbology            |
+| [GetProductDetails](#getproductdetails)                     | Query        | Symbology            |
+| [GetTradableProductDetails](#gettradableproductdetails)     | Query        | Symbology            |
+| [GetCanonicalTradableProduct](#getcanonicaltradableproduct) | Query        | Symbology            |
+| [SendLimitOrder](#sendlimitorder)                           | Query        | Orderflow            |
+| [CancelOrder](#cancelorder)                                 | Query        | Orderflow            |
+| [ListOpen](#listopen)                                       | Query        | Orderflow            |
+| [GetOrderState](#getorderstate)                             | Query        | Orderflow            |
+| [SubscribeOrderState](#subscribeorderstate)                 | Subscription | Orderflow            |
+| [GetRejectReason](#getrejectreason)                         | Query        | Orderflow            |
+| [GetOrderDetails](#getorderdetails)                         | Query        | Orderflow            |
+| [ListFills](#listfills)                                     | Query        | Orderflow            |
+| [GetFillDetails](#getfilldetails)                           | Query        | Orderflow            |
+| [SetLimits](#setlimits)                                     | Query        | Limits               |
+| [GetLimits](#getlimits)                                     | Query        | Limits               |
+| [GetGlobalLimits](#getgloballimits)                         | Query        | Limits               |
+| [GetHalts](#gethalts)                                       | Query        | Halts                |
+| [Halt](#halt)                                               | Query        | Halts                |
+| [Resume](#resume)                                           | Query        | Halts                |
+| [SubscribeAlerts](#subscribealerts)                         | Subscription | Alerts               |
+| [GetAllowance](#getallowance)                               | Query        | DeFi                 |
+| [SetAllowance](#setallowance)                               | Query        | DeFi                 |
+| [GetOrderTransaction](#getordertransaction)                 | Query        | DeFi                 |
+| [EstimateOrderParams](#estimateorderparams)                 | Query        | DeFi                 |
+| [GetEVMAttempts](#getevmattempts)                           | Query        | DeFi                 |
+| [EstimateEVMRetryParams](#estimateevmretryparams)           | Query        | DeFi                 |
+| [RetryEVMTransaction](#retryevmtransaction)                 | Query        | DeFi                 |
+| [GetHistoricalCandles](#gethistoricalcandles)               | Query        | Market Data          |
+| [SubscribeTrades](#subscribetrades)                         | Subscription | Market Data          |
+| [SubscribeBook](#subscribebook)                             | Subscription | Market Data          |
+| [SubscribeCandles](#subscribecandles)                       | Subscription | Market Data          |
+| [SubscribeConsolidatedBook](#subscribeconsolidatedbook)     | Subscription | Market Data          |
+| [Unsubscribe](#unsubscribe)                                 | Query        | Market Data          |
+| [SubscribeRfqs](#subscriberfqs)                             | Subscription | RFQs                 |
+| [SendRfqs](#sendrfqs)                                       | Query        | RFQs                 |
+| [ListSecrets](#listsecrets)                                 | Query        | Secrets              |
+| [AddSecret](#addsecret)                                     | Query        | Secrets              |
+| [DeleteSecret](#deletesecret)                               | Query        | Secrets              |
+| [GetPathmap](#getpathmap)                                   | Query        | System Configuration |
+
 # Symbology
 
 ## SearchSymbol
