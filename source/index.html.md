@@ -212,27 +212,28 @@ Send a limit order with the given parameters.
 
 ### Request Fields
 
-- `account`: (Account) The account to use.
-- `dir`: (Dir) The direction of the order.
-- `id`: (number) Unique identifier for the request.
-- `params`: (EstimateOrderParams | null) Optional order parameters.
-- `price`: (Decimal) The order price.
-- `quantity`: (Decimal) The order quantity.
-- `quote_id`: (Str | null) Optional quote ID.
-- `target`: (TradableProductId) The target tradable product.
-- `type`: (string) Set to "SendLimitOrder".
+| Field      | Type                | Required | Description                                   |
+| ---------- | ------------------- | -------- | --------------------------------------------- |
+| `id`       | number              | Yes      | Unique identifier for the request             |
+| `type`     | string              | Yes      | Set to "SendLimitOrder"                       |
+| `target`   | string              | Yes      | Tradable product ID                           |
+| `dir`      | Dir                 | Yes      | The direction of the order ("Buy" or "Sell")  |
+| `id`       | number              | Yes      | Unique identifier for the request             |
+| `price`    | Decimal             | Yes      | The order price                               |
+| `quantity` | Decimal             | Yes      | The order quantity                            |
+| `account`  | string              | Yes      | The account to use (usually "DEFAULT")        |
+| `quote_id` | Str                 | No       | Optional quote ID if responding to a firm RFQ |
+| `params`   | EstimateOrderParams | No       | Optional order parameters (e.g. for DeFi).    |
 
 ```json
 {
-  "account": "account1",
-  "dir": "buy",
   "id": 8,
-  "params": null,
+  "type": "SendLimitOrder",
+  "target": "tp1",
+  "dir": "Buy",
   "price": "100.0",
   "quantity": "10.0",
-  "quote_id": null,
-  "target": "tp1",
-  "type": "SendLimitOrder"
+  "account": "DEFAULT"
 }
 ```
 
