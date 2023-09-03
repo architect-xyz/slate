@@ -1,11 +1,14 @@
-language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
+---
+title: Architect API Reference
 
-- json
-- python
+language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
+  - json
+  - python
 
 search: true
 
 code_clipboard: true
+---
 
 # Introduction
 
@@ -21,20 +24,36 @@ Searches for a symbol based on the provided pattern.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `limit`: (number) The maximum number of results.
-- `pat`: (string) The search pattern.
-- `scope`: (SymScope) The search scope.
-- `type`: (string) Set to "SearchSymbol".
+| Field   | Type     | Required | Description                       |
+| ------- | -------- | -------- | --------------------------------- |
+| `id`    | number   | Yes      | Unique identifier for the request |
+| `type`  | string   | Yes      | Set to "SearchSymbol"             |
+| `limit` | number   | Yes      | The maximum number of results     |
+| `pat`   | string   | Yes      | The search pattern                |
+| `scope` | SymScope | Yes      | The search scope                  |
 
 ```json
 {
   "id": 1,
   "limit": 10,
-  "pat": "AAPL",
-  "scope": "some_scope",
+  "pat": "BTC",
+  "scope": "All",
   "type": "SearchSymbol"
 }
+```
+
+```python
+async def main():
+    client = Client()
+    await client.connect()
+    res = await client.query({
+      "id": 1,
+      "type": "SearchSymbol",
+      "limit": 10,
+      "pat": "BTC",
+      "scope": "All"
+    })
+    print(res)
 ```
 
 ## QueryTradableProductIndex
