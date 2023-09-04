@@ -61,3 +61,7 @@ set :port, 4567
 helpers do
   require './lib/toc_data.rb'
 end
+
+# Common type instances to use in doc examples
+set :tradable_product, 'ce6f6229-e0bb-5be1-bbe7-2c9ca2698692'
+config[:tradable_product]

@@ -222,7 +222,7 @@ Retrieve details for the given tradable products.
 ```json
 {
   "id": 6,
-  "tradable_product": ["tp1", "tp2"],
+  "tradable_product": ["<%= config[:tradable_product] %>"],
   "type": "GetTradableProductDetails"
 }
 ```
@@ -276,7 +276,7 @@ Send a limit order with the given parameters.
 {
   "id": 8,
   "type": "SendLimitOrder",
-  "target": "tp1",
+  "target": "<%= config[:tradable_product] %>",
   "dir": "Buy",
   "price": "100.0",
   "quantity": "10.0",
