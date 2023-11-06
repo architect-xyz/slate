@@ -116,13 +116,15 @@ async def main():
 
 ### Response Fields
 
-| Field              | Type                         | Description                                                                          |
-| ------------------ | ---------------------------- | ------------------------------------------------------------------------------------ |
-| `pair`             | [number, [string, string]][] | An array of tuples representing pairs of numbers and an array of `ProductId` values. |
-| `product`          | [number, string][]           | An array of tuples representing numbers and `ProductId` values.                      |
-| `route`            | [number, RouteId][]          | An array of tuples representing numbers and `RouteId` values.                        |
-| `tradable_product` | [number, string][]           | An array of tuples representing numbers and `TradableProductId` values.              |
-| `venue`            | [number, string][]           | An array of tuples representing numbers and `VenueId` values.                        |
+| Field                            | Type                         | Description                                                                          |
+| -------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------ |
+| `id`                             | number                       | User-defined unique identifier for the request                                       |
+| `response`                       | *object*                     |                                                                                      |
+| &nbsp;&nbsp;› `pair`             | [number, [string, string]][] | An array of tuples representing pairs of numbers and an array of `ProductId` values. |
+| &nbsp;&nbsp;› `product`          | [number, string][]           | An array of tuples representing numbers and `ProductId` values.                      |
+| &nbsp;&nbsp;› `route`            | [number, string][]           | An array of tuples representing numbers and `RouteId` values.                        |
+| &nbsp;&nbsp;› `tradable_product` | [number, string][]           | An array of tuples representing numbers and `TradableProductId` values.              |
+| &nbsp;&nbsp;› `venue`            | [number, string][]           | An array of tuples representing numbers and `VenueId` values.                        |
 
 ## QueryTradableProductIndex
 
@@ -162,9 +164,10 @@ async def main():
 
 ### Response Fields
 
-| Type     | Description                             |
-| -------- | --------------------------------------- |
-| string[] | An array of `TradableProductId` values. |
+| Field      | Type     | Description                                    |
+| ---------- | -------- | ---------------------------------------------- |
+| `id`       | number   | User-defined unique identifier for the request |
+| `response` | string[] | An array of `TradableProductId` values.        |
 
 ## GetRouteDetails
 
@@ -190,9 +193,12 @@ Retrieve details for the given routes.
 
 ### Response Fields
 
-| Type    | Description                  |
-| ------- | ---------------------------- |
-| Route[] | An array of `Route` objects. |
+| Field                | Type       | Description                                     |
+| -------------------- | ---------- | ----------------------------------------------- |
+| `id`                 | number     | User-defined unique identifier for the request. |
+| `response`           | *object[]* |                                                 |
+| &nbsp;&nbsp;› `id`   | string     | The unique identifier of the route.             |
+| &nbsp;&nbsp;› `name` | string     | The name of the route.                          |
 
 ## GetVenueDetails
 
@@ -218,9 +224,12 @@ Retrieve details for the given venues.
 
 ### Response Fields
 
-| Type    | Description                  |
-| ------- | ---------------------------- |
-| Venue[] | An array of `Venue` objects. |
+| Field                | Type       | Description                                     |
+| -------------------- | ---------- | ----------------------------------------------- |
+| `id`                 | number     | User-defined unique identifier for the request. |
+| `response`           | *object[]* |                                                 |
+| &nbsp;&nbsp;› `id`   | string     | The unique identifier of the venue.             |
+| &nbsp;&nbsp;› `name` | string     | The name of the venue.                          |
 
 ## GetProductDetails
 
@@ -233,8 +242,8 @@ Retrieve details for the given products.
 | Field     | Type     | Required | Description                                    |
 | --------- | -------- | -------- | ---------------------------------------------- |
 | `id`      | number   | Yes      | User-defined unique identifier for the request |
-| `product` | string[] | Yes      | An array of product IDs                        |
 | `type`    | string   | Yes      | Set to "GetProductDetails"                     |
+| `product` | string[] | Yes      | An array of product IDs                        |
 
 ```json
 {
@@ -246,9 +255,15 @@ Retrieve details for the given products.
 
 ### Response Fields
 
-| Type      | Description                  |
-| --------- | ---------------------------- |
-| Product[] | An array of Product objects. |
+| Field                                  | Type       | Description                                                                                                                    |
+| -------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `id`                                   | number     | User-defined unique identifier for the request.                                                                                |
+| `response`                             | *object[]* |                                                                                                                                |
+| &nbsp;&nbsp;› `cficode`                | number     | The atomic CFI code of the product.                                                                                            |
+| &nbsp;&nbsp;› `class`                  | string     | The class of the product: `Coin`, `Fiat`, `Equity`, `Commodity`, `Energy`, `Metal`, `Future`, `Option`, `Index`, or `Unknown`. |
+| &nbsp;&nbsp;› `id`                     | string     | The unique identifier of the product.                                                                                          |
+| &nbsp;&nbsp;› `name`                   | string     | The name of the product.                                                                                                       |
+| &nbsp;&nbsp;› `price_in_limit_dollars` | string     | The price of the product in limit dollars.                                                                                     |
 
 ## GetTradableProductDetails
 
@@ -261,8 +276,8 @@ Retrieve details for the given tradable products.
 | Field              | Type     | Required | Description                                    |
 | ------------------ | -------- | -------- | ---------------------------------------------- |
 | `id`               | number   | Yes      | User-defined unique identifier for the request |
-| `tradable_product` | string[] | Yes      | An array of tradable product IDs               |
 | `type`             | string   | Yes      | Set to "GetTradableProductDetails"             |
+| `tradable_product` | string[] | Yes      | An array of tradable product IDs               |
 
 ```json
 {
@@ -274,9 +289,26 @@ Retrieve details for the given tradable products.
 
 ### Response Fields
 
-| Type              | Description                          |
-| ----------------- | ------------------------------------ |
-| TradableProduct[] | An array of TradableProduct objects. |
+| Field                                       | Type                | Description                                     |
+| ------------------------------------------- | ------------------- | ----------------------------------------------- |
+| `id`                                        | number              | User-defined unique identifier for the request. |
+| `response`                                  | *object[]*          |                                                 |
+| &nbsp;&nbsp;› `base`                        | string              | The unique identifier of the base product.      |
+| &nbsp;&nbsp;› `display_name`                | string              | The display name of the tradable product.       |
+| &nbsp;&nbsp;› `id`                          | string              | The unique identifier of the tradable product.  |
+| &nbsp;&nbsp;› `is_delisted`                 | boolean             | Indicates whether the instrument is delisted.   |
+| &nbsp;&nbsp;› `quote`                       | string              | The unique identifier of the quote product.     |
+| &nbsp;&nbsp;› `quote_info`                  | *object*            |                                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `implied`         | string              | Implied quote symbol ID.                        |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `l2`              | string              | Level 2 quote symbol ID.                        |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `primary`         | string              | Primary quote symbol ID.                        |
+| &nbsp;&nbsp;› `route`                       | string              | The unique identifier of the route.             |
+| &nbsp;&nbsp;› `trade_info`                  | *object*            |                                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `base_increment`  | string              | Decimal increment for the base.                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `flags`           | BitFlags_TradeFlags | Bit flags for trade.                            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `quote_increment` | string              | Decimal increment for the quote.                |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `trading_symbol`  | string              | Trading symbol ID.                              |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `venue`           | string              | The unique identifier of the venue.             |
 
 ## GetCanonicalTradableProduct
 
@@ -302,9 +334,26 @@ Retrieve the canonical tradable product for the given products. A canonical trad
 
 ### Response Fields
 
-| Type              | Description                                         |
-| ----------------- | --------------------------------------------------- |
-| TradableProduct[] | An array of TradableProduct objects or null values. |
+| Field                                       | Type                | Description                                     |
+| ------------------------------------------- | ------------------- | ----------------------------------------------- |
+| `id`                                        | number              | User-defined unique identifier for the request. |
+| `response`                                  | *object[]*          |                                                 |
+| &nbsp;&nbsp;› `base`                        | string              | The unique identifier of the base product.      |
+| &nbsp;&nbsp;› `display_name`                | string              | The display name of the tradable product.       |
+| &nbsp;&nbsp;› `id`                          | string              | The unique identifier of the tradable product.  |
+| &nbsp;&nbsp;› `is_delisted`                 | boolean             | Indicates whether the instrument is delisted.   |
+| &nbsp;&nbsp;› `quote`                       | string              | The unique identifier of the quote product.     |
+| &nbsp;&nbsp;› `quote_info`                  | *object*            |                                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `implied`         | string              | Implied quote symbol ID (optional).             |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `l2`              | string              | Level 2 quote symbol ID (optional).             |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `primary`         | string              | Primary quote symbol ID.                        |
+| &nbsp;&nbsp;› `route`                       | string              | The unique identifier of the route.             |
+| &nbsp;&nbsp;› `trade_info`                  | *object*            |                                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `base_increment`  | string              | Decimal increment for the base.                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `flags`           | BitFlags_TradeFlags | Bit flags for trade.                            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `quote_increment` | string              | Decimal increment for the quote.                |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `trading_symbol`  | string              | Trading symbol ID.                              |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `venue`           | string              | The unique identifier of the venue.             |
 
 ## GetQuoteSymbolDetails
 
@@ -330,9 +379,12 @@ Retrieve details for the given quote symbols.
 
 ### Response Fields
 
-| Type          | Description                      |
-| ------------- | -------------------------------- |
-| QuoteSymbol[] | An array of QuoteSymbol objects. |
+| Field                | Type       | Description                                     |
+| -------------------- | ---------- | ----------------------------------------------- |
+| `id`                 | number     | User-defined unique identifier for the request. |
+| `response`           | *object[]* |                                                 |
+| &nbsp;&nbsp;› `id`   | string     | The unique identifier of the quote symbol.      |
+| &nbsp;&nbsp;› `name` | string     | The name of the quote symbol.                   |
 
 # Orderflow
 
@@ -349,8 +401,7 @@ Send a limit order with the given parameters.
 | `id`       | number              | Yes      | User-defined unique identifier for the request |
 | `type`     | string              | Yes      | Set to "SendLimitOrder"                        |
 | `target`   | string              | Yes      | Tradable product ID                            |
-| `dir`      | Dir                 | Yes      | The direction of the order ("Buy" or "Sell")   |
-| `id`       | number              | Yes      | User-defined unique identifier for the request |
+| `dir`      | Dir                 | Yes      | The direction of the order (`Buy` or `Sell`)   |
 | `price`    | Decimal             | Yes      | The order price                                |
 | `quantity` | Decimal             | Yes      | The order quantity                             |
 | `account`  | string              | Yes      | The account to use (usually "DEFAULT")         |
@@ -371,9 +422,10 @@ Send a limit order with the given parameters.
 
 ### Response Fields
 
-| Type   | Description        |
-| ------ | ------------------ |
-| number | The order ID value |
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | number | The order ID value.                             |
 
 ## CancelOrder
 
@@ -399,9 +451,10 @@ Cancel the order with the given order ID.
 
 ### Response Fields
 
-| Type | Description |
-| ---- | ----------- |
-| null | null        |
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
 
 ## ListOpen
 
@@ -429,9 +482,10 @@ List open orders based on the given scope and set.
 
 ### Response Fields
 
-| Type     | Description                 |
-| -------- | --------------------------- |
-| number[] | An array of OrderId values. |
+| Field      | Type     | Description                                     |
+| ---------- | -------- | ----------------------------------------------- |
+| `id`       | number   | User-defined unique identifier for the request. |
+| `response` | number[] | An array of order ID.                           |
 
 ## GetOrderState
 
@@ -457,9 +511,10 @@ Retrieve the state of orders based on the given order IDs.
 
 ### Response Fields
 
-| Type     | Description                             |
-| -------- | --------------------------------------- |
-| number[] | An array of BitFlags_OrderState values. |
+| Field      | Type     | Description                                     |
+| ---------- | -------- | ----------------------------------------------- |
+| `id`       | number   | User-defined unique identifier for the request. |
+| `response` | number[] | An array of order state bigflags.               |
 
 ## SubscribeOrderState
 
@@ -505,9 +560,10 @@ Retrieve the reason for order rejection based on the given order IDs.
 
 ### Response Fields
 
-| Type     | Description                       |
-| -------- | --------------------------------- |
-| string[] | An array of reject reason values. |
+| Field      | Type     | Description                                     |
+| ---------- | -------- | ----------------------------------------------- |
+| `id`       | number   | User-defined unique identifier for the request. |
+| `response` | string[] | An array of reject reason values.               |
 
 ## GetOrderDetails
 
@@ -533,9 +589,18 @@ Retrieve details of orders based on the given order IDs.
 
 ### Response Fields
 
-| Type    | Description                |
-| ------- | -------------------------- |
-| Order[] | An array of Order objects. |
+| Field                     | Type       | Description                                           |
+| ------------------------- | ---------- | ----------------------------------------------------- |
+| `id`                      | number     | User-defined unique identifier for the request.       |
+| `response`                | *object[]* |                                                       |
+| &nbsp;&nbsp;› `account`   | string     | Account details.                                      |
+| &nbsp;&nbsp;› `dir`       | Dir        | The direction of the order (`Buy` or `Sell`)          |
+| &nbsp;&nbsp;› `params`    | object     | Optional order parameters (e.g. for DeFi) (optional). |
+| &nbsp;&nbsp;› `price`     | string     | Order price.                                          |
+| &nbsp;&nbsp;› `quantity`  | string     | Order quantity.                                       |
+| &nbsp;&nbsp;› `quote_id`  | string     | Quote ID (optional).                                  |
+| &nbsp;&nbsp;› `target`    | string     | Tradable product identifier.                          |
+| &nbsp;&nbsp;› `timestamp` | string     | Timestamp stamped on the OMS receive (optional).      |
 
 ## ListFills
 
@@ -563,9 +628,10 @@ List fills based on the given scope and set.
 
 ### Response Fields
 
-| Type               | Description                                                    |
-| ------------------ | -------------------------------------------------------------- |
-| [string, string][] | An array of tuples representing `OrderId` and `FillId` values. |
+| Field      | Type               | Description                                                    |
+| ---------- | ------------------ | -------------------------------------------------------------- |
+| `id`       | number             | User-defined unique identifier for the request.                |
+| `response` | [string, string][] | An array of tuples representing `OrderId` and `FillId` values. |
 
 ## GetFillDetails
 
@@ -591,20 +657,27 @@ Retrieve details of fills based on the given fill IDs.
 
 ### Response Fields
 
-| Field               | Type                 | Description                                          |
-| ------------------- | -------------------- | ---------------------------------------------------- |
-| `dir`               | Dir                  | Trading direction (Buy or Sell)                      |
-| `exchange_fill_id`  | string?              | Exchange-specific fill identifier (if available)     |
-| `exchange_order_id` | string?              | Exchange-specific order identifier (if available)    |
-| `fill_id`           | FillId               | Fill identifier                                      |
-| `id`                | OrderId              | Order identifier                                     |
-| `price`             | Decimal              | Price of the fill                                    |
-| `quantity`          | Decimal              | Quantity of the fill                                 |
-| `recv_time`         | string               | Timestamp when the OMS received the fill             |
-| `target`            | TradableProductId    | Tradable Product ID                                  |
-| `trade_time`        | string               | Timestamp when the counterparty claims the trade     |
-| `warnings`          | BitFlags_FillWarning | BitFlags indicating warnings or issues with the fill |
+*Please note that there are two types of fills to consider: normal fills for standard trade processing and abnormal fills for exceptional or unrecoverable trade situations.*
 
+| Field                             | Type                | Description                                                                                               |
+| --------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------- |
+| `id`                              | number              | User-defined unique identifier for the request.                                                           |
+| `response`                        | *object*            |                                                                                                           |
+| &nbsp;&nbsp;› `dir`               | Dir (Normal)        | The direction of the order (`Buy` or `Sell`)                                                              |
+| &nbsp;&nbsp;› `exchange_fill_id`  | string              | The exchange-specific fill identifier, if available (optional).                                           |
+| &nbsp;&nbsp;› `exchange_order_id` | string              | The exchange-specific order identifier, if available (optional).                                          |
+| &nbsp;&nbsp;› `fill_id`           | string              | The unique identifier of the fill.                                                                        |
+| &nbsp;&nbsp;› `price`             | string              | The price at which the trade occurred.                                                                    |
+| &nbsp;&nbsp;› `quantity`          | string              | The quantity of the asset traded.                                                                         |
+| &nbsp;&nbsp;› `recv_time`         | string              | The timestamp when the OMS received the fill.                                                             |
+| &nbsp;&nbsp;› `target`            | string (Normal)     | The ID of the tradable product involved in the trade.                                                     |
+| &nbsp;&nbsp;› `trade_time`        | string              | The timestamp when the counterparty claims the trade happened, or the time of reception if unrecoverable. |
+| &nbsp;&nbsp;› `warnings`          | number[]            | An array of bit flags indicating warnings about the fill that don't quite make it aberrant.               |
+| &nbsp;&nbsp;› `info`              | *object* (Aberrant) | The information that could be salvaged. (Aberrant Fill)                                                   |
+| &nbsp;&nbsp;› `problems`          | number (Aberrant)   | A bit flag indicating the reasons why this fill couldn't be processed normally. (Aberrant Fill)           |
+| &nbsp;&nbsp;› `recv_time`         | string              | The timestamp when the OMS received the fill. (Aberrant Fill)                                             |
+| &nbsp;&nbsp;› `trade_time`        | string              | The timestamp when the counterparty claims the trade happened, or the time of reception if unrecoverable. |
+| &nbsp;&nbsp;› `warnings`          | number[]            | An array of bit flags indicating warnings about the fill that don't quite make it aberrant.               |
 
 # Limits
 
@@ -634,9 +707,10 @@ Set limits based on the given Limit array.
 
 ### Response Fields
 
-| Type | Description |
-| ---- | ----------- |
-| null | null        |
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
 
 ## GetLimits
 
@@ -665,10 +739,12 @@ Retrieve limits based on the given LimitSet and LimitScope arrays.
 
 ### Response Fields
 
-| Field   | Type   | Required | Description                                                                                                                                                                                                                      |
-| ------- | ------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`  | string | Yes      | The type of trading limit. Possible values are: "FillRecencyThreshold", "FillRetireThreshold", "OutRetireThreshold", "NotOutThreshold", "MaxPriceDeviation", "SetEnforcing", "MaxOpen", "MaxOpenAndRecentlyFilled", "MaxFilled". |
-| `value` | Varies | Yes      | The value associated with the trading limit, which can be of various types depending on the limit type. Refer to the specific limit type for details.                                                                            |
+| Field                 | Type       | Description                                                                                                                                                                                                 |
+| --------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number     | User-defined unique identifier for the request.                                                                                                                                                             |
+| `response`            | *object[]* |                                                                                                                                                                                                             |
+| &nbsp;&nbsp;› `type`  | string     | The type of trading limit: "FillRecencyThreshold", "FillRetireThreshold", "OutRetireThreshold", "NotOutThreshold", "MaxPriceDeviation", "SetEnforcing", "MaxOpen", "MaxOpenAndRecentlyFilled", "MaxFilled". |
+| &nbsp;&nbsp;› `value` | Varies     | The value associated with the trading limit, which can be of various types depending on the limit type. Refer to the specific limit type for details.                                                       |
 
 ## GetGlobalLimits
 
@@ -691,12 +767,15 @@ Retrieve global limits based on the given GlobalLimitName array.
   "type": "GetGlobalLimits"
 }
 ```
+
 ### Response Fields
 
-| Field   | Type   | Required | Description                                                                                                                                                                                                                      |
-| ------- | ------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`  | string | Yes      | The type of trading limit. Possible values are: "FillRecencyThreshold", "FillRetireThreshold", "OutRetireThreshold", "NotOutThreshold", "MaxPriceDeviation", "SetEnforcing", "MaxOpen", "MaxOpenAndRecentlyFilled", "MaxFilled". |
-| `value` | Varies | Yes      | The value associated with the trading limit, which can be of various types depending on the limit type. Refer to the specific limit type for details.                                                                            |
+| Field                 | Type       | Description                                                                                                                                                                                                 |
+| --------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number     | User-defined unique identifier for the request.                                                                                                                                                             |
+| `response`            | *object[]* |                                                                                                                                                                                                             |
+| &nbsp;&nbsp;› `type`  | string     | The type of trading limit: `FillRecencyThreshold`, `FillRetireThreshold`, `OutRetireThreshold`, `NotOutThreshold`, `MaxPriceDeviation`, `SetEnforcing`, `MaxOpen`, `MaxOpenAndRecentlyFilled`, `MaxFilled`. |
+| &nbsp;&nbsp;› `value` | Varies     | The value associated with the trading limit, which can be of various types depending on the limit type. Refer to the specific limit type for details.                                                       |
 
 # Halts
 
@@ -722,9 +801,12 @@ Retrieve information about trading halts.
 
 ### Response Fields
 
-| Field  | Type   | Required | Description                                                                                                                                  |
-| ------ | ------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Halt` | Varies | Yes      | An array of `Halt` objects, each representing a halt with specific details. Refer to the `Halt` type description for details on each object. |
+| Field                 | Type       | Description                                                                                                   |
+| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number     | User-defined unique identifier for the request.                                                               |
+| `response`            | *object[]* | An array of `Halt` objects with the following properties.                                                     |
+| &nbsp;&nbsp;› `type`  | string     | Specifies the type of the halt. Possible values: `Global`, `TradableProduct`, `Venue`, `Route`, `VenueRoute`. |
+| &nbsp;&nbsp;› `value` | Varies     | An array with specific items based on the `type` of the halt.                                                 |
 
 ## Halt
 
@@ -750,9 +832,10 @@ Initiate a trading halt for a given condition.
 
 ### Response Fields
 
-| Type | Description |
-| ---- | ----------- |
-| null | null        |
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
 
 ## Resume
 
@@ -778,9 +861,10 @@ Resume trading after a halt for a given condition.
 
 ### Response Fields
 
-| Type | Description |
-| ---- | ----------- |
-| null | null        |
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
 
 # Alerts
 
@@ -840,9 +924,14 @@ Retrieve allowance based on the given account, route, token, and venue.
 
 ### Response Fields
 
-| Type    | Required | Description                                             |
-| ------- | -------- | ------------------------------------------------------- |
-| Decimal | Yes      | A `Decimal` value representing the successful response. |
+Here's the updated response format with the corrected data type and without the "required" field:
+
+**Response:**
+
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | string | Allowance value upon successful response.       |
 
 ## SetAllowance
 
@@ -876,9 +965,10 @@ Set allowance based on the given account, route, amount, token, and venue.
 
 ### Response Fields
 
-| Type | Description |
-| ---- | ----------- |
-| null | null        |
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
 
 ## GetOrderTransaction
 
@@ -904,9 +994,13 @@ Get transaction information for given order IDs.
 
 ### Response Fields
 
-| Type              | Required | Description                                                                              |
-| ----------------- | -------- | ---------------------------------------------------------------------------------------- |
-| TransactionHandle | Yes      | An array of elements, each of type `TransactionHandle`, representing order transactions. |
+| Field                  | Type             | Description                                                                 |
+| ---------------------- | ---------------- | --------------------------------------------------------------------------- |
+| `id`                   | number           | User-defined unique identifier for the request.                             |
+| `response`             | *object[]*       | An array of `TransactionHandle` objects with the following properties.      |
+| &nbsp;&nbsp;› `origin` | [string, string] | An array with two items representing `VenueId` and `RouteId` as the origin. |
+| &nbsp;&nbsp;› `target` | [string, string] | An array with two items representing `VenueId` and `RouteId` as the target. |
+| &nbsp;&nbsp;› `uuid`   | string           | A unique identifier for the transaction handle.                             |
 
 ## EstimateOrderParams
 
@@ -932,10 +1026,12 @@ Estimate order parameters based on an order prototype.
 
 ### Response Fields
 
-| Field   | Type                 | Required | Description                                                                                                  |
-| ------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
-| `type`  | string               | Yes      | Set to "Ethereum", indicating that this is an Ethereum-specific order parameter estimation.                  |
-| `value` | EVMTransactionParams | Yes      | An object of type `EVMTransactionParams` containing Ethereum-specific transaction parameters for estimation. |
+| Field                 | Type       | Description                                                      |
+| --------------------- | ---------- | ---------------------------------------------------------------- |
+| `id`                  | number     | User-defined unique identifier for the request.                  |
+| `response`            | *object[]* |                                                                  |
+| &nbsp;&nbsp;› `type`  | string     | Order parameters (e.g. for DeFi).                                |
+| &nbsp;&nbsp;› `value` | Varies     | Specific items based on the `type` of the estimate order params. |
 
 ## GetEVMAttempts
 
@@ -961,9 +1057,10 @@ Get the attempts for an EVM transaction.
 
 ### Response Fields
 
-| Type     | Required | Description                                                                     |
-| -------- | -------- | ------------------------------------------------------------------------------- |
-| string[] | Yes      | An array of string values representing Ethereum Virtual Machine (EVM) attempts. |
+| Field      | Type     | Description                                                                     |
+| ---------- | -------- | ------------------------------------------------------------------------------- |
+| `id`       | number   | User-defined unique identifier for the request.                                 |
+| `response` | string[] | An array of string values representing Ethereum Virtual Machine (EVM) attempts. |
 
 ## EstimateEVMRetryParams
 
@@ -989,11 +1086,13 @@ Estimate retry parameters for an EVM transaction.
 
 ### Response Fields
 
-| Field       | Type             | Required                                                                                                                      | Description |
-| ----------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `gas`       | number           | Optional. A number representing gas for the transaction.                                                                      |
-| `gas_price` | [number, number] | Optional. An array of two numbers representing gas prices (max_fee_per_gas and max_priority_fee_per_gas) for the transaction. |
-| `nonce`     | number           | Optional. A number representing the nonce for the transaction.                                                                |
+| Field                     | Type             | Description                                                                                                                     |
+| ------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                      | number           | User-defined unique identifier for the request.                                                                                 |
+| `response`                | *object*         |                                                                                                                                 |
+| &nbsp;&nbsp;› `gas`       | number           | A number representing gas for the transaction (optional).                                                                       |
+| &nbsp;&nbsp;› `gas_price` | [number, number] | An array of two numbers representing gas prices for the transaction (`max_fee_per_gas`, `max_priority_fee_per_gas`) (optional). |
+| &nbsp;&nbsp;› `nonce`     | number           | A number representing the nonce for the transaction (optional).                                                                 |
 
 ## RetryEVMTransaction
 
@@ -1023,10 +1122,10 @@ Retry an EVM transaction with optional gas parameters.
 
 ### Response Fields
 
-| Type            | Required    | Description                                                                                                                                                   |
-| --------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| string          | Conditional | A string value representing a successful response. Present if the response is successful.                                                                     |
-| EVMRejectReason | Conditional | An object of type `EVMRejectReason` representing an error response related to Ethereum Virtual Machine (EVM) rejection reasons. Present if there is an error. |
+| Field      | Type   | Description                                                                                                                                                                                     |
+| ---------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request.                                                                                                                                                 |
+| `response` | string | An EVM reject reason with various possible types: `NotEIP1559`, `InsaneGasPrice`, `NonceOverflow`, `UnknownSigner`, `UnknownTransaction`, `Malformed`, `WouldRevert`, `InternalError` or others |
 
 # Market Data
 
@@ -1060,9 +1159,18 @@ Retrieve historical candle data based on the given tradable product, start time,
 
 ### Response Fields
 
-| Type       | Required | Description                                                              |
-| ---------- | -------- | ------------------------------------------------------------------------ |
-| CandleV1[] | Yes      | An array of `CandleV1` objects representing historical candlestick data. |
+| Field                       | Type       | Description                                       |
+| --------------------------- | ---------- | ------------------------------------------------- |
+| `id`                        | number     | User-defined unique identifier for the request.   |
+| `response`                  | *object[]* |                                                   |
+| &nbsp;&nbsp;› `buy_volume`  | string     | The buy volume data for the candlestick.          |
+| &nbsp;&nbsp;› `close`       | string     | The closing price of the candlestick.             |
+| &nbsp;&nbsp;› `high`        | string     | The highest price during the candlestick period.  |
+| &nbsp;&nbsp;› `low`         | string     | The lowest price during the candlestick period.   |
+| &nbsp;&nbsp;› `open`        | string     | The opening price of the candlestick.             |
+| &nbsp;&nbsp;› `sell_volume` | string     | The sell volume data for the candlestick.         |
+| &nbsp;&nbsp;› `time`        | string     | The timestamp for the candlestick data.           |
+| &nbsp;&nbsp;› `volume`      | string     | The trading volume during the candlestick period. |
 
 ## GetHistoricalUniswapV2Pools
 
@@ -1090,24 +1198,23 @@ Retrieve historical data for Uniswap V2 pools.
 }
 ```
 
-| Name            | Type    | Description                                              |
-| --------------- | ------- | -------------------------------------------------------- |
-| id              | integer | The id that was sent in the request                      |
-| jsonrpc         | string  | The JSON-RPC version (2.0)                               |
-| result          | object  |                                                          |
-| - access_token  | string  |                                                          |
-| - expires_in    | integer | Token lifetime in seconds                                |
-| - refresh_token | string  | Can be used to request a new token (with a new lifetime) |
-| - scope         | string  | Type of the access for assigned token                    |
-| - sid           | string  | Optional Session id                                      |
-| - token_type    | string  | Authorization type, allowed value - bearer               |
-
 ### Response Fields
 
-| Type               | Required | Description                                                                                     |
-| ------------------ | -------- | ----------------------------------------------------------------------------------------------- |
-| PoolCreatedEvent[] | Yes      | An array of `PoolCreatedEvent` objects representing historical Uniswap V2 pool creation events. |
-Y
+| Field                           | Type       | Description                                          |
+| ------------------------------- | ---------- | ---------------------------------------------------- |
+| `id`                            | number     | User-defined unique identifier for the request.      |
+| `response`                      | *object[]* |                                                      |
+| &nbsp;&nbsp;› `address`         | string     | The address of the Uniswap V2 pool created.          |
+| &nbsp;&nbsp;› `block`           | number     | The block number at which the pool was created.      |
+| &nbsp;&nbsp;› `timestamp`       | string     | The timestamp when the pool creation event occurred. |
+| &nbsp;&nbsp;› `token0`          | string     | The address of the first token in the pool.          |
+| &nbsp;&nbsp;› `token0_decimals` | number     | The number of decimal places for the first token.    |
+| &nbsp;&nbsp;› `token0_symbol`   | string     | The symbol of the first token.                       |
+| &nbsp;&nbsp;› `token1`          | string     | The address of the second token in the pool.         |
+| &nbsp;&nbsp;› `token1_decimals` | number     | The number of decimal places for the second token.   |
+| &nbsp;&nbsp;› `token1_symbol`   | string     | The symbol of the second token.                      |
+
+
 ## GetTradableProductSummariesForVenue
 
 ### Description
@@ -1132,9 +1239,27 @@ Retrieve summaries of tradable products for a specific venue.
 
 ### Response Fields
 
-| Type                     | Required | Description                                                                                                    |
-| ------------------------ | -------- | -------------------------------------------------------------------------------------------------------------- |
-| TradableProductSummary[] | Yes      | An array of `TradableProductSummary` objects representing summaries of tradable products for a specific venue. |
+| Field                                 | Type       | Description                                                                                                 |
+| ------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------- |
+| `id`                                  | number     | User-defined unique identifier for the request.                                                             |
+| `response`                            | *object[]* |                                                                                                             |
+| &nbsp;&nbsp;› `ask_price`             | string     | The current best ask price for the tradable product, or null if there aren't any asks. (optional)           |
+| &nbsp;&nbsp;› `base_id`               | string     | The identifier of the base product.                                                                         |
+| &nbsp;&nbsp;› `base_name`             | string     | The name of the base product.                                                                               |
+| &nbsp;&nbsp;› `bid_price`             | string     | The current best bid price for the tradable product, or null if there aren't any bids. (optional)           |
+| &nbsp;&nbsp;› `high_24h`              | string     | The highest price of the tradable product in the last 24 hours, or null if no data is available. (optional) |
+| &nbsp;&nbsp;› `kind`                  | string     | The kind of tradable product.                                                                               |
+| &nbsp;&nbsp;› `last_price`            | string     | The last traded price for the tradable product, or null if no trades have occurred. (optional)              |
+| &nbsp;&nbsp;› `low_24h`               | string     | The lowest price of the tradable product in the last 24 hours, or null if no data is available. (optional)  |
+| &nbsp;&nbsp;› `open_24h`              | string     | The opening price of the tradable product in the last 24 hours, or null if no data is available. (optional) |
+| &nbsp;&nbsp;› `quote_id`              | string     | The identifier of the quote product.                                                                        |
+| &nbsp;&nbsp;› `quote_name`            | string     | The name of the quote product.                                                                              |
+| &nbsp;&nbsp;› `tradable_product_id`   | string     | The identifier of the tradable product.                                                                     |
+| &nbsp;&nbsp;› `tradable_product_name` | string     | The name of the tradable product.                                                                           |
+| &nbsp;&nbsp;› `update_time`           | string     | The timestamp when the summary was updated.                                                                 |
+| &nbsp;&nbsp;› `venue_id`              | string     | The identifier of the venue.                                                                                |
+| &nbsp;&nbsp;› `venue_name`            | string     | The name of the venue.                                                                                      |
+| &nbsp;&nbsp;› `volume_24h`            | string     | The 24-hour trading volume for the tradable product, or null if no data is available. (optional)            |
 
 ## SubscribeTrades
 
@@ -1615,9 +1740,11 @@ Send request for quotes based on a query.
 
 ### Response Fields
 
-| Type            | Description                                                       |
-| --------------- | ----------------------------------------------------------------- |
-| VenueResponse[] | An array of `VenueResponse` objects representing venue responses. |
+| Field                            | Type     | Description                                            |
+| -------------------------------- | -------- | ------------------------------------------------------ |
+| `venue_responses`                | *object* |                                                        |
+| &nbsp;&nbsp;› `price`            | string   | The price associated with the venue response.          |
+| &nbsp;&nbsp;› `tradable_product` | string   | The ID of the tradable product for the venue response. |
 
 # Secrets
 
@@ -1643,9 +1770,12 @@ List all secrets.
 
 ### Response Fields
 
-| Type        | Required | Description                                                     |
-| ----------- | -------- | --------------------------------------------------------------- |
-| SecretKey[] | Yes      | An array of `SecretKey` objects representing a list of secrets. |
+| Field                            | Type       | Description                                                                                                                |
+| -------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `id`                             | number     | User-defined unique identifier for the request.                                                                            |
+| `response`                       | *object[]* |                                                                                                                            |
+| &nbsp;&nbsp;› `data`             | Varies     | The data associated with the secret key, which can vary based on the key type. Refer to the specific key type for details. |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `type` | string     | Specifies the type of the secret key: `ExchangeKey`, `EVMNodeRpcUrl`, `EVMPrivateKey`, `BrokerKey`.                        |
 
 ## AddSecret
 
@@ -1673,9 +1803,10 @@ Add a secret with a given key and value.
 
 ### Response Fields
 
-| Type | Description |
-| ---- | ----------- |
-| null | null        |
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
 
 ## DeleteSecret
 
@@ -1701,9 +1832,10 @@ Delete a secret with a given key.
 
 ### Response Fields
 
-| Type | Description |
-| ---- | ----------- |
-| null | null        |
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
 
 # System Configuration
 
@@ -1729,16 +1861,27 @@ Retrieve the pathmap.
 
 ### Response Fields
 
-| Field                  | Type             | Description                                                                                                            |
-| ---------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `core_cpty`            | string           | A string representing a core counterparty path.                                                                        |
-| `ext_coingecko`        | string           | A string representing an external Coingecko path.                                                                      |
-| `news`                 | string           | A string representing a news path.                                                                                     |
-| `qf_api`               | string           | A string representing a QF API path.                                                                                   |
-| `qf_api_by_cpty`       | [Cpty, string][] | An array of tuples, each containing a `Cpty` and a string representing a QF API path by counterparty.                  |
-| `qf_hist_ohlc`         | string           | A string representing a QF historical OHLC path.                                                                       |
-| `qf_hist_ohlc_by_cpty` | [Cpty, string][] | An array of tuples, each containing a `Cpty` and a string representing a QF historical OHLC path by counterparty.      |
-| `qf_hist_rt`           | string           | A string representing a QF historical real-time path.                                                                  |
-| `qf_hist_rt_by_cpty`   | [Cpty, string][] | An array of tuples, each containing a `Cpty` and a string representing a QF historical real-time path by counterparty. |
-| `qf_ohlc`              | string           | A string representing a QF OHLC path.                                                                                  |
-| `qf_ohlc_by_cpty`      | [Cpty, string][] | An array of tuples, each containing a `Cpty` and a string representing a QF OH                                         |
+| Field                                | Type             | Description                                                                                             |
+| ------------------------------------ | ---------------- | ------------------------------------------------------------------------------------------------------- |
+| `id`                                 | number           | User-defined unique identifier for the request.                                                         |
+| `response`                           | *object*         |                                                                                                         |
+| &nbsp;&nbsp;› `core_cpty`            | string           | Path or URL for the `core_cpty` resource.                                                               |
+| &nbsp;&nbsp;› `ext_coingecko`        | string           | Path or URL for the `ext_coingecko` resource.                                                           |
+| &nbsp;&nbsp;› `news`                 | string           | Path or URL for the `news` resource.                                                                    |
+| &nbsp;&nbsp;› `qf_api`               | string           | Path or URL for the `qf_api` resource.                                                                  |
+| &nbsp;&nbsp;› `qf_api_by_cpty`       | [Cpty, string][] | An array of tuples representing the mapping of [`Cpty`](#cpty) objects to `qf_api` paths or URLs.       |
+| &nbsp;&nbsp;› `qf_hist_ohlc`         | string           | Path or URL for the `qf_hist_ohlc` resource.                                                            |
+| &nbsp;&nbsp;› `qf_hist_ohlc_by_cpty` | [Cpty, string][] | An array of tuples representing the mapping of [`Cpty`](#cpty) objects to `qf_hist_ohlc` paths or URLs. |
+| &nbsp;&nbsp;› `qf_hist_rt`           | string           | Path or URL for the `qf_hist_rt` resource.                                                              |
+| &nbsp;&nbsp;› `qf_hist_rt_by_cpty`   | [Cpty, string][] | An array of tuples representing the mapping of [`Cpty`](#cpty) objects to `qf_hist_rt` paths or URLs.   |
+| &nbsp;&nbsp;› `qf_ohlc`              | string           | Path or URL for the `qf_ohlc` resource.                                                                 |
+| &nbsp;&nbsp;› `qf_ohlc_by_cpty`      | [Cpty, string][] | An array of tuples representing the mapping of [`Cpty`](#cpty) objects to `qf_ohlc` paths or URLs.      |
+| &nbsp;&nbsp;› `qf_rt`                | string           | Path or URL for the `qf_rt` resource.                                                                   |
+| &nbsp;&nbsp;› `qf_rt_by_cpty`        | [Cpty, string][] | An array of tuples representing the mapping of [`Cpty`](#cpty) objects to `qf_rt` paths or URLs.        |
+
+#### `Cpty`
+
+| Field   | Type    | Description                                            |
+| ------- | ------- | ------------------------------------------------------ |
+| `route` | RouteId | The route associated with the counterparty.            |
+| `venue` | VenueId | The venue associated with the counterparty (optional). |
