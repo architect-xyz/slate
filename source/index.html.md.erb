@@ -16,50 +16,61 @@ This document describes the WebSocket API for our platform. Below you'll find th
 
 ## Request Types
 
-| Type                                                        | Kind         | Category             |
-| ----------------------------------------------------------- | ------------ | -------------------- |
-| [SearchSymbol](#searchsymbol)                               | Query        | Symbology            |
-| [QueryTradableProductIndex](#querytradableproductindex)     | Query        | Symbology            |
-| [GetRouteDetails](#getroutedetails)                         | Query        | Symbology            |
-| [GetVenueDetails](#getvenuedetails)                         | Query        | Symbology            |
-| [GetProductDetails](#getproductdetails)                     | Query        | Symbology            |
-| [GetTradableProductDetails](#gettradableproductdetails)     | Query        | Symbology            |
-| [GetCanonicalTradableProduct](#getcanonicaltradableproduct) | Query        | Symbology            |
-| [SendLimitOrder](#sendlimitorder)                           | Query        | Orderflow            |
-| [CancelOrder](#cancelorder)                                 | Query        | Orderflow            |
-| [ListOpen](#listopen)                                       | Query        | Orderflow            |
-| [GetOrderState](#getorderstate)                             | Query        | Orderflow            |
-| [SubscribeOrderState](#subscribeorderstate)                 | Subscription | Orderflow            |
-| [GetRejectReason](#getrejectreason)                         | Query        | Orderflow            |
-| [GetOrderDetails](#getorderdetails)                         | Query        | Orderflow            |
-| [ListFills](#listfills)                                     | Query        | Orderflow            |
-| [GetFillDetails](#getfilldetails)                           | Query        | Orderflow            |
-| [SetLimits](#setlimits)                                     | Query        | Limits               |
-| [GetLimits](#getlimits)                                     | Query        | Limits               |
-| [GetGlobalLimits](#getgloballimits)                         | Query        | Limits               |
-| [GetHalts](#gethalts)                                       | Query        | Halts                |
-| [Halt](#halt)                                               | Query        | Halts                |
-| [Resume](#resume)                                           | Query        | Halts                |
-| [SubscribeAlerts](#subscribealerts)                         | Subscription | Alerts               |
-| [GetAllowance](#getallowance)                               | Query        | DeFi                 |
-| [SetAllowance](#setallowance)                               | Query        | DeFi                 |
-| [GetOrderTransaction](#getordertransaction)                 | Query        | DeFi                 |
-| [EstimateOrderParams](#estimateorderparams)                 | Query        | DeFi                 |
-| [GetEVMAttempts](#getevmattempts)                           | Query        | DeFi                 |
-| [EstimateEVMRetryParams](#estimateevmretryparams)           | Query        | DeFi                 |
-| [RetryEVMTransaction](#retryevmtransaction)                 | Query        | DeFi                 |
-| [GetHistoricalCandles](#gethistoricalcandles)               | Query        | Market Data          |
-| [SubscribeTrades](#subscribetrades)                         | Subscription | Market Data          |
-| [SubscribeBook](#subscribebook)                             | Subscription | Market Data          |
-| [SubscribeCandles](#subscribecandles)                       | Subscription | Market Data          |
-| [SubscribeConsolidatedBook](#subscribeconsolidatedbook)     | Subscription | Market Data          |
-| [Unsubscribe](#unsubscribe)                                 | Query        | Market Data          |
-| [SubscribeRfqs](#subscriberfqs)                             | Subscription | RFQs                 |
-| [SendRfqs](#sendrfqs)                                       | Query        | RFQs                 |
-| [ListSecrets](#listsecrets)                                 | Query        | Secrets              |
-| [AddSecret](#addsecret)                                     | Query        | Secrets              |
-| [DeleteSecret](#deletesecret)                               | Query        | Secrets              |
-| [GetPathmap](#getpathmap)                                   | Query        | System Configuration |
+| Type                                                                        | Kind         | Category             |
+| --------------------------------------------------------------------------- | ------------ | -------------------- |
+| [SearchSymbol](#searchsymbol)                                               | Query        | Symbology            |
+| [QueryTradableProductIndex](#querytradableproductindex)                     | Query        | Symbology            |
+| [GetRouteDetails](#getroutedetails)                                         | Query        | Symbology            |
+| [GetVenueDetails](#getvenuedetails)                                         | Query        | Symbology            |
+| [GetProductDetails](#getproductdetails)                                     | Query        | Symbology            |
+| [GetTradableProductDetails](#gettradableproductdetails)                     | Query        | Symbology            |
+| [GetCanonicalTradableProduct](#getcanonicaltradableproduct)                 | Query        | Symbology            |
+| [GetQuoteSymbolDetails](#getquotesymboldetails)                             | Query        | Symbology            |
+| [SendLimitOrder](#sendlimitorder)                                           | Query        | Orderflow            |
+| [CancelOrder](#cancelorder)                                                 | Query        | Orderflow            |
+| [ListOpen](#listopen)                                                       | Query        | Orderflow            |
+| [GetOrderState](#getorderstate)                                             | Query        | Orderflow            |
+| [SubscribeOrderState](#subscribeorderstate)                                 | Subscription | Orderflow            |
+| [GetRejectReason](#getrejectreason)                                         | Query        | Orderflow            |
+| [GetOrderDetails](#getorderdetails)                                         | Query        | Orderflow            |
+| [ListFills](#listfills)                                                     | Query        | Orderflow            |
+| [GetFillDetails](#getfilldetails)                                           | Query        | Orderflow            |
+| [SetLimits](#setlimits)                                                     | Query        | Limits               |
+| [GetLimits](#getlimits)                                                     | Query        | Limits               |
+| [GetGlobalLimits](#getgloballimits)                                         | Query        | Limits               |
+| [GetHalts](#gethalts)                                                       | Query        | Halts                |
+| [Halt](#halt)                                                               | Query        | Halts                |
+| [Resume](#resume)                                                           | Query        | Halts                |
+| [SubscribeAlerts](#subscribealerts)                                         | Subscription | Alerts               |
+| [GetAllowance](#getallowance)                                               | Query        | DeFi                 |
+| [SetAllowance](#setallowance)                                               | Query        | DeFi                 |
+| [GetOrderTransaction](#getordertransaction)                                 | Query        | DeFi                 |
+| [EstimateOrderParams](#estimateorderparams)                                 | Query        | DeFi                 |
+| [GetEVMAttempts](#getevmattempts)                                           | Query        | DeFi                 |
+| [EstimateEVMRetryParams](#estimateevmretryparams)                           | Query        | DeFi                 |
+| [RetryEVMTransaction](#retryevmtransaction)                                 | Query        | DeFi                 |
+| [GetHistoricalCandles](#gethistoricalcandles)                               | Query        | Market Data          |
+| [GetHistoricalUniswapV2Pools](#gethistoricaluniswapv2pools)                 | Query        | Market Data          |
+| [GetTradableProductSummariesForVenue](#gettradableproductsummariesforvenue) | Query        | Market Data          |
+| [SubscribeTrades](#subscribetrades)                                         | Subscription | Market Data          |
+| [SubscribeAllTrades](#subscribealltrades)                                   | Subscription | Market Data          |
+| [SubscribeBlockchainTrades](#subscribeblockchaintrades)                     | Subscription | Market Data          |
+| [SubscribeLiquidations](#subscribeliquidations)                             | Subscription | Market Data          |
+| [SubscribeAllLiquidations](#subscribeallliquidations)                       | Subscription | Market Data          |
+| [SubscribeBook](#subscribebook)                                             | Subscription | Market Data          |
+| [SubscribeTopOfBook](#subscribetopofbook)                                   | Subscription | Market Data          |
+| [SubscribeUniswapV2Book](#subscribeuniswapv2book)                           | Subscription | Market Data          |
+| [SubscribeUniswapV3Book](#subscribeuniswapv3book)                           | Subscription | Market Data          |
+| [SubscribeCandles](#subscribecandles)                                       | Subscription | Market Data          |
+| [SubscribeConsolidatedBook](#subscribeconsolidatedbook)                     | Subscription | Market Data          |
+| [SubscribeMetrics](#subscribemetrics)                                       | Subscription | Market Data          |
+| [Unsubscribe](#unsubscribe)                                                 | Query        | Market Data          |
+| [SubscribeRfqs](#subscriberfqs)                                             | Subscription | RFQs                 |
+| [SendRfqs](#sendrfqs)                                                       | Query        | RFQs                 |
+| [ListSecrets](#listsecrets)                                                 | Query        | Secrets              |
+| [AddSecret](#addsecret)                                                     | Query        | Secrets              |
+| [DeleteSecret](#deletesecret)                                               | Query        | Secrets              |
+| [GetPathmap](#getpathmap)                                                   | Query        | System Configuration |
 
 # Symbology
 
@@ -71,21 +82,21 @@ Searches for a symbol based on the provided pattern.
 
 ### Request Fields
 
-| Field   | Type     | Required | Description                       |
-| ------- | -------- | -------- | --------------------------------- |
-| `id`    | number   | Yes      | Unique identifier for the request |
-| `type`  | string   | Yes      | Set to "SearchSymbol"             |
-| `limit` | number   | Yes      | The maximum number of results     |
-| `pat`   | string   | Yes      | The search pattern                |
-| `scope` | SymScope | Yes      | The search scope                  |
+| Field   | Type   | Required | Description                                                                        |
+| ------- | ------ | -------- | ---------------------------------------------------------------------------------- |
+| `id`    | number | Yes      | User-defined unique identifier for the request                                     |
+| `type`  | string | Yes      | Set to "SearchSymbol"                                                              |
+| `limit` | number | Yes      | The maximum number of results                                                      |
+| `pat`   | string | Yes      | The search pattern                                                                 |
+| `scope` | string | Yes      | The search scope: `All`, `Route`, `Venue`, `Product`, `TradableProduct` or `Pair`. |
 
 ```json
 {
   "id": 1,
+  "type": "SearchSymbol",
   "limit": 10,
   "pat": "BTC",
-  "scope": "All",
-  "type": "SearchSymbol"
+  "scope": "All"
 }
 ```
 
@@ -103,6 +114,46 @@ async def main():
     print(res)
 ```
 
+### Response Fields
+
+| Field                            | Type                         | Description                                                                          |
+| -------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------ |
+| `id`                             | number                       | User-defined unique identifier for the request                                       |
+| `response`                       | *object*                     |                                                                                      |
+| &nbsp;&nbsp;› `pair`             | [number, [string, string]][] | An array of tuples representing pairs of numbers and an array of `ProductId` values. |
+| &nbsp;&nbsp;› `product`          | [number, string][]           | An array of tuples representing numbers and `ProductId` values.                      |
+| &nbsp;&nbsp;› `route`            | [number, string][]           | An array of tuples representing numbers and `RouteId` values.                        |
+| &nbsp;&nbsp;› `tradable_product` | [number, string][]           | An array of tuples representing numbers and `TradableProductId` values.              |
+| &nbsp;&nbsp;› `venue`            | [number, string][]           | An array of tuples representing numbers and `VenueId` values.                        |
+
+```json
+{
+  "id": 1,
+  "response": {
+    "pair": [
+      [1, ["product1", "product2"]],
+      [2, ["route1", "route2"]]
+    ],
+    "product": [
+      [3, "product1"],
+      [4, "product2"]
+    ],
+    "route": [
+      [5, "route1"],
+      [6, "route2"]
+    ],
+    "tradable_product": [
+      [7, "product1"],
+      [8, "product2"]
+    ],
+    "venue": [
+      [9, "Exchange1"],
+      [10, "Exchange2"]
+    ]
+  }
+}
+```
+
 ## QueryTradableProductIndex
 
 ### Description
@@ -111,19 +162,21 @@ Fast query for Tradable Product IDs that match the given query, which can be a b
 
 ### Request Fields
 
-| Field   | Type   | Required | Description                        |
-| ------- | ------ | -------- | ---------------------------------- |
-| `id`    | number | Yes      | Unique identifier for the request  |
-| `type`  | string | Yes      | Set to "QueryTradableProductIndex" |
-| `query` | string | Yes      | See Query type                     |
+| Field                 | Type   | Required | Description                                                                                                          |
+| --------------------- | ------ | -------- | -------------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number | Yes      | User-defined unique identifier for the request                                                                       |
+| `type`                | string | Yes      | Set to "QueryTradableProductIndex"                                                                                   |
+| `query`               | object | Yes      |                                                                                                                      |
+| &nbsp;&nbsp;› `type`  | string | Yes      | Type of the query: `All`, `Base`, `Quote`, `Venue`, `Route`, `Underlying`, `Expiration`, `Class`, `And`, `Or`, `Not` |
+| &nbsp;&nbsp;› `value` | Varies | Yes      | Value associated with the query type. It can be of various types based on the query type.                            |
 
 ```json
 {
   "id": 2,
+  "type": "QueryTradableProductIndex",
   "query": {
     // Query Object Details
-  },
-  "type": "QueryTradableProductIndex"
+  }
 }
 ```
 
@@ -132,11 +185,29 @@ async def main():
     client = Client()
     await client.connect()
     res = await client.query({
-      "id": 1,
+      "id": 2,
       "type": "QueryTradableProductIndex",
       "Query": "..."
     })
     print(res)
+```
+
+### Response Fields
+
+| Field      | Type     | Description                                    |
+| ---------- | -------- | ---------------------------------------------- |
+| `id`       | number   | User-defined unique identifier for the request |
+| `response` | string[] | An array of `TradableProductId` values.        |
+
+```json
+{
+  "id": 2,
+  "response": [
+    "product1",
+    "product2",
+    "product3"
+  ]
+}
 ```
 
 ## GetRouteDetails
@@ -147,17 +218,46 @@ Retrieve details for the given routes.
 
 ### Request Fields
 
-| Field   | Type     | Required | Description                       |
-| ------- | -------- | -------- | --------------------------------- |
-| `id`    | number   | Yes      | Unique identifier for the request |
-| `type`  | string   | Yes      | Set to "GetRouteDetails"          |
-| `route` | string[] | Yes      | An array of route IDs             |
+| Field   | Type     | Required | Description                                    |
+| ------- | -------- | -------- | ---------------------------------------------- |
+| `id`    | number   | Yes      | User-defined unique identifier for the request |
+| `type`  | string   | Yes      | Set to "GetRouteDetails"                       |
+| `route` | string[] | Yes      | An array of route IDs                          |
 
 ```json
 {
   "id": 3,
-  "route": ["route1", "route2"],
-  "type": "GetRouteDetails"
+  "type": "GetRouteDetails",
+  "route": ["route1", "route2"]
+}
+```
+
+### Response Fields
+
+| Field                | Type       | Description                                     |
+| -------------------- | ---------- | ----------------------------------------------- |
+| `id`                 | number     | User-defined unique identifier for the request. |
+| `response`           | *object[]* |                                                 |
+| &nbsp;&nbsp;› `id`   | string     | The unique identifier of the route.             |
+| &nbsp;&nbsp;› `name` | string     | The name of the route.                          |
+
+```json
+{
+  "id": 3,
+  "response": [
+    {
+      "id": "route1",
+      "name": "Route A"
+    },
+    {
+      "id": "route2",
+      "name": "Route B"
+    },
+    {
+      "id": "route3",
+      "name": "Route C"
+    }
+  ]
 }
 ```
 
@@ -169,17 +269,46 @@ Retrieve details for the given venues.
 
 ### Request Fields
 
-| Field   | Type     | Required | Description                       |
-| ------- | -------- | -------- | --------------------------------- |
-| `id`    | number   | Yes      | Unique identifier for the request |
-| `type`  | string   | Yes      | Set to "GetVenueDetails"          |
-| `venue` | string[] | Yes      | An array of venue IDs             |
+| Field   | Type     | Required | Description                                    |
+| ------- | -------- | -------- | ---------------------------------------------- |
+| `id`    | number   | Yes      | User-defined unique identifier for the request |
+| `type`  | string   | Yes      | Set to "GetVenueDetails"                       |
+| `venue` | string[] | Yes      | An array of venue IDs                          |
 
 ```json
 {
   "id": 4,
-  "venue": ["venue1", "venue2"],
-  "type": "GetVenueDetails"
+  "type": "GetVenueDetails",
+  "venue": ["<venue_id_1>", "<venue_id_2>"]
+}
+```
+
+### Response Fields
+
+| Field                | Type       | Description                                     |
+| -------------------- | ---------- | ----------------------------------------------- |
+| `id`                 | number     | User-defined unique identifier for the request. |
+| `response`           | *object[]* |                                                 |
+| &nbsp;&nbsp;› `id`   | string     | The unique identifier of the venue.             |
+| &nbsp;&nbsp;› `name` | string     | The name of the venue.                          |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "id": "venue1",
+      "name": "Venue X"
+    },
+    {
+      "id": "venue2",
+      "name": "Venue Y"
+    },
+    {
+      "id": "venue3",
+      "name": "Venue Z"
+    }
+  ]
 }
 ```
 
@@ -191,18 +320,53 @@ Retrieve details for the given products.
 
 ### Request Fields
 
-| Field     | Type     | Required | Description                       |
-| --------- | -------- | -------- | --------------------------------- |
-| `id`      | number   | Yes      | Unique identifier for the request |
-| `type`    | string   | Yes      | Set to "GetProductDetails"        |
-| `product` | string[] | Yes      | An array of product IDs           |
+| Field     | Type     | Required | Description                                    |
+| --------- | -------- | -------- | ---------------------------------------------- |
+| `id`      | number   | Yes      | User-defined unique identifier for the request |
+| `type`    | string   | Yes      | Set to "GetProductDetails"                     |
+| `product` | string[] | Yes      | An array of product IDs                        |
 
 ```json
 {
   "id": 5,
-  "product": ["product1", "product2"],
+  "product": ["<product_id_1>", "<product_id_2>"],
   "type": "GetProductDetails"
 }
+```
+
+### Response Fields
+
+| Field                                  | Type       | Description                                                                                                                    |
+| -------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `id`                                   | number     | User-defined unique identifier for the request.                                                                                |
+| `response`                             | *object[]* |                                                                                                                                |
+| &nbsp;&nbsp;› `cficode`                | number     | The atomic CFI code of the product.                                                                                            |
+| &nbsp;&nbsp;› `class`                  | string     | The class of the product: `Coin`, `Fiat`, `Equity`, `Commodity`, `Energy`, `Metal`, `Future`, `Option`, `Index`, or `Unknown`. |
+| &nbsp;&nbsp;› `id`                     | string     | The ID of the product.                                                                                                         |
+| &nbsp;&nbsp;› `name`                   | string     | The name of the product.                                                                                                       |
+| &nbsp;&nbsp;› `price_in_limit_dollars` | string     | The price of the product in limit dollars.                                                                                     |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "cficode": "123456",
+      "class": "Coin",
+      "id": "product1",
+      "name": "Product A",
+      "price_in_limit_dollars": "50.00"
+    },
+    {
+      "cficode": "654321",
+      "class": "Equity",
+      "id": "product2",
+      "name": "Product B",
+      "price_in_limit_dollars": "75.00"
+    }
+  ]
+}
+
 ```
 
 ## GetTradableProductDetails
@@ -213,17 +377,88 @@ Retrieve details for the given tradable products.
 
 ### Request Fields
 
-| Field              | Type     | Required | Description                        |
-| ------------------ | -------- | -------- | ---------------------------------- |
-| `id`               | number   | Yes      | Unique identifier for the request  |
-| `type`             | string   | Yes      | Set to "GetTradableProductDetails" |
-| `tradable_product` | string[] | Yes      | An array of tradable product IDs   |
+| Field              | Type     | Required | Description                                    |
+| ------------------ | -------- | -------- | ---------------------------------------------- |
+| `id`               | number   | Yes      | User-defined unique identifier for the request |
+| `type`             | string   | Yes      | Set to "GetTradableProductDetails"             |
+| `tradable_product` | string[] | Yes      | An array of tradable product IDs               |
 
 ```json
 {
   "id": 6,
   "tradable_product": ["<%= config[:tradable_product] %>"],
   "type": "GetTradableProductDetails"
+}
+```
+
+### Response Fields
+
+| Field                                       | Type                | Description                                     |
+| ------------------------------------------- | ------------------- | ----------------------------------------------- |
+| `id`                                        | number              | User-defined unique identifier for the request. |
+| `response`                                  | *object[]*          |                                                 |
+| &nbsp;&nbsp;› `base`                        | string              | The unique identifier of the base product.      |
+| &nbsp;&nbsp;› `display_name`                | string              | The display name of the tradable product.       |
+| &nbsp;&nbsp;› `id`                          | string              | The unique identifier of the tradable product.  |
+| &nbsp;&nbsp;› `is_delisted`                 | boolean             | Indicates whether the instrument is delisted.   |
+| &nbsp;&nbsp;› `quote`                       | string              | The unique identifier of the quote product.     |
+| &nbsp;&nbsp;› `quote_info`                  | *object*            |                                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `implied`         | string              | Implied quote symbol ID.                        |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `l2`              | string              | Level 2 quote symbol ID.                        |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `primary`         | string              | Primary quote symbol ID.                        |
+| &nbsp;&nbsp;› `route`                       | string              | The unique identifier of the route.             |
+| &nbsp;&nbsp;› `trade_info`                  | *object*            |                                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `base_increment`  | string              | Decimal increment for the base.                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `flags`           | BitFlags_TradeFlags | Bit flags for trade.                            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `quote_increment` | string              | Decimal increment for the quote.                |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `trading_symbol`  | string              | Trading symbol ID.                              |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `venue`           | string              | The unique identifier of the venue.             |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "base": "product1",
+      "display_name": "Product A",
+      "id": "tradable_product1",
+      "is_delisted": false,
+      "quote": "quote1",
+      "quote_info": {
+        "implied": "implied1",
+        "l2": "l2_1",
+        "primary": "primary1"
+      },
+      "route": "route1",
+      "trade_info": {
+        "base_increment": "0.01",
+        "flags": 7,
+        "quote_increment": "0.001",
+        "trading_symbol": "ABC",
+        "venue": "venue1"
+      }
+    },
+    {
+      "base": "product2",
+      "display_name": "Product B",
+      "id": "tradable_product2",
+      "is_delisted": true,
+      "quote": "quote2",
+      "quote_info": {
+        "implied": "implied2",
+        "l2": "l2_2",
+        "primary": "primary2"
+      },
+      "route": "route2",
+      "trade_info": {
+        "base_increment": "0.1",
+        "flags": 15,
+        "quote_increment": "0.01",
+        "trading_symbol": "XYZ",
+        "venue": "venue2"
+      }
+    }
+  ]
 }
 ```
 
@@ -235,17 +470,134 @@ Retrieve the canonical tradable product for the given products. A canonical trad
 
 ### Request Fields
 
-| Field     | Type     | Required | Description                          |
-| --------- | -------- | -------- | ------------------------------------ |
-| `id`      | number   | Yes      | Unique identifier for the request    |
-| `type`    | string   | Yes      | Set to "GetCanonicalTradableProduct" |
-| `product` | string[] | Yes      | An array of product IDs              |
+| Field     | Type     | Required | Description                                    |
+| --------- | -------- | -------- | ---------------------------------------------- |
+| `id`      | number   | Yes      | User-defined unique identifier for the request |
+| `type`    | string   | Yes      | Set to "GetCanonicalTradableProduct"           |
+| `product` | string[] | Yes      | An array of product IDs                        |
 
 ```json
 {
   "id": 7,
   "product": ["product1", "product2"],
   "type": "GetCanonicalTradableProduct"
+}
+```
+
+### Response Fields
+
+| Field                                       | Type                | Description                                     |
+| ------------------------------------------- | ------------------- | ----------------------------------------------- |
+| `id`                                        | number              | User-defined unique identifier for the request. |
+| `response`                                  | *object[]*          |                                                 |
+| &nbsp;&nbsp;› `base`                        | string              | The unique identifier of the base product.      |
+| &nbsp;&nbsp;› `display_name`                | string              | The display name of the tradable product.       |
+| &nbsp;&nbsp;› `id`                          | string              | The unique identifier of the tradable product.  |
+| &nbsp;&nbsp;› `is_delisted`                 | boolean             | Indicates whether the instrument is delisted.   |
+| &nbsp;&nbsp;› `quote`                       | string              | The unique identifier of the quote product.     |
+| &nbsp;&nbsp;› `quote_info`                  | *object*            |                                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `implied`         | string              | Implied quote symbol ID (optional).             |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `l2`              | string              | Level 2 quote symbol ID (optional).             |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `primary`         | string              | Primary quote symbol ID.                        |
+| &nbsp;&nbsp;› `route`                       | string              | The unique identifier of the route.             |
+| &nbsp;&nbsp;› `trade_info`                  | *object*            |                                                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `base_increment`  | string              | Decimal increment for the base.                 |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `flags`           | BitFlags_TradeFlags | Bit flags for trade.                            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `quote_increment` | string              | Decimal increment for the quote.                |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `trading_symbol`  | string              | Trading symbol ID.                              |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `venue`           | string              | The unique identifier of the venue.             |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "base": "product1",
+      "display_name": "Product A",
+      "id": "tradable_product1",
+      "is_delisted": false,
+      "quote": "quote1",
+      "quote_info": {
+        "implied": "implied1",
+        "l2": "l2_1",
+        "primary": "primary1"
+      },
+      "route": "route1",
+      "trade_info": {
+        "base_increment": "0.01",
+        "flags": 7,
+        "quote_increment": "0.001",
+        "trading_symbol": "ABC",
+        "venue": "venue1"
+      }
+    },
+    {
+      "base": "product2",
+      "display_name": "Product B",
+      "id": "tradable_product2",
+      "is_delisted": true,
+      "quote": "quote2",
+      "quote_info": {
+        "l2": "l2_2",
+        "primary": "primary2"
+      },
+      "route": "route2",
+      "trade_info": {
+        "base_increment": "0.1",
+        "flags": 15,
+        "quote_increment": "0.01",
+        "trading_symbol": "XYZ",
+        "venue": "venue2"
+      }
+    }
+  ]
+}
+```
+
+## GetQuoteSymbolDetails
+
+### Description
+
+Retrieve details for the given quote symbols.
+
+### Request Fields
+
+| Field          | Type     | Required | Description                                    |
+| -------------- | -------- | -------- | ---------------------------------------------- |
+| `id`           | number   | Yes      | User-defined unique identifier for the request |
+| `type`         | string   | Yes      | Set to "GetQuoteSymbolDetails"                 |
+| `quote_symbol` | string[] | Yes      | An array of quote symbol IDs                   |
+
+```json
+{
+  "id": 8,
+  "type": "GetQuoteSymbolDetails",
+  "quote_symbol": ["quoteSymbol1", "quoteSymbol2"]
+}
+```
+
+### Response Fields
+
+| Field                | Type       | Description                                     |
+| -------------------- | ---------- | ----------------------------------------------- |
+| `id`                 | number     | User-defined unique identifier for the request. |
+| `response`           | *object[]* |                                                 |
+| &nbsp;&nbsp;› `id`   | string     | The unique identifier of the quote symbol.      |
+| &nbsp;&nbsp;› `name` | string     | The name of the quote symbol.                   |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "id": "quote1",
+      "name": "Quote Symbol A"
+    },
+    {
+      "id": "quote2",
+      "name": "Quote Symbol B"
+    }
+  ]
 }
 ```
 
@@ -259,18 +611,19 @@ Send a limit order with the given parameters.
 
 ### Request Fields
 
-| Field      | Type                | Required | Description                                   |
-| ---------- | ------------------- | -------- | --------------------------------------------- |
-| `id`       | number              | Yes      | Unique identifier for the request             |
-| `type`     | string              | Yes      | Set to "SendLimitOrder"                       |
-| `target`   | string              | Yes      | Tradable product ID                           |
-| `dir`      | Dir                 | Yes      | The direction of the order ("Buy" or "Sell")  |
-| `id`       | number              | Yes      | Unique identifier for the request             |
-| `price`    | Decimal             | Yes      | The order price                               |
-| `quantity` | Decimal             | Yes      | The order quantity                            |
-| `account`  | string              | Yes      | The account to use (usually "DEFAULT")        |
-| `quote_id` | Str                 | No       | Optional quote ID if responding to a firm RFQ |
-| `params`   | EstimateOrderParams | No       | Optional order parameters (e.g. for DeFi).    |
+| Field                 | Type     | Required | Description                                                      |
+| --------------------- | -------- | -------- | ---------------------------------------------------------------- |
+| `id`                  | number   | Yes      | User-defined unique identifier for the request                   |
+| `type`                | string   | Yes      | Set to "SendLimitOrder"                                          |
+| `target`              | string   | Yes      | Tradable product ID                                              |
+| `dir`                 | string   | Yes      | The direction of the order (`Buy` or `Sell`)                     |
+| `price`               | string   | Yes      | The order price                                                  |
+| `quantity`            | string   | Yes      | The order quantity                                               |
+| `account`             | string   | Yes      | The account to use (usually "DEFAULT")                           |
+| `quote_id`            | string   | No       | Optional quote ID if responding to a firm RFQ                    |
+| `params`              | *object* | No       |                                                                  |
+| &nbsp;&nbsp;› `type`  | string   | Yes      | Order parameters (e.g. for DeFi).                                |
+| &nbsp;&nbsp;› `value` | Varies   | Yes      | Specific items based on the `type` of the estimate order params. |
 
 ```json
 {
@@ -284,6 +637,20 @@ Send a limit order with the given parameters.
 }
 ```
 
+### Response Fields
+
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | number | The order ID value.                             |
+
+```json
+{
+  "id": 2,
+  "response": 12345
+}
+```
+
 ## CancelOrder
 
 ### Description
@@ -292,15 +659,31 @@ Cancel the order with the given order ID.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `order_id`: (OrderId) The ID of the order to cancel.
-- `type`: (string) Set to "CancelOrder".
+| Field      | Type   | Required | Description                                     |
+| ---------- | ------ | -------- | ----------------------------------------------- |
+| `id`       | number | Yes      | User-defined unique identifier for the request. |
+| `type`     | string | Yes      | Set to "CancelOrder".                           |
+| `order_id` | string | Yes      | The ID of the order to cancel.                  |
 
 ```json
 {
   "id": 9,
   "order_id": "order1",
   "type": "CancelOrder"
+}
+```
+
+### Response Fields
+
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
+
+```json
+{
+  "id": 2,
+  "response": null
 }
 ```
 
@@ -312,10 +695,16 @@ List open orders based on the given scope and set.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `scope`: (LimitScope) The scope to search within.
-- `set`: (LimitSet) The set to search within.
-- `type`: (string) Set to "ListOpen".
+| Field                 | Type     | Required | Description                                                                                                                                           |
+| --------------------- | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number   | Yes      | User-defined unique identifier for the request.                                                                                                       |
+| `type`                | string   | Yes      | Set to "ListOpen".                                                                                                                                    |
+| `scope`               | *object* | Yes      |                                                                                                                                                       |
+| &nbsp;&nbsp;› `type`  | string   | Yes      | Specifies the type of the scope: `Global`, `Venue`, `Route`, `Product`, `ProductDefault`, `TradableProduct`, `TradableProductDefault`.                |
+| &nbsp;&nbsp;› `value` | Varies   | No       | An optional value associated with the scope, which can be of various types depending on the scope type. Refer to the specific scope type for details. |
+| `set`                 | *object* | Yes      |                                                                                                                                                       |
+| &nbsp;&nbsp;› `type`  | string   | Yes      | Specifies the type of the set: `Firm`, `Desk`, `DeskDefault`, `Trader`, `TraderDefault`, `Account`, `AccountDefault`.                                 |
+| &nbsp;&nbsp;› `value` | Varies   | No       | An optional value associated with the set, which can be of various types depending on the set type. Refer to the specific set type for details.       |
 
 ```json
 {
@@ -323,6 +712,20 @@ List open orders based on the given scope and set.
   "scope": "some_scope",
   "set": "some_set",
   "type": "ListOpen"
+}
+```
+
+### Response Fields
+
+| Field      | Type     | Description                                     |
+| ---------- | -------- | ----------------------------------------------- |
+| `id`       | number   | User-defined unique identifier for the request. |
+| `response` | number[] | An array of order ID.                           |
+
+```json
+{
+  "id": 2,
+  "response": [1, 3, 5]
 }
 ```
 
@@ -334,15 +737,31 @@ Retrieve the state of orders based on the given order IDs.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `order_ids`: (OrderId[]) An array of order IDs.
-- `type`: (string) Set to "GetOrderState".
+| Field       | Type     | Required | Description                                     |
+| ----------- | -------- | -------- | ----------------------------------------------- |
+| `id`        | string   | Yes      | User-defined unique identifier for the request. |
+| `type`      | string   | Yes      | Set to "GetOrderState".                         |
+| `order_ids` | string[] | Yes      | An array of order IDs.                          |
 
 ```json
 {
   "id": 11,
   "order_ids": ["order1", "order2"],
   "type": "GetOrderState"
+}
+```
+
+### Response Fields
+
+| Field      | Type     | Description                                     |
+| ---------- | -------- | ----------------------------------------------- |
+| `id`       | number   | User-defined unique identifier for the request. |
+| `response` | number[] | An array of order state bigflags.               |
+
+```json
+{
+  "id": 2,
+  "response": [1, 3, 5]
 }
 ```
 
@@ -354,8 +773,10 @@ Subscribe to order state updates.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `type`: (string) Set to "SubscribeOrderState".
+| Field  | Type   | Required | Description                                     |
+| ------ | ------ | -------- | ----------------------------------------------- |
+| `id`   | number | Yes      | User-defined unique identifier for the request. |
+| `type` | string | Yes      | Set to "SubscribeOrderState".                   |
 
 ```json
 {
@@ -372,15 +793,31 @@ Retrieve the reason for order rejection based on the given order IDs.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `order_ids`: (OrderId[]) An array of order IDs.
-- `type`: (string) Set to "GetRejectReason".
+| Field       | Type     | Required | Description                                     |
+| ----------- | -------- | -------- | ----------------------------------------------- |
+| `id`        | number   | Yes      | User-defined unique identifier for the request. |
+| `type`      | string   | Yes      | Set to "GetRejectReason".                       |
+| `order_ids` | string[] | Yes      | An array of order IDs.                          |
 
 ```json
 {
   "id": 13,
   "order_ids": ["order1", "order2"],
   "type": "GetRejectReason"
+}
+```
+
+### Response Fields
+
+| Field      | Type     | Description                                     |
+| ---------- | -------- | ----------------------------------------------- |
+| `id`       | number   | User-defined unique identifier for the request. |
+| `response` | string[] | An array of reject reason values.               |
+
+```json
+{
+  "id": 2,
+  "response": ["NotEIP1559", "NonceOverflow", "WouldRevert"]
 }
 ```
 
@@ -392,15 +829,59 @@ Retrieve details of orders based on the given order IDs.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `order_ids`: (OrderId[]) An array of order IDs.
-- `type`: (string) Set to "GetOrderDetails".
+| Field       | Type     | Required | Description                                     |
+| ----------- | -------- | -------- | ----------------------------------------------- |
+| `id`        | string   | Yes      | User-defined unique identifier for the request. |
+| `type`      | string   | Yes      | Set to "GetOrderDetails".                       |
+| `order_ids` | string[] | Yes      | An array of order IDs.                          |
 
 ```json
 {
   "id": 14,
   "order_ids": ["order1", "order2"],
   "type": "GetOrderDetails"
+}
+```
+
+### Response Fields
+
+| Field                             | Type       | Description                                                      |
+| --------------------------------- | ---------- | ---------------------------------------------------------------- |
+| `id`                              | number     | User-defined unique identifier for the request.                  |
+| `response`                        | *object[]* |                                                                  |
+| &nbsp;&nbsp;› `account`           | string     | Account details.                                                 |
+| &nbsp;&nbsp;› `dir`               | string     | The direction of the order (`Buy` or `Sell`)                     |
+| &nbsp;&nbsp;› `price`             | string     | Order price.                                                     |
+| &nbsp;&nbsp;› `quantity`          | string     | Order quantity.                                                  |
+| &nbsp;&nbsp;› `quote_id`          | string     | Quote ID (optional).                                             |
+| &nbsp;&nbsp;› `target`            | string     | Tradable product identifier.                                     |
+| &nbsp;&nbsp;› `timestamp`         | string     | Timestamp stamped on the OMS receive (optional).                 |
+| &nbsp;&nbsp;› `params`            | *object*   | (optional)                                                       |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `type`  | string     | Order parameters (e.g. for DeFi).                                |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `value` | Varies     | Specific items based on the `type` of the estimate order params. |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "account": "account123",
+      "dir": "Buy",
+      "price": "100.50",
+      "quantity": "10",
+      "quote_id": "quote456",
+      "target": "product789",
+      "timestamp": "2023-11-04T15:30:00Z",
+      "params": {
+        "type": "Ethereum",
+        "value": {
+          "gas": 21000,
+          "gas_price": [100, 200],
+          "nonce": 3
+        }
+      }
+    }
+  ]
 }
 ```
 
@@ -412,10 +893,16 @@ List fills based on the given scope and set.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `scope`: (LimitScope) The scope to search within.
-- `set`: (LimitSet) The set to search within.
-- `type`: (string) Set to "ListFills".
+| Field                 | Type     | Required | Description                                                                                                                                           |
+| --------------------- | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number   | Yes      | User-defined unique identifier for the request.                                                                                                       |
+| `type`                | string   | Yes      | Set to "ListFills".                                                                                                                                   |
+| `scope`               | *object* | Yes      |                                                                                                                                                       |
+| &nbsp;&nbsp;› `type`  | string   | Yes      | Specifies the type of the scope: `Global`, `Venue`, `Route`, `Product`, `ProductDefault`, `TradableProduct`, `TradableProductDefault`.                |
+| &nbsp;&nbsp;› `value` | Varies   | No       | An optional value associated with the scope, which can be of various types depending on the scope type. Refer to the specific scope type for details. |
+| `set`                 | *object* | Yes      |                                                                                                                                                       |
+| &nbsp;&nbsp;› `type`  | string   | Yes      | Specifies the type of the set: `Firm`, `Desk`, `DeskDefault`, `Trader`, `TraderDefault`, `Account`, `AccountDefault`.                                 |
+| &nbsp;&nbsp;› `value` | Varies   | No       | An optional value associated with the set, which can be of various types depending on the set type. Refer to the specific set type for details.       |
 
 ```json
 {
@@ -423,6 +910,23 @@ List fills based on the given scope and set.
   "scope": "some_scope",
   "set": "some_set",
   "type": "ListFills"
+}
+```
+
+### Response Fields
+
+| Field      | Type               | Description                                                    |
+| ---------- | ------------------ | -------------------------------------------------------------- |
+| `id`       | number             | User-defined unique identifier for the request.                |
+| `response` | [string, string][] | An array of tuples representing `OrderId` and `FillId` values. |
+
+```json
+{
+  "id": 2,
+  "response": [
+    ["order123", "fill456"],
+    ["order789", "fill101"]
+  ]
 }
 ```
 
@@ -434,15 +938,65 @@ Retrieve details of fills based on the given fill IDs.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `fill_ids`: (FillId[]) An array of fill IDs.
-- `type`: (string) Set to "GetFillDetails".
+| Field      | Type     | Required | Description                                     |
+| ---------- | -------- | -------- | ----------------------------------------------- |
+| `id`       | number   | Yes      | User-defined unique identifier for the request. |
+| `type`     | string   | Yes      | Set to "GetFillDetails".                        |
+| `fill_ids` | string[] | Yes      | An array of fill IDs.                           |
 
 ```json
 {
   "id": 16,
   "fill_ids": ["fill1", "fill2"],
   "type": "GetFillDetails"
+}
+```
+
+### Response Fields
+
+*Please note that there are two types of fills to consider: normal fills for standard trade processing and abnormal fills for exceptional or unrecoverable trade situations.*
+
+| Field                             | Type                | Description                                                                                               |
+| --------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------- |
+| `id`                              | number              | User-defined unique identifier for the request.                                                           |
+| `response`                        | *object*            |                                                                                                           |
+| &nbsp;&nbsp;› `dir`               | string (Normal)     | The direction of the order (`Buy` or `Sell`)                                                              |
+| &nbsp;&nbsp;› `exchange_fill_id`  | string              | The exchange-specific fill identifier, if available (optional).                                           |
+| &nbsp;&nbsp;› `exchange_order_id` | string              | The exchange-specific order identifier, if available (optional).                                          |
+| &nbsp;&nbsp;› `fill_id`           | string              | The unique identifier of the fill.                                                                        |
+| &nbsp;&nbsp;› `price`             | string              | The price at which the trade occurred.                                                                    |
+| &nbsp;&nbsp;› `quantity`          | string              | The quantity of the asset traded.                                                                         |
+| &nbsp;&nbsp;› `recv_time`         | string              | The timestamp when the OMS received the fill.                                                             |
+| &nbsp;&nbsp;› `target`            | string (Normal)     | The ID of the tradable product involved in the trade.                                                     |
+| &nbsp;&nbsp;› `trade_time`        | string              | The timestamp when the counterparty claims the trade happened, or the time of reception if unrecoverable. |
+| &nbsp;&nbsp;› `warnings`          | number[]            | An array of bit flags indicating warnings about the fill that don't quite make it aberrant.               |
+| &nbsp;&nbsp;› `info`              | *object* (Aberrant) | The information that could be salvaged. (Aberrant Fill)                                                   |
+| &nbsp;&nbsp;› `problems`          | number (Aberrant)   | A bit flag indicating the reasons why this fill couldn't be processed normally. (Aberrant Fill)           |
+| &nbsp;&nbsp;› `recv_time`         | string              | The timestamp when the OMS received the fill. (Aberrant Fill)                                             |
+| &nbsp;&nbsp;› `trade_time`        | string              | The timestamp when the counterparty claims the trade happened, or the time of reception if unrecoverable. |
+| &nbsp;&nbsp;› `warnings`          | number[]            | An array of bit flags indicating warnings about the fill that don't quite make it aberrant.               |
+
+```json
+{
+  "id": 2,
+  "response": {
+    "dir": "Buy",
+    "exchange_fill_id": "exch123",
+    "exchange_order_id": "order456",
+    "fill_id": "fill789",
+    "price": "100.50",
+    "quantity": "10.25",
+    "recv_time": "2023-11-05T12:30:45Z",
+    "target": "product123",
+    "trade_time": "2023-11-05T12:35:30Z",
+    "warnings": [1, 2],
+    "info": {
+      "problems": 3,
+      "recv_time": "2023-11-05T12:30:45Z",
+      "trade_time": "2023-11-05T12:35:30Z",
+      "warnings": [4, 5]
+    }
+  }
 }
 ```
 
@@ -456,9 +1010,13 @@ Set limits based on the given Limit array.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `limits`: (Limit[]) An array of Limit objects.
-- `type`: (string) Set to "SetLimits".
+| Field                 | Type       | Required | Description                                                                                                                                                                                                 |
+| --------------------- | ---------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number     | Yes      | User-defined unique identifier for the request.                                                                                                                                                             |
+| `type`                | string     | Yes      | Set to "SetLimits".                                                                                                                                                                                         |
+| `limits`              | *object[]* | Yes      |                                                                                                                                                                                                             |
+| &nbsp;&nbsp;› `type`  | string     | Yes      | The type of trading limit: `FillRecencyThreshold`, `FillRetireThreshold`, `OutRetireThreshold`, `NotOutThreshold`, `MaxPriceDeviation`, `SetEnforcing`, `MaxOpen`, `MaxOpenAndRecentlyFilled`, `MaxFilled`. |
+| &nbsp;&nbsp;› `value` | Varies     | Yes      | The value associated with the trading limit, which can be of various types depending on the limit type. Refer to the specific limit type for details.                                                       |
 
 ```json
 {
@@ -470,6 +1028,20 @@ Set limits based on the given Limit array.
 }
 ```
 
+### Response Fields
+
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
+
+```json
+{
+  "id": 2,
+  "response": null
+}
+```
+
 ## GetLimits
 
 ### Description
@@ -478,9 +1050,25 @@ Retrieve limits based on the given LimitSet and LimitScope arrays.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `limits`: ([LimitSet, LimitScope][]) An array of pairs containing LimitSet and LimitScope.
-- `type`: (string) Set to "GetLimits".
+| Field    | Type                     | Required | Description                                                                           |
+| -------- | ------------------------ | -------- | ------------------------------------------------------------------------------------- |
+| `id`     | number                   | Yes      | User-defined unique identifier for the request.                                       |
+| `type`   | string                   | Yes      | Set to "GetLimits".                                                                   |
+| `limits` | [LimitSet, LimitScope][] | Yes      | An array of pairs containing [`LimitSet`](#limitset) and [`LimitScope`](#limitscope). |
+
+#### `LimitSet`
+
+| Field   | Type   | Required | Description                                                                                                                                     |
+| ------- | ------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`  | string | Yes      | Specifies the type of the set: `Firm`, `Desk`, `DeskDefault`, `Trader`, `TraderDefault`, `Account`, `AccountDefault`.                           |
+| `value` | Varies | No       | An optional value associated with the set, which can be of various types depending on the set type. Refer to the specific set type for details. |
+
+#### `LimitScope`
+
+| Field   | Type   | Required | Description                                                                                                                                           |
+| ------- | ------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`  | string | Yes      | Specifies the type of the scope: `Global`, `Venue`, `Route`, `Product`, `ProductDefault`, `TradableProduct`, `TradableProductDefault`.                |
+| `value` | Varies | No       | An optional value associated with the scope, which can be of various types depending on the scope type. Refer to the specific scope type for details. |
 
 ```json
 {
@@ -493,6 +1081,32 @@ Retrieve limits based on the given LimitSet and LimitScope arrays.
 }
 ```
 
+### Response Fields
+
+| Field                 | Type       | Description                                                                                                                                                                                                 |
+| --------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number     | User-defined unique identifier for the request.                                                                                                                                                             |
+| `response`            | *object[]* |                                                                                                                                                                                                             |
+| &nbsp;&nbsp;› `type`  | string     | The type of trading limit: `FillRecencyThreshold`, `FillRetireThreshold`, `OutRetireThreshold`, `NotOutThreshold`, `MaxPriceDeviation`, `SetEnforcing`, `MaxOpen`, `MaxOpenAndRecentlyFilled`, `MaxFilled`. |
+| &nbsp;&nbsp;› `value` | Varies     | The value associated with the trading limit, which can be of various types depending on the limit type. Refer to the specific limit type for details.                                                       |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "type": "MaxPriceDeviation",
+      "value": 0.02
+    },
+    {
+      "type": "MaxOpen",
+      "value": 100
+    }
+    // Add more limit types and values as needed
+  ]
+}
+```
+
 ## GetGlobalLimits
 
 ### Description
@@ -501,15 +1115,43 @@ Retrieve global limits based on the given GlobalLimitName array.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `limits`: (GlobalLimitName[]) An array of global limit names.
-- `type`: (string) Set to "GetGlobalLimits".
-
+| Field    | Type     | Required | Description                                                                                                                                    |
+| -------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`     | number   | Yes      | User-defined unique identifier for the request.                                                                                                |
+| `type`   | string   | Yes      | Set to "GetGlobalLimits".                                                                                                                      |
+| `limits` | string[] | Yes      | An array of global limit names: `FillRecencyThreshold`, `FillRetireThreshold`, `OutRetireThreshold`, `NotOutThreshold` or `MaxPriceDeviation`. |
+  
 ```json
 {
   "id": 19,
   "limits": ["limit1", "limit2"],
   "type": "GetGlobalLimits"
+}
+```
+
+### Response Fields
+
+| Field                 | Type       | Description                                                                                                                                                                                                 |
+| --------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number     | User-defined unique identifier for the request.                                                                                                                                                             |
+| `response`            | *object[]* |                                                                                                                                                                                                             |
+| &nbsp;&nbsp;› `type`  | string     | The type of trading limit: `FillRecencyThreshold`, `FillRetireThreshold`, `OutRetireThreshold`, `NotOutThreshold`, `MaxPriceDeviation`, `SetEnforcing`, `MaxOpen`, `MaxOpenAndRecentlyFilled`, `MaxFilled`. |
+| &nbsp;&nbsp;› `value` | Varies     | The value associated with the trading limit, which can be of various types depending on the limit type. Refer to the specific limit type for details.                                                       |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "type": "MaxPriceDeviation",
+      "value": 0.02
+    },
+    {
+      "type": "MaxOpen",
+      "value": 100
+    }
+    // Add more limit types and values as needed
+  ]
 }
 ```
 
@@ -523,13 +1165,54 @@ Retrieve information about trading halts.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `type`: (string) Set to "GetHalts".
+| Field  | Type   | Required | Description                                     |
+| ------ | ------ | -------- | ----------------------------------------------- |
+| `id`   | number | Yes      | User-defined unique identifier for the request. |
+| `type` | string | Yes      | Set to "GetHalts".                              |
 
 ```json
 {
   "id": 20,
   "type": "GetHalts"
+}
+```
+
+### Response Fields
+
+| Field                 | Type       | Description                                                                                                   |
+| --------------------- | ---------- | ------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number     | User-defined unique identifier for the request.                                                               |
+| `response`            | *object[]* | An array of `Halt` objects with the following properties.                                                     |
+| &nbsp;&nbsp;› `type`  | string     | Specifies the type of the halt. Possible values: `Global`, `TradableProduct`, `Venue`, `Route`, `VenueRoute`. |
+| &nbsp;&nbsp;› `value` | Varies     | An array with specific items based on the `type` of the halt.                                                 |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "type": "Global",
+      "value": "Market under maintenance"
+    },
+    {
+      "type": "TradableProduct",
+      "value": [
+        {
+          "tradable_product_id": "12345",
+          "reason": "Insufficient liquidity"
+        },
+        {
+          "tradable_product_id": "67890",
+          "reason": "Technical issue"
+        }
+      ]
+    },
+    {
+      "type": "Venue",
+      "value": "Venue X is temporarily closed"
+    }
+    // Add more halt types and specific items as needed
+  ]
 }
 ```
 
@@ -541,15 +1224,33 @@ Initiate a trading halt for a given condition.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `halt`: (Halt) The condition for initiating the halt.
-- `type`: (string) Set to "Halt".
+| Field                 | Type   | Required | Description                                                                                                   |
+| --------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number | Yes      | User-defined unique identifier for the request.                                                               |
+| `type`                | string | Yes      | Set to "Halt".                                                                                                |
+| `halt`                | object | Yes      |                                                                                                               |
+| &nbsp;&nbsp;› `type`  | string | Yes      | Specifies the type of the halt. Possible values: `Global`, `TradableProduct`, `Venue`, `Route`, `VenueRoute`. |
+| &nbsp;&nbsp;› `value` | Varies | Yes      | An array with specific items based on the `type` of the halt.                                                 |
 
 ```json
 {
   "id": 21,
   "halt": "condition",
   "type": "Halt"
+}
+```
+
+### Response Fields
+
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
+
+```json
+{
+  "id": 2,
+  "response": null
 }
 ```
 
@@ -561,15 +1262,33 @@ Resume trading after a halt for a given condition.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `resume`: (Halt) The condition for resuming trading.
-- `type`: (string) Set to "Resume".
+| Field                 | Type   | Required | Description                                                                                                   |
+| --------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------- |
+| `id`                  | number | Yes      | User-defined unique identifier for the request.                                                               |
+| `type`                | string | Yes      | Set to "Resume".                                                                                              |
+| `resume`              | object | Yes      |                                                                                                               |
+| &nbsp;&nbsp;› `type`  | string | Yes      | Specifies the type of the halt. Possible values: `Global`, `TradableProduct`, `Venue`, `Route`, `VenueRoute`. |
+| &nbsp;&nbsp;› `value` | Varies | Yes      | An array with specific items based on the `type` of the halt.                                                 |
 
 ```json
 {
   "id": 22,
   "resume": "condition",
   "type": "Resume"
+}
+```
+
+### Response Fields
+
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
+
+```json
+{
+  "id": 2,
+  "response": null
 }
 ```
 
@@ -583,10 +1302,12 @@ Subscribe to alerts based on the given path and seek string.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `path`: (string) The path for alerts.
-- `seek`: (string) The seek string.
-- `type`: (string) Set to "SubscribeAlerts".
+| Field  | Type   | Required | Description                                     |
+| ------ | ------ | -------- | ----------------------------------------------- |
+| `id`   | number | Yes      | User-defined unique identifier for the request. |
+| `type` | string | Yes      | Set to "SubscribeAlerts".                       |
+| `path` | string | Yes      | The path for alerts.                            |
+| `seek` | string | Yes      | The seek string.                                |
 
 ```json
 {
@@ -607,12 +1328,14 @@ Retrieve allowance based on the given account, route, token, and venue.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `account`: (Account) Account information.
-- `route`: (RouteId) Route ID.
-- `token`: (ProductId) Token ID.
-- `venue`: (VenueId) Venue ID.
-- `type`: (string) Set to "GetAllowance".
+| Field     | Type   | Required | Description                                     |
+| --------- | ------ | -------- | ----------------------------------------------- |
+| `id`      | number | Yes      | User-defined unique identifier for the request. |
+| `type`    | string | Yes      | Set to "GetAllowance".                          |
+| `account` | string | Yes      | Account information.                            |
+| `route`   | string | Yes      | Route ID.                                       |
+| `venue`   | string | Yes      | Venue ID.                                       |
+| `token`   | string | Yes      | Token ID.                                       |
 
 ```json
 {
@@ -625,6 +1348,20 @@ Retrieve allowance based on the given account, route, token, and venue.
 }
 ```
 
+### Response Fields
+
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | string | Allowance value upon successful response.       |
+
+```json
+{
+  "id": 2,
+  "response": "1000"
+}
+```
+
 ## SetAllowance
 
 ### Description
@@ -633,13 +1370,15 @@ Set allowance based on the given account, route, amount, token, and venue.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `account`: (Account) Account information.
-- `route`: (RouteId) Route ID.
-- `amount`: (Decimal) Amount.
-- `token`: (ProductId) Token ID.
-- `venue`: (VenueId) Venue ID.
-- `type`: (string) Set to "SetAllowance".
+| Field     | Type   | Required | Description                                     |
+| --------- | ------ | -------- | ----------------------------------------------- |
+| `id`      | number | Yes      | User-defined unique identifier for the request. |
+| `type`    | string | Yes      | Set to "SetAllowance".                          |
+| `account` | string | Yes      | Account information.                            |
+| `route`   | string | Yes      | Route ID.                                       |
+| `venue`   | string | Yes      | Venue ID.                                       |
+| `token`   | string | Yes      | Token ID.                                       |
+| `amount`  | string | Yes      | Amount.                                         |
 
 ```json
 {
@@ -653,6 +1392,20 @@ Set allowance based on the given account, route, amount, token, and venue.
 }
 ```
 
+### Response Fields
+
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
+
+```json
+{
+  "id": 2,
+  "response": null
+}
+```
+
 ## GetOrderTransaction
 
 ### Description
@@ -661,15 +1414,45 @@ Get transaction information for given order IDs.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `order_ids`: (OrderId[]) Array of Order IDs.
-- `type`: (string) Set to "GetOrderTransaction".
+| Field       | Type     | Required | Description                                     |
+| ----------- | -------- | -------- | ----------------------------------------------- |
+| `id`        | number   | Yes      | User-defined unique identifier for the request. |
+| `type`      | string   | Yes      | Set to "GetOrderTransaction".                   |
+| `order_ids` | string[] | Yes      | Array of Order IDs.                             |
 
 ```json
 {
   "id": 38,
   "order_ids": ["order_1", "order_2"],
   "type": "GetOrderTransaction"
+}
+```
+
+### Response Fields
+
+| Field                  | Type             | Description                                                                 |
+| ---------------------- | ---------------- | --------------------------------------------------------------------------- |
+| `id`                   | number           | User-defined unique identifier for the request.                             |
+| `response`             | *object[]*       |                                                                             |
+| &nbsp;&nbsp;› `origin` | [string, string] | An array with two items representing `VenueId` and `RouteId` as the origin. |
+| &nbsp;&nbsp;› `target` | [string, string] | An array with two items representing `VenueId` and `RouteId` as the target. |
+| &nbsp;&nbsp;› `uuid`   | string           | A unique identifier for the transaction handle.                             |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "origin": ["venue123", "route456"],
+      "target": ["venue789", "route101"],
+      "uuid": "transaction123"
+    },
+    {
+      "origin": ["venue456", "route202"],
+      "target": ["venue303", "route404"],
+      "uuid": "transaction456"
+    }
+  ]
 }
 ```
 
@@ -681,15 +1464,53 @@ Estimate order parameters based on an order prototype.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `order`: (OrderPrototype) Prototype of the order.
-- `type`: (string) Set to "EstimateOrderParams".
+| Field                    | Type     | Required | Description                                           |
+| ------------------------ | -------- | -------- | ----------------------------------------------------- |
+| `id`                     | number   | Yes      | User-defined unique identifier for the request.       |
+| `type`                   | string   | Yes      | Set to "EstimateOrderParams".                         |
+| `order`                  | *object* | Yes      | Prototype of the order with the following properties. |
+| &nbsp;&nbsp;› `account`  | string   | Yes      | Account details.                                      |
+| &nbsp;&nbsp;› `dir`      | string   | Yes      | The direction of the order (`Buy` or `Sell`)          |
+| &nbsp;&nbsp;› `price`    | string   | Yes      | Order price.                                          |
+| &nbsp;&nbsp;› `quantity` | string   | Yes      | Order quantity.                                       |
+| &nbsp;&nbsp;› `target`   | string   | Yes      | Tradable product ID.                                  |
 
 ```json
 {
-"id": 39,
-"order": {...},
-"type": "EstimateOrderParams"
+  "id": 39,
+  "order": {...},
+  "type": "EstimateOrderParams"
+}
+```
+
+### Response Fields
+
+| Field                 | Type       | Description                                                      |
+| --------------------- | ---------- | ---------------------------------------------------------------- |
+| `id`                  | number     | User-defined unique identifier for the request.                  |
+| `response`            | *object[]* |                                                                  |
+| &nbsp;&nbsp;› `type`  | string     | Order parameters (e.g. for DeFi).                                |
+| &nbsp;&nbsp;› `value` | Varies     | Specific items based on the `type` of the estimate order params. |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "type": "DeFiOrder",
+      "value": {
+        "param1": "value1",
+        "param2": "value2"
+      }
+    },
+    {
+      "type": "OtherOrder",
+      "value": {
+        "param3": "value3",
+        "param4": "value4"
+      }
+    }
+  ]
 }
 ```
 
@@ -701,15 +1522,34 @@ Get the attempts for an EVM transaction.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `transaction`: (TransactionHandle) Handle for the transaction.
-- `type`: (string) Set to "GetEVMAttempts".
+| Field                  | Type             | Required | Description                                                                 |
+| ---------------------- | ---------------- | -------- | --------------------------------------------------------------------------- |
+| `id`                   | number           | Yes      | User-defined unique identifier for the request.                             |
+| `type`                 | string           | Yes      | Set to "GetEVMAttempts".                                                    |
+| `transaction`          | object           | Yes      |                                                                             |
+| &nbsp;&nbsp;› `origin` | [string, string] | Yes      | An array with two items representing `VenueId` and `RouteId` as the origin. |
+| &nbsp;&nbsp;› `target` | [string, string] | Yes      | An array with two items representing `VenueId` and `RouteId` as the target. |
+| &nbsp;&nbsp;› `uuid`   | string           | Yes      | A unique identifier for the transaction handle.                             |
 
 ```json
 {
   "id": 40,
   "transaction": "txn_1234",
   "type": "GetEVMAttempts"
+}
+```
+
+### Response Fields
+
+| Field      | Type     | Description                                                                     |
+| ---------- | -------- | ------------------------------------------------------------------------------- |
+| `id`       | number   | User-defined unique identifier for the request.                                 |
+| `response` | string[] | An array of string values representing Ethereum Virtual Machine (EVM) attempts. |
+
+```json
+{
+  "id": 2,
+  "response": ["attempt1", "attempt2", "attempt3"]
 }
 ```
 
@@ -721,15 +1561,41 @@ Estimate retry parameters for an EVM transaction.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `transaction`: (TransactionHandle) Handle for the transaction.
-- `type`: (string) Set to "EstimateEVMRetryParams".
+| Field                  | Type             | Required | Description                                                                 |
+| ---------------------- | ---------------- | -------- | --------------------------------------------------------------------------- |
+| `id`                   | number           | Yes      | User-defined unique identifier for the request.                             |
+| `type`                 | string           | Yes      | Set to "EstimateEVMRetryParams".                                            |
+| `transaction`          | object           | Yes      |                                                                             |
+| &nbsp;&nbsp;› `origin` | [string, string] | Yes      | An array with two items representing `VenueId` and `RouteId` as the origin. |
+| &nbsp;&nbsp;› `target` | [string, string] | Yes      | An array with two items representing `VenueId` and `RouteId` as the target. |
+| &nbsp;&nbsp;› `uuid`   | string           | Yes      | A unique identifier for the transaction handle.                             |
 
 ```json
 {
   "id": 41,
   "transaction": "txn_1234",
   "type": "EstimateEVMRetryParams"
+}
+```
+
+### Response Fields
+
+| Field                     | Type             | Description                                                                                                                     |
+| ------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                      | number           | User-defined unique identifier for the request.                                                                                 |
+| `response`                | *object*         |                                                                                                                                 |
+| &nbsp;&nbsp;› `gas`       | number           | A number representing gas for the transaction (optional).                                                                       |
+| &nbsp;&nbsp;› `gas_price` | [number, number] | An array of two numbers representing gas prices for the transaction (`max_fee_per_gas`, `max_priority_fee_per_gas`) (optional). |
+| &nbsp;&nbsp;› `nonce`     | number           | A number representing the nonce for the transaction (optional).                                                                 |
+
+```json
+{
+  "id": 2,
+  "response": {
+    "gas": 21000,
+    "gas_price": [20, 25],
+    "nonce": 123
+  }
 }
 ```
 
@@ -741,11 +1607,16 @@ Retry an EVM transaction with optional gas parameters.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `transaction`: (TransactionHandle) Handle for the transaction.
-- `gas`: (number|null) Gas amount (optional).
-- `gas_price`: ([number, number]|null) Gas price range (optional).
-- `type`: (string) Set to "RetryEVMTransaction".
+| Field                  | Type             | Required | Description                                                                 |
+| ---------------------- | ---------------- | -------- | --------------------------------------------------------------------------- |
+| `id`                   | number           | Yes      | User-defined unique identifier for the request.                             |
+| `type`                 | string           | Yes      | Set to "RetryEVMTransaction".                                               |
+| `transaction`          | object           | Yes      |                                                                             |
+| &nbsp;&nbsp;› `origin` | [string, string] | Yes      | An array with two items representing `VenueId` and `RouteId` as the origin. |
+| &nbsp;&nbsp;› `target` | [string, string] | Yes      | An array with two items representing `VenueId` and `RouteId` as the target. |
+| &nbsp;&nbsp;› `uuid`   | string           | Yes      | A unique identifier for the transaction handle.                             |
+| `gas`                  | number           | No       | Gas amount (optional).                                                      |
+| `gas_price`            | [number, number] | No       | Gas price range (optional).                                                 |
 
 ```json
 {
@@ -754,6 +1625,20 @@ Retry an EVM transaction with optional gas parameters.
   "gas": 50000,
   "gas_price": [20, 30],
   "type": "RetryEVMTransaction"
+}
+```
+
+### Response Fields
+
+| Field      | Type   | Description                                                                                                                                                                                     |
+| ---------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request.                                                                                                                                                 |
+| `response` | string | An EVM reject reason with various possible types: `NotEIP1559`, `InsaneGasPrice`, `NonceOverflow`, `UnknownSigner`, `UnknownTransaction`, `Malformed`, `WouldRevert`, `InternalError` or others |
+
+```json
+{
+  "id": 2,
+  "response": "NotEIP1559"
 }
 ```
 
@@ -767,12 +1652,14 @@ Retrieve historical candle data based on the given tradable product, start time,
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `start`: (string) Start time.
-- `end`: (string) End time.
-- `tradable_product`: (TradableProductId) Tradable Product ID.
-- `width`: (CandleWidth) Width.
-- `type`: (string) Set to "GetHistoricalCandles".
+| Field              | Type   | Required | Description                                                                                          |
+| ------------------ | ------ | -------- | ---------------------------------------------------------------------------------------------------- |
+| `id`               | number | Yes      | User-defined unique identifier for the request.                                                      |
+| `type`             | string | Yes      | Set to "GetHistoricalCandles".                                                                       |
+| `start`            | string | Yes      | Start time.                                                                                          |
+| `end`              | string | Yes      | End time.                                                                                            |
+| `tradable_product` | string | Yes      | Tradable Product ID.                                                                                 |
+| `width`            | string | Yes      | Width. Allowed values: "OneSecond", "FiveSecond", "OneMinute", "FifteenMinute", "OneHour", "OneDay". |
 
 ```json
 {
@@ -785,6 +1672,214 @@ Retrieve historical candle data based on the given tradable product, start time,
 }
 ```
 
+### Response Fields
+
+| Field                       | Type       | Description                                       |
+| --------------------------- | ---------- | ------------------------------------------------- |
+| `id`                        | number     | User-defined unique identifier for the request.   |
+| `response`                  | *object[]* |                                                   |
+| &nbsp;&nbsp;› `buy_volume`  | string     | The buy volume data for the candlestick.          |
+| &nbsp;&nbsp;› `close`       | string     | The closing price of the candlestick.             |
+| &nbsp;&nbsp;› `high`        | string     | The highest price during the candlestick period.  |
+| &nbsp;&nbsp;› `low`         | string     | The lowest price during the candlestick period.   |
+| &nbsp;&nbsp;› `open`        | string     | The opening price of the candlestick.             |
+| &nbsp;&nbsp;› `sell_volume` | string     | The sell volume data for the candlestick.         |
+| &nbsp;&nbsp;› `time`        | string     | The timestamp for the candlestick data.           |
+| &nbsp;&nbsp;› `volume`      | string     | The trading volume during the candlestick period. |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "buy_volume": "123.45",
+      "close": "678.90",
+      "high": "700.00",
+      "low": "650.00",
+      "open": "670.00",
+      "sell_volume": "100.50",
+      "time": "2023-11-04T12:00:00Z",
+      "volume": "2245.75"
+    },
+    {
+      "buy_volume": "120.00",
+      "close": "680.00",
+      "high": "720.00",
+      "low": "650.00",
+      "open": "700.00",
+      "sell_volume": "105.00",
+      "time": "2023-11-04T13:00:00Z",
+      "volume": "2500.00"
+    }
+  ]
+}
+
+```
+
+## GetHistoricalUniswapV2Pools
+
+### Description
+
+Retrieve historical data for Uniswap V2 pools.
+
+### Request Fields
+
+| Field   | Type   | Required | Description                                     |
+| ------- | ------ | -------- | ----------------------------------------------- |
+| `id`    | number | Yes      | User-defined unique identifier for the request. |
+| `type`  | string | Yes      | Set to "GetHistoricalUniswapV2Pools".           |
+| `start` | string | No       | The start timestamp of the historical data.     |
+| `end`   | string | No       | The end timestamp of the historical data.       |
+| `venue` | string | Yes      | The ID of the venue.                            |
+
+```json
+{
+  "id": 28,
+  "start": "2021-01-01T00:00:00Z",
+  "end": "2021-01-02T00:00:00Z",
+  "venue": "<venue_id>",
+  "type": "GetHistoricalUniswapV2Pools"
+}
+```
+
+### Response Fields
+
+| Field                           | Type       | Description                                          |
+| ------------------------------- | ---------- | ---------------------------------------------------- |
+| `id`                            | number     | User-defined unique identifier for the request.      |
+| `response`                      | *object[]* |                                                      |
+| &nbsp;&nbsp;› `address`         | string     | The address of the Uniswap V2 pool created.          |
+| &nbsp;&nbsp;› `block`           | number     | The block number at which the pool was created.      |
+| &nbsp;&nbsp;› `timestamp`       | string     | The timestamp when the pool creation event occurred. |
+| &nbsp;&nbsp;› `token0`          | string     | The address of the first token in the pool.          |
+| &nbsp;&nbsp;› `token0_decimals` | number     | The number of decimal places for the first token.    |
+| &nbsp;&nbsp;› `token0_symbol`   | string     | The symbol of the first token.                       |
+| &nbsp;&nbsp;› `token1`          | string     | The address of the second token in the pool.         |
+| &nbsp;&nbsp;› `token1_decimals` | number     | The number of decimal places for the second token.   |
+| &nbsp;&nbsp;› `token1_symbol`   | string     | The symbol of the second token.                      |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "address": "0xUniswapPoolAddress1",
+      "block": 12345,
+      "timestamp": "2023-11-04T14:30:00Z",
+      "token0": "0xTokenAddress1",
+      "token0_decimals": 18,
+      "token0_symbol": "TOKEN1",
+      "token1": "0xTokenAddress2",
+      "token1_decimals": 6,
+      "token1_symbol": "TOKEN2"
+    },
+    {
+      "address": "0xUniswapPoolAddress2",
+      "block": 12346,
+      "timestamp": "2023-11-04T15:00:00Z",
+      "token0": "0xTokenAddress2",
+      "token0_decimals": 18,
+      "token0_symbol": "TOKEN2",
+      "token1": "0xTokenAddress3",
+      "token1_decimals": 18,
+      "token1_symbol": "TOKEN3"
+    }
+  ]
+}
+```
+
+## GetTradableProductSummariesForVenue
+
+### Description
+
+Retrieve summaries of tradable products for a specific venue.
+
+### Request Fields
+
+| Field   | Type   | Required | Description                                     |
+| ------- | ------ | -------- | ----------------------------------------------- |
+| `id`    | number | Yes      | User-defined unique identifier for the request. |
+| `type`  | string | Yes      | Set to "GetTradableProductSummariesForVenue".   |
+| `venue` | string | Yes      | The ID of the venue.                            |
+
+```json
+{
+  "id": "<id>",
+  "venue": "<venue_id>",
+  "type": "GetTradableProductSummariesForVenue"
+}
+```
+
+### Response Fields
+
+| Field                                 | Type       | Description                                                                                                 |
+| ------------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------- |
+| `id`                                  | number     | User-defined unique identifier for the request.                                                             |
+| `response`                            | *object[]* |                                                                                                             |
+| &nbsp;&nbsp;› `ask_price`             | string     | The current best ask price for the tradable product, or null if there aren't any asks. (optional)           |
+| &nbsp;&nbsp;› `base_id`               | string     | The identifier of the base product.                                                                         |
+| &nbsp;&nbsp;› `base_name`             | string     | The name of the base product.                                                                               |
+| &nbsp;&nbsp;› `bid_price`             | string     | The current best bid price for the tradable product, or null if there aren't any bids. (optional)           |
+| &nbsp;&nbsp;› `high_24h`              | string     | The highest price of the tradable product in the last 24 hours, or null if no data is available. (optional) |
+| &nbsp;&nbsp;› `kind`                  | string     | The kind of tradable product.                                                                               |
+| &nbsp;&nbsp;› `last_price`            | string     | The last traded price for the tradable product, or null if no trades have occurred. (optional)              |
+| &nbsp;&nbsp;› `low_24h`               | string     | The lowest price of the tradable product in the last 24 hours, or null if no data is available. (optional)  |
+| &nbsp;&nbsp;› `open_24h`              | string     | The opening price of the tradable product in the last 24 hours, or null if no data is available. (optional) |
+| &nbsp;&nbsp;› `quote_id`              | string     | The identifier of the quote product.                                                                        |
+| &nbsp;&nbsp;› `quote_name`            | string     | The name of the quote product.                                                                              |
+| &nbsp;&nbsp;› `tradable_product_id`   | string     | The identifier of the tradable product.                                                                     |
+| &nbsp;&nbsp;› `tradable_product_name` | string     | The name of the tradable product.                                                                           |
+| &nbsp;&nbsp;› `update_time`           | string     | The timestamp when the summary was updated.                                                                 |
+| &nbsp;&nbsp;› `venue_id`              | string     | The identifier of the venue.                                                                                |
+| &nbsp;&nbsp;› `venue_name`            | string     | The name of the venue.                                                                                      |
+| &nbsp;&nbsp;› `volume_24h`            | string     | The 24-hour trading volume for the tradable product, or null if no data is available. (optional)            |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "ask_price": "100.00",
+      "base_id": "base1",
+      "base_name": "Base Product 1",
+      "bid_price": "99.50",
+      "high_24h": "105.00",
+      "kind": "Spot",
+      "last_price": "101.75",
+      "low_24h": "98.25",
+      "open_24h": "100.50",
+      "quote_id": "quote1",
+      "quote_name": "Quote Product 1",
+      "tradable_product_id": "tp1",
+      "tradable_product_name": "Tradable Product 1",
+      "update_time": "2023-11-04T14:30:00Z",
+      "venue_id": "venue1",
+      "venue_name": "Venue 1",
+      "volume_24h": "125000.00"
+    },
+    {
+      "ask_price": null,
+      "base_id": "base2",
+      "base_name": "Base Product 2",
+      "bid_price": null,
+      "high_24h": null,
+      "kind": "Futures",
+      "last_price": null,
+      "low_24h": null,
+      "open_24h": null,
+      "quote_id": "quote2",
+      "quote_name": "Quote Product 2",
+      "tradable_product_id": "tp2",
+      "tradable_product_name": "Tradable Product 2",
+      "update_time": "2023-11-04T14:35:00Z",
+      "venue_id": "venue2",
+      "venue_name": "Venue 2",
+      "volume_24h": null
+    }
+  ]
+}
+```
+
 ## SubscribeTrades
 
 ### Description
@@ -793,15 +1888,189 @@ Subscribe to trades for a given tradable product.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `tradable_product`: (TradableProductId) Tradable Product ID.
-- `type`: (string) Set to "SubscribeTrades".
+| Field              | Type   | Required | Description                                     |
+| ------------------ | ------ | -------- | ----------------------------------------------- |
+| `id`               | number | Yes      | User-defined unique identifier for the request. |
+| `type`             | string | Yes      | Set to "SubscribeTrades".                       |
+| `tradable_product` | string | Yes      | Tradable Product ID.                            |
 
 ```json
 {
   "id": 28,
   "tradable_product": "product_id",
   "type": "SubscribeTrades"
+}
+```
+
+### Subscription Fields
+
+| Field       | Type   | Description                       |
+| ----------- | ------ | --------------------------------- |
+| `direction` | Dir    | The trading direction.            |
+| `price`     | string | The trade price.                  |
+| `size`      | string | The trade size.                   |
+| `time`      | string | (Optional) The time of the trade. |
+
+```json
+{
+  "direction": "Buy",
+  "price": "100.50",
+  "size": "500.00",
+  "time": "2023-11-04T15:45:00Z"
+}
+```
+
+## SubscribeAllTrades
+
+### Description
+
+Subscribe to receive updates for all trades on a specific route.
+
+### Request Fields
+
+| Field   | Type   | Required | Description                                     |
+| ------- | ------ | -------- | ----------------------------------------------- |
+| `id`    | string | Yes      | User-defined unique identifier for the request. |
+| `type`  | string | Yes      | Set to "SubscribeAllTrades".                    |
+| `route` | string | Yes      | The ID of the route.                            |
+| `venue` | string | Yes      | The ID of the venue.                            |
+
+```json
+{
+  "id": "<id>",
+  "route": "<route_id>",
+  "type": "SubscribeAllTrades",
+  "venue": "<venue_id>"
+}
+```
+
+### Subscription Fields
+
+| Field              | Type   | Description                                        |
+| ------------------ | ------ | -------------------------------------------------- |
+| `direction`        | string | The trading direction. (`Buy` or `Sell`)           |
+| `price`            | string | The trade price.                                   |
+| `size`             | string | The trade size.                                    |
+| `time`             | string | (Optional) The time of the trade.                  |
+| `tradable_product` | string | The tradable product id associated with the trade. |
+
+```json
+{
+  "direction": "Buy",
+  "price": "100.50",
+  "size": "500.00",
+  "time": "2023-11-04T15:45:00Z",
+  "tradable_product": "12345"
+}
+```
+
+## SubscribeBlockchainTrades
+
+### Description
+
+Subscribe to receive updates for trades on a specific blockchain.
+
+### Request Fields
+
+| Field          | Type   | Required | Description                                     |
+| -------------- | ------ | -------- | ----------------------------------------------- |
+| `id`           | number | Yes      | User-defined unique identifier for the request. |
+| `type`         | string | Yes      | Set to "SubscribeBlockchainTrades".             |
+| `blockchain`   | string | Yes      | The ID of the blockchain.                       |
+| `quote_symbol` | string | Yes      | The symbol of the quote currency.               |
+| `venue`        | string | Yes      | The ID of the venue.                            |
+
+```json
+{
+  "id": 27,
+  "blockchain": "<blockchain_id>",
+  "quote_symbol": "<quote_symbol>",
+  "type": "SubscribeBlockchainTrades",
+  "venue": "<venue_id>"
+}
+```
+
+## SubscribeLiquidations
+
+### Description
+
+Subscribe to receive updates for liquidations related to a specific tradable product.
+
+### Request Fields
+
+| Field              | Type   | Required | Description                                     |
+| ------------------ | ------ | -------- | ----------------------------------------------- |
+| `id`               | number | Yes      | User-defined unique identifier for the request. |
+| `type`             | string | Yes      | Set to "SubscribeLiquidations".                 |
+| `tradable_product` | string | Yes      | The ID of the tradable product.                 |
+
+```json
+{
+  "id": <id>,
+  "tradable_product": "<tradable_product_id>",
+  "type": "SubscribeLiquidations"
+}
+```
+
+### Subscription Fields
+
+| Field       | Type   | Description                              |
+| ----------- | ------ | ---------------------------------------- |
+| `direction` | Dir    | The trading direction. (`Buy` or `Sell`) |
+| `price`     | string | The liquidation price.                   |
+| `size`      | string | The size of the liquidation.             |
+| `time`      | string | The time of the liquidation.             |
+
+```json
+{
+  "direction": "Buy",
+  "price": "95.25",
+  "size": "750.00",
+  "time": "2023-11-04T14:30:00Z"
+}
+```
+
+## SubscribeAllLiquidations
+
+### Description
+
+Subscribe to receive updates for all liquidations on a specific route.
+
+### Request Fields
+
+| Field   | Type   | Required | Description                                     |
+| ------- | ------ | -------- | ----------------------------------------------- |
+| `id`    | number | Yes      | User-defined unique identifier for the request. |
+| `type`  | string | Yes      | Set to "SubscribeAllLiquidations".              |
+| `route` | string | Yes      | The ID of the route.                            |
+| `venue` | string | Yes      | The ID of the venue.                            |
+
+```json
+{
+  "id": <id>,
+  "route": "<route_id>",
+  "venue": "<venue_id>",
+  "type": "SubscribeAllLiquidations"
+}
+```
+
+### Subscription Fields
+
+| Field              | Type   | Description                                           |
+| ------------------ | ------ | ----------------------------------------------------- |
+| `direction`        | string | The trading direction. (`Buy` or `Sell`)              |
+| `price`            | string | The liquidation price.                                |
+| `size`             | string | The size of the liquidation.                          |
+| `time`             | string | The time of the liquidation.                          |
+| `tradable_product` | string | The tradable product associated with the liquidation. |
+
+```json
+{
+  "direction": "Buy",
+  "price": "95.25",
+  "size": "750.00",
+  "time": "2023-11-04T14:30:00Z",
+  "tradable_product": "BTCUSD"
 }
 ```
 
@@ -813,10 +2082,12 @@ Subscribe to the order book for a given tradable product and width.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `tradable_product`: (TradableProductId) Tradable Product ID.
-- `width`: (number) Width.
-- `type`: (string) Set to "SubscribeBook".
+| Field              | Type   | Required | Description                                     |
+| ------------------ | ------ | -------- | ----------------------------------------------- |
+| `id`               | number | Yes      | User-defined unique identifier for the request. |
+| `type`             | string | Yes      | Set to "SubscribeBook".                         |
+| `tradable_product` | string | Yes      | Tradable Product ID.                            |
+| `width`            | number | Yes      | Width.                                          |
 
 ```json
 {
@@ -824,6 +2095,39 @@ Subscribe to the order book for a given tradable product and width.
   "tradable_product": "product_id",
   "width": 10,
   "type": "SubscribeBook"
+}
+```
+
+### Subscription Fields
+
+| Field                             | Type       | Description                                              |
+| --------------------------------- | ---------- | -------------------------------------------------------- |
+| `book`                            | *object*   | An array of book levels with their details.              |
+| &nbsp;&nbsp;› `buy`               | *object*[] |                                                          |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `price` | string     | The price for this book level.                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `size`  | string     | The size or quantity available at this price.            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `total` | string     | The total size of orders at or above this price.         |
+| &nbsp;&nbsp;› `sell`              | *object*[] |                                                          |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `price` | string     | The price for this book level.                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `size`  | string     | The size or quantity available at this price.            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `total` | string     | The total size of orders at or above this price.         |
+| `timestamp`                       | string     | The timestamp indicating when the book data was updated. |
+
+```json
+{
+  "book": {
+    "buy": [
+      { "price": "9500.00", "size": "2.50", "total": "2.50" },
+      { "price": "9450.00", "size": "5.00", "total": "7.50" },
+      { "price": "9400.00", "size": "10.00", "total": "17.50" }
+    ],
+    "sell": [
+      { "price": "9550.00", "size": "1.50", "total": "1.50" },
+      { "price": "9600.00", "size": "3.00", "total": "4.50" },
+      { "price": "9650.00", "size": "7.00", "total": "11.50" }
+    ]
+  },
+  "timestamp": "2023-11-04T14:45:00Z"
 }
 ```
 
@@ -835,10 +2139,12 @@ Subscribe to candles for a given tradable product and width.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `tradable_product`: (TradableProductId) Tradable Product ID.
-- `width`: (CandleWidth) Width.
-- `type`: (string) Set to "SubscribeCandles".
+| Field              | Type   | Required | Description                                                 |
+| ------------------ | ------ | -------- | ----------------------------------------------------------- |
+| `id`               | number | Yes      | User-defined unique identifier for the request.             |
+| `type`             | string | Yes      | Set to "SubscribeCandles".                                  |
+| `tradable_product` | string | Yes      | Tradable Product ID.                                        |
+| `width`            | string | Yes      | Width. Allowed values: `1s`, `5s`, `1m`, `15m`, `1h`, `1d`. |
 
 ```json
 {
@@ -846,6 +2152,32 @@ Subscribe to candles for a given tradable product and width.
   "tradable_product": "product_id",
   "width": "1h",
   "type": "SubscribeCandles"
+}
+```
+
+### Subscription Fields
+
+| Field         | Type   | Description                                        |
+| ------------- | ------ | -------------------------------------------------- |
+| `buy_volume`  | string | The buy volume during the candle period.           |
+| `close`       | string | The closing price of the candle.                   |
+| `high`        | string | The highest price during the candle period.        |
+| `low`         | string | The lowest price during the candle period.         |
+| `open`        | string | The opening price of the candle.                   |
+| `sell_volume` | string | The sell volume during the candle period.          |
+| `time`        | string | The timestamp indicating the start of the candle.  |
+| `volume`      | string | The total trading volume during the candle period. |
+
+```json
+{
+  "buy_volume": "150.00",
+  "close": "9550.00",
+  "high": "9600.00",
+  "low": "9400.00",
+  "open": "9450.00",
+  "sell_volume": "120.00",
+  "time": "2023-11-04T14:30:00Z",
+  "volume": "270.00"
 }
 ```
 
@@ -857,10 +2189,12 @@ Subscribe to the consolidated book for given tradable products with specified pr
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `tradable_products`: (TradableProductId[]) An array of Tradable Product IDs.
-- `precision`: (Decimal) Precision.
-- `type`: (string) Set to "SubscribeConsolidatedBook".
+| Field               | Type     | Required | Description                                     |
+| ------------------- | -------- | -------- | ----------------------------------------------- |
+| `id`                | number   | Yes      | User-defined unique identifier for the request. |
+| `type`              | string   | Yes      | Set to "SubscribeConsolidatedBook".             |
+| `tradable_products` | string[] | Yes      | An array of Tradable Product IDs.               |
+| `precision`         | string   | Yes      | Precision.                                      |
 
 ```json
 {
@@ -868,6 +2202,276 @@ Subscribe to the consolidated book for given tradable products with specified pr
   "tradable_products": ["product_id1", "product_id2"],
   "precision": "0.01",
   "type": "SubscribeConsolidatedBook"
+}
+```
+
+### Subscription Fields
+
+| Field                                         | Type       | Description                                              |
+| --------------------------------------------- | ---------- | -------------------------------------------------------- |
+| `book`                                        | *object*   | An array of book levels with their details.              |
+| &nbsp;&nbsp;› `buy`                           | *object*[] |                                                          |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `price`             | string     | The price for this book level.                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `size`              | string     | The size or quantity available at this price.            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `total`             | string     | The total size of orders at or above this price.         |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `tradable_products` | string[]   | An array of Tradable Product IDs.                        |
+| &nbsp;&nbsp;› `sell`                          | *object*[] |                                                          |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `price`             | string     | The price for this book level.                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `size`              | string     | The size or quantity available at this price.            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `total`             | string     | The total size of orders at or above this price.         |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `tradable_products` | string[]   | An array of Tradable Product IDs.                        |
+| `timestamp`                                   | string     | The timestamp indicating when the book data was updated. |
+
+```json
+{
+  "book": {
+    "buy": [
+      {
+        "price": "9500.00",
+        "size": "10.00",
+        "total": "30.00",
+        "tradable_products": ["product1", "product2"]
+      },
+      {
+        "price": "9400.00",
+        "size": "15.00",
+        "total": "45.00",
+        "tradable_products": ["product1"]
+      }
+    ],
+    "sell": [
+      {
+        "price": "9600.00",
+        "size": "12.00",
+        "total": "25.00",
+        "tradable_products": ["product2"]
+      },
+      {
+        "price": "9700.00",
+        "size": "8.00",
+        "total": "33.00",
+        "tradable_products": ["product1", "product2"]
+      }
+    ]
+  },
+  "timestamp": "2023-11-04T14:30:00Z"
+}
+```
+
+## SubscribeMetrics
+
+### Description
+
+Subscribe to receive metrics updates for a specific tradable product.
+
+### Request Fields
+
+| Field              | Type   | Required | Description                                     |
+| ------------------ | ------ | -------- | ----------------------------------------------- |
+| `id`               | number | Yes      | User-defined unique identifier for the request. |
+| `type`             | string | Yes      | Set to "SubscribeMetrics".                      |
+| `tradable_product` | string | Yes      | The ID of the tradable product.                 |
+
+```json
+{
+  "id": 27,
+  "tradable_product": "<tradable_product_id>",
+  "type": "SubscribeMetrics"
+}
+```
+
+### Subscription Fields
+
+| Field        | Type   | Description                                                    |
+| ------------ | ------ | -------------------------------------------------------------- |
+| `high_24h`   | string | The highest price observed in the last 24 hours, if available. |
+| `last_price` | string | The last traded price, if available.                           |
+| `low_24h`    | string | The lowest price observed in the last 24 hours, if available.  |
+| `open_24h`   | string | The opening price in the last 24 hours, if available.          |
+| `volume_24h` | string | The trading volume in the last 24 hours, if available.         |
+| `volume_30d` | string | The trading volume in the last 30 days, if available.          |
+
+```json
+{
+  "high_24h": "9700.00",
+  "last_price": "9600.00",
+  "low_24h": "9400.00",
+  "open_24h": "9500.00",
+  "volume_24h": "1500.00",
+  "volume_30d": "9000.00"
+}
+```
+
+## SubscribeTopOfBook
+
+### Description
+
+Subscribe to receive updates for the top of the book prices for a specific tradable product.
+
+### Request Fields
+
+| Field              | Type   | Required | Description                                     |
+| ------------------ | ------ | -------- | ----------------------------------------------- |
+| `id`               | number | Yes      | User-defined unique identifier for the request. |
+| `type`             | string | Yes      | Set to "SubscribeTopOfBook".                    |
+| `tradable_product` | string | Yes      | The ID of the tradable product.                 |
+
+```json
+{
+  "id": 27,
+  "tradable_product": "<tradable_product_id>",
+  "type": "SubscribeTopOfBook"
+}
+```
+
+### Subscription Fields
+
+| Field       | Type                         | Description                                              |
+| ----------- | ---------------------------- | -------------------------------------------------------- |
+| `book`      | DirPairFor_ArrayOf_BookLevel | An array of book levels with their details.              |
+| `timestamp` | string                       | The timestamp indicating when the book data was updated. |
+
+```json
+{
+  "book": {
+    "buy": [
+      { "price": "9500.00", "size": "2.50", "total": "2.50" },
+      { "price": "9450.00", "size": "5.00", "total": "7.50" },
+      { "price": "9400.00", "size": "10.00", "total": "17.50" }
+    ],
+    "sell": [
+      { "price": "9550.00", "size": "1.50", "total": "1.50" },
+      { "price": "9600.00", "size": "3.00", "total": "4.50" },
+      { "price": "9650.00", "size": "7.00", "total": "11.50" }
+    ]
+  },
+  "timestamp": "2023-11-04T14:45:00Z"
+}
+```
+
+## SubscribeUniswapV2Book
+
+### Description
+
+Subscribe to receive updates for the implied Uniswap V2 order book for a specific blockchain.
+
+### Request Fields
+
+| Field          | Type   | Required | Description                                     |
+| -------------- | ------ | -------- | ----------------------------------------------- |
+| `id`           | number | Yes      | User-defined unique identifier for the request. |
+| `type`         | string | Yes      | Set to "SubscribeUniswapV2Book".                |
+| `blockchain`   | string | Yes      | The ID of the blockchain.                       |
+| `venue`        | string | Yes      | The ID of the venue.                            |
+| `quote_symbol` | string | Yes      | The symbol of the quote currency.               |
+| `num_levels`   | number | Yes      | The number of price levels to retrieve.         |
+| `width_bps`    | number | Yes      | The width of the book in basis points.          |
+
+```json
+{
+  "id": 27,
+  "blockchain": "<blockchain_id>",
+  "venue": "<venue_id>",
+  "quote_symbol": "<quote_symbol>",
+  "num_levels": 10,
+  "width_bps": 100,
+  "type": "SubscribeUniswapV2Book"
+}
+```
+
+### Subscription Fields
+
+| Field                             | Type       | Description                                              |
+| --------------------------------- | ---------- | -------------------------------------------------------- |
+| `book`                            | *object*   | An array of book levels with their details.              |
+| &nbsp;&nbsp;› `buy`               | *object*[] |                                                          |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `price` | string     | The price for this book level.                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `size`  | string     | The size or quantity available at this price.            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `total` | string     | The total size of orders at or above this price.         |
+| &nbsp;&nbsp;› `sell`              | *object*[] |                                                          |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `price` | string     | The price for this book level.                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `size`  | string     | The size or quantity available at this price.            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `total` | string     | The total size of orders at or above this price.         |
+| `timestamp`                       | string     | The timestamp indicating when the book data was updated. |
+
+```json
+{
+  "book": {
+    "buy": [
+      { "price": "9500.00", "size": "2.50", "total": "2.50" },
+      { "price": "9450.00", "size": "5.00", "total": "7.50" },
+      { "price": "9400.00", "size": "10.00", "total": "17.50" }
+    ],
+    "sell": [
+      { "price": "9550.00", "size": "1.50", "total": "1.50" },
+      { "price": "9600.00", "size": "3.00", "total": "4.50" },
+      { "price": "9650.00", "size": "7.00", "total": "11.50" }
+    ]
+  },
+  "timestamp": "2023-11-04T14:45:00Z"
+}
+```
+
+## SubscribeUniswapV3Book
+
+### Description
+
+Subscribe to receive updates for the implied Uniswap V3 order book for a specific blockchain.
+
+### Request Fields
+
+| Field          | Type   | Required | Description                                     |
+| -------------- | ------ | -------- | ----------------------------------------------- |
+| `id`           | number | Yes      | User-defined unique identifier for the request. |
+| `type`         | string | Yes      | Set to "SubscribeUniswapV3Book".                |
+| `blockchain`   | string | Yes      | The ID of the blockchain.                       |
+| `venue`        | string | Yes      | The ID of the venue.                            |
+| `quote_symbol` | string | Yes      | The symbol of the quote currency.               |
+| `num_levels`   | number | Yes      | The number of price levels to retrieve.         |
+| `width_bps`    | number | Yes      | The width of the book in basis points.          |
+
+```json
+{
+  "id": 27,
+  "blockchain": "<blockchain_id>",
+  "venue": "<venue_id>",
+  "quote_symbol": "<quote_symbol>",
+  "num_levels": 10,
+  "width_bps": 100,
+  "type": "SubscribeUniswapV3Book",
+}
+```
+
+### Subscription Fields
+
+| Field                             | Type       | Description                                              |
+| --------------------------------- | ---------- | -------------------------------------------------------- |
+| `book`                            | *object*   | An array of book levels with their details.              |
+| &nbsp;&nbsp;› `buy`               | *object*[] |                                                          |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `price` | string     | The price for this book level.                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `size`  | string     | The size or quantity available at this price.            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `total` | string     | The total size of orders at or above this price.         |
+| &nbsp;&nbsp;› `sell`              | *object*[] |                                                          |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `price` | string     | The price for this book level.                           |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `size`  | string     | The size or quantity available at this price.            |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `total` | string     | The total size of orders at or above this price.         |
+| `timestamp`                       | string     | The timestamp indicating when the book data was updated. |
+
+```json
+{
+  "book": {
+    "buy": [
+      { "price": "9500.00", "size": "2.50", "total": "2.50" },
+      { "price": "9450.00", "size": "5.00", "total": "7.50" },
+      { "price": "9400.00", "size": "10.00", "total": "17.50" }
+    ],
+    "sell": [
+      { "price": "9550.00", "size": "1.50", "total": "1.50" },
+      { "price": "9600.00", "size": "3.00", "total": "4.50" },
+      { "price": "9650.00", "size": "7.00", "total": "11.50" }
+    ]
+  },
+  "timestamp": "2023-11-04T14:45:00Z"
 }
 ```
 
@@ -879,13 +2483,28 @@ Unsubscribe from previous subscriptions.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `type`: (string) Set to "Unsubscribe".
+| Field  | Type   | Required | Description                                     |
+| ------ | ------ | -------- | ----------------------------------------------- |
+| `id`   | number | Yes      | User-defined unique identifier for the request. |
+| `type` | string | Yes      | Set to "Unsubscribe".                           |
 
 ```json
 {
   "id": 33,
   "type": "Unsubscribe"
+}
+```
+
+### Response Fields
+
+| Type | Description |
+| ---- | ----------- |
+| null | null        |
+
+```json
+{
+  "id": 2,
+  "response": null
 }
 ```
 
@@ -899,12 +2518,14 @@ Subscribe to RFQs for given base and quote products, quantity, and venues.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `base`: (ProductId) Base Product ID.
-- `quote`: (ProductId) Quote Product ID.
-- `quantity`: (Decimal) Quantity.
-- `venues`: (VenueId[]) An array of Venue IDs.
-- `type`: (string) Set to "SubscribeRfqs".
+| Field      | Type     | Required | Description                                     |
+| ---------- | -------- | -------- | ----------------------------------------------- |
+| `id`       | number   | Yes      | User-defined unique identifier for the request. |
+| `type`     | string   | Yes      | Set to "SubscribeRfqs".                         |
+| `venues`   | string[] | Yes      | An array of Venue IDs.                          |
+| `base`     | string   | Yes      | Base Product ID.                                |
+| `quote`    | string   | Yes      | Quote Product ID.                               |
+| `quantity` | string   | Yes      | Quantity.                                       |
 
 ```json
 {
@@ -917,6 +2538,40 @@ Subscribe to RFQs for given base and quote products, quantity, and venues.
 }
 ```
 
+### Subscription Fields
+
+| Field                                | Type     | Description                                            |
+| ------------------------------------ | -------- | ------------------------------------------------------ |
+| `sides`                              | *object* |                                                        |
+| &nbsp;&nbsp;› `buy`                  | *object* |                                                        |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `price`    | string   | The price for this side of the RFQ response.           |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `quantity` | string   | The quantity associated with this RFQ response.        |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `quote_id` | string   | The unique identifier of the quote product. (optional) |
+| &nbsp;&nbsp;› `sell`                 | *object* |                                                        |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `price`    | string   | The price for this side of the RFQ response.           |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `quantity` | string   | The quantity associated with this RFQ response.        |
+| &nbsp;&nbsp;&nbsp;&nbsp;› `quote_id` | string   | The unique identifier of the quote product. (optional) |
+| `tradable_product`                   | string   | The tradable product associated with the RFQ.          |
+
+```json
+{
+  "sides": {
+    "buy": {
+      "price": "100.50",
+      "quantity": "500",
+      "quote_id": "QU123"
+    },
+    "sell": {
+      "price": "101.00",
+      "quantity": "300",
+      "quote_id": "QU124"
+    }
+  },
+  "tradable_product": "TP456"
+}
+
+```
+
 ## SendRfqs
 
 ### Description
@@ -925,9 +2580,16 @@ Send request for quotes based on a query.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `query`: (SendRfqsQuery) Query for RFQs.
-- `type`: (string) Set to "SendRfqs".
+| Field                    | Type     | Required | Description                                       |
+| ------------------------ | -------- | -------- | ------------------------------------------------- |
+| `id`                     | number   | Yes      | User-defined unique identifier for the request.   |
+| `type`                   | string   | Yes      | Set to "SendRfqs".                                |
+| `query`                  | *object* | Yes      |                                                   |
+| &nbsp;&nbsp;› `base`     | string   | Yes      | The base product for the RFQ query.               |
+| &nbsp;&nbsp;› `dir`      | string   | Yes      | The direction of the RFQ query. (`Buy` or `Sell`) |
+| &nbsp;&nbsp;› `quantity` | string   | Yes      | The quantity for the RFQ query.                   |
+| &nbsp;&nbsp;› `quote`    | string   | Yes      | The quote product for the RFQ query.              |
+| &nbsp;&nbsp;› `venues`   | string[] | Yes      | An array of venue IDs for the RFQ query.          |
 
 ```json
 {
@@ -937,21 +2599,26 @@ Send request for quotes based on a query.
 }
 ```
 
-## Unsubscribe
+### Response Fields
 
-### Description
-
-Unsubscribe from previous subscriptions.
-
-### Request Fields
-
-- `id`: (number) Unique identifier for the request.
-- `type`: (string) Set to "Unsubscribe".
+| Field                            | Type     | Description                                            |
+| -------------------------------- | -------- | ------------------------------------------------------ |
+| `venue_responses`                | *object* |                                                        |
+| &nbsp;&nbsp;› `price`            | string   | The price associated with the venue response.          |
+| &nbsp;&nbsp;› `tradable_product` | string   | The ID of the tradable product for the venue response. |
 
 ```json
 {
-  "id": 33,
-  "type": "Unsubscribe"
+  "venue_responses": {
+    "exchangeA": {
+      "price": "100.50",
+      "tradable_product": "TP123"
+    },
+    "exchangeB": {
+      "price": "101.00",
+      "tradable_product": "TP124"
+    }
+  }
 }
 ```
 
@@ -965,13 +2632,55 @@ List all secrets.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `type`: (string) Set to "ListSecrets".
+| Field  | Type   | Required | Description                                     |
+| ------ | ------ | -------- | ----------------------------------------------- |
+| `id`   | number | Yes      | User-defined unique identifier for the request. |
+| `type` | string | Yes      | Set to "ListSecrets".                           |
 
 ```json
 {
   "id": 35,
   "type": "ListSecrets"
+}
+```
+
+### Response Fields
+
+| Field                | Type       | Description                                                                                                                |
+| -------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `id`                 | number     | User-defined unique identifier for the request.                                                                            |
+| `response`           | *object[]* |                                                                                                                            |
+| &nbsp;&nbsp;› `data` | Varies     | The data associated with the secret key, which can vary based on the key type. Refer to the specific key type for details. |
+| &nbsp;&nbsp;› `type` | string     | Specifies the type of the secret key: `ExchangeKey`, `EVMNodeRpcUrl`, `EVMPrivateKey`, `BrokerKey`.                        |
+
+```json
+{
+  "id": 12345,
+  "response": [
+    {
+      "type": "ExchangeKey",
+      "data": {
+        "exchangeName": "ExchangeX",
+        "apiKey": "your-api-key",
+        "apiSecret": "your-api-secret"
+      }
+    },
+    {
+      "type": "EVMNodeRpcUrl",
+      "data": "https://eth-node.example.com"
+    },
+    {
+      "type": "EVMPrivateKey",
+      "data": "your-eth-private-key"
+    },
+    {
+      "type": "BrokerKey",
+      "data": {
+        "brokerName": "BrokerA",
+        "apiKey": "broker-api-key"
+      }
+    }
+  ]
 }
 ```
 
@@ -983,10 +2692,14 @@ Add a secret with a given key and value.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `secret_key`: (SecretKey) Secret key.
-- `value`: (number[]) An array of numerical values.
-- `type`: (string) Set to "AddSecret".
+| Field                | Type     | Required | Description                                                                                                                |
+| -------------------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `id`                 | number   | Yes      | User-defined unique identifier for the request.                                                                            |
+| `type`               | string   | Yes      | Set to "AddSecret".                                                                                                        |
+| `secret_key`         | *object* | Yes      |                                                                                                                            |
+| &nbsp;&nbsp;› `data` | Varies   | Yes      | The data associated with the secret key, which can vary based on the key type. Refer to the specific key type for details. |
+| &nbsp;&nbsp;› `type` | string   | Yes      | Specifies the type of the secret key: `ExchangeKey`, `EVMNodeRpcUrl`, `EVMPrivateKey`, `BrokerKey`.                        |
+| `value`              | number[] | Yes      | An array of numerical values.                                                                                              |
 
 ```json
 {
@@ -994,6 +2707,20 @@ Add a secret with a given key and value.
   "secret_key": "my_secret_key",
   "value": [1, 2, 3],
   "type": "AddSecret"
+}
+```
+
+### Response Fields
+
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
+
+```json
+{
+  "id": 2,
+  "response": null
 }
 ```
 
@@ -1005,15 +2732,33 @@ Delete a secret with a given key.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `secret_key`: (SecretKey) Secret key.
-- `type`: (string) Set to "DeleteSecret".
+| Field                | Type     | Required | Description                                                                                                                |
+| -------------------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `id`                 | number   | Yes      | User-defined unique identifier for the request.                                                                            |
+| `type`               | string   | Yes      | Set to "DeleteSecret".                                                                                                     |
+| `secret_key`         | *object* | Yes      |                                                                                                                            |
+| &nbsp;&nbsp;› `data` | Varies   | Yes      | The data associated with the secret key, which can vary based on the key type. Refer to the specific key type for details. |
+| &nbsp;&nbsp;› `type` | string   | Yes      | Specifies the type of the secret key: `ExchangeKey`, `EVMNodeRpcUrl`, `EVMPrivateKey`, `BrokerKey`.                        |
 
 ```json
 {
   "id": 37,
   "secret_key": "my_secret_key",
   "type": "DeleteSecret"
+}
+```
+
+### Response Fields
+
+| Field      | Type   | Description                                     |
+| ---------- | ------ | ----------------------------------------------- |
+| `id`       | number | User-defined unique identifier for the request. |
+| `response` | null   | null                                            |
+
+```json
+{
+  "id": 2,
+  "response": null
 }
 ```
 
@@ -1027,12 +2772,107 @@ Retrieve the pathmap.
 
 ### Request Fields
 
-- `id`: (number) Unique identifier for the request.
-- `type`: (string) Set to "GetPathmap".
+| Field  | Type   | Required | Description                                     |
+| ------ | ------ | -------- | ----------------------------------------------- |
+| `id`   | number | Yes      | User-defined unique identifier for the request. |
+| `type` | string | Yes      | Set to "GetPathmap".                            |
 
 ```json
 {
   "id": 34,
   "type": "GetPathmap"
+}
+```
+
+### Response Fields
+
+| Field                                | Type             | Description                                                                                             |
+| ------------------------------------ | ---------------- | ------------------------------------------------------------------------------------------------------- |
+| `id`                                 | number           | User-defined unique identifier for the request.                                                         |
+| `response`                           | *object*         |                                                                                                         |
+| &nbsp;&nbsp;› `core_cpty`            | string           | Path or URL for the `core_cpty` resource.                                                               |
+| &nbsp;&nbsp;› `ext_coingecko`        | string           | Path or URL for the `ext_coingecko` resource.                                                           |
+| &nbsp;&nbsp;› `news`                 | string           | Path or URL for the `news` resource.                                                                    |
+| &nbsp;&nbsp;› `qf_api`               | string           | Path or URL for the `qf_api` resource.                                                                  |
+| &nbsp;&nbsp;› `qf_api_by_cpty`       | [Cpty, string][] | An array of tuples representing the mapping of [`Cpty`](#cpty) objects to `qf_api` paths or URLs.       |
+| &nbsp;&nbsp;› `qf_hist_ohlc`         | string           | Path or URL for the `qf_hist_ohlc` resource.                                                            |
+| &nbsp;&nbsp;› `qf_hist_ohlc_by_cpty` | [Cpty, string][] | An array of tuples representing the mapping of [`Cpty`](#cpty) objects to `qf_hist_ohlc` paths or URLs. |
+| &nbsp;&nbsp;› `qf_hist_rt`           | string           | Path or URL for the `qf_hist_rt` resource.                                                              |
+| &nbsp;&nbsp;› `qf_hist_rt_by_cpty`   | [Cpty, string][] | An array of tuples representing the mapping of [`Cpty`](#cpty) objects to `qf_hist_rt` paths or URLs.   |
+| &nbsp;&nbsp;› `qf_ohlc`              | string           | Path or URL for the `qf_ohlc` resource.                                                                 |
+| &nbsp;&nbsp;› `qf_ohlc_by_cpty`      | [Cpty, string][] | An array of tuples representing the mapping of [`Cpty`](#cpty) objects to `qf_ohlc` paths or URLs.      |
+| &nbsp;&nbsp;› `qf_rt`                | string           | Path or URL for the `qf_rt` resource.                                                                   |
+| &nbsp;&nbsp;› `qf_rt_by_cpty`        | [Cpty, string][] | An array of tuples representing the mapping of [`Cpty`](#cpty) objects to `qf_rt` paths or URLs.        |
+
+#### `Cpty`
+
+| Field   | Type   | Description                                               |
+| ------- | ------ | --------------------------------------------------------- |
+| `route` | string | The route ID associated with the counterparty.            |
+| `venue` | string | The venue ID associated with the counterparty (optional). |
+
+```json
+{
+  "id": 12345,
+  "response": {
+    "core_cpty": "https://example.com/core_cpty",
+    "ext_coingecko": "https://example.com/ext_coingecko",
+    "news": "https://example.com/news",
+    "qf_api": "https://example.com/qf_api",
+    "qf_api_by_cpty": [
+      {
+        "route": "RouteA",
+        "venue": "VenueX"
+      },
+      {
+        "route": "RouteB",
+        "venue": "VenueY"
+      }
+    ],
+    "qf_hist_ohlc": "https://example.com/qf_hist_ohlc",
+    "qf_hist_ohlc_by_cpty": [
+      {
+        "route": "RouteA",
+        "venue": "VenueX"
+      },
+      {
+        "route": "RouteB",
+        "venue": "VenueY"
+      }
+    ],
+    "qf_hist_rt": "https://example.com/qf_hist_rt",
+    "qf_hist_rt_by_cpty": [
+      {
+        "route": "RouteA",
+        "venue": "VenueX"
+      },
+      {
+        "route": "RouteB",
+        "venue": "VenueY"
+      }
+    ],
+    "qf_ohlc": "https://example.com/qf_ohlc",
+    "qf_ohlc_by_cpty": [
+      {
+        "route": "RouteA",
+        "venue": "VenueX"
+      },
+      {
+        "route": "RouteB",
+        "venue": "VenueY"
+      }
+    ],
+    "qf_rt": "https://example.com/qf_rt",
+    "qf_rt_by_cpty": [
+      {
+        "route": "RouteA",
+        "venue": "VenueX"
+      },
+      {
+        "route": "RouteB",
+        "venue": "VenueY"
+      }
+    ]
+  }
 }
 ```
