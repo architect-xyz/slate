@@ -126,6 +126,34 @@ async def main():
 | &nbsp;&nbsp;› `tradable_product` | [number, string][]           | An array of tuples representing numbers and `TradableProductId` values.              |
 | &nbsp;&nbsp;› `venue`            | [number, string][]           | An array of tuples representing numbers and `VenueId` values.                        |
 
+```json
+{
+  "id": 1,
+  "response": {
+    "pair": [
+      [1, ["product1", "product2"]],
+      [2, ["route1", "route2"]]
+    ],
+    "product": [
+      [3, "product1"],
+      [4, "product2"]
+    ],
+    "route": [
+      [5, "route1"],
+      [6, "route2"]
+    ],
+    "tradable_product": [
+      [7, "product1"],
+      [8, "product2"]
+    ],
+    "venue": [
+      [9, "Exchange1"],
+      [10, "Exchange2"]
+    ]
+  }
+}
+```
+
 ## QueryTradableProductIndex
 
 ### Description
@@ -171,6 +199,17 @@ async def main():
 | `id`       | number   | User-defined unique identifier for the request |
 | `response` | string[] | An array of `TradableProductId` values.        |
 
+```json
+{
+  "id": 2,
+  "response": [
+    "product1",
+    "product2",
+    "product3"
+  ]
+}
+```
+
 ## GetRouteDetails
 
 ### Description
@@ -201,6 +240,26 @@ Retrieve details for the given routes.
 | `response`           | *object[]* |                                                 |
 | &nbsp;&nbsp;› `id`   | string     | The unique identifier of the route.             |
 | &nbsp;&nbsp;› `name` | string     | The name of the route.                          |
+
+```json
+{
+  "id": 3,
+  "response": [
+    {
+      "id": "route1",
+      "name": "Route A"
+    },
+    {
+      "id": "route2",
+      "name": "Route B"
+    },
+    {
+      "id": "route3",
+      "name": "Route C"
+    }
+  ]
+}
+```
 
 ## GetVenueDetails
 
@@ -233,6 +292,26 @@ Retrieve details for the given venues.
 | &nbsp;&nbsp;› `id`   | string     | The unique identifier of the venue.             |
 | &nbsp;&nbsp;› `name` | string     | The name of the venue.                          |
 
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "id": "venue1",
+      "name": "Venue X"
+    },
+    {
+      "id": "venue2",
+      "name": "Venue Y"
+    },
+    {
+      "id": "venue3",
+      "name": "Venue Z"
+    }
+  ]
+}
+```
+
 ## GetProductDetails
 
 ### Description
@@ -263,9 +342,32 @@ Retrieve details for the given products.
 | `response`                             | *object[]* |                                                                                                                                |
 | &nbsp;&nbsp;› `cficode`                | number     | The atomic CFI code of the product.                                                                                            |
 | &nbsp;&nbsp;› `class`                  | string     | The class of the product: `Coin`, `Fiat`, `Equity`, `Commodity`, `Energy`, `Metal`, `Future`, `Option`, `Index`, or `Unknown`. |
-| &nbsp;&nbsp;› `id`                     | string     | The unique identifier of the product.                                                                                          |
+| &nbsp;&nbsp;› `id`                     | string     | The ID of the product.                                                                                                         |
 | &nbsp;&nbsp;› `name`                   | string     | The name of the product.                                                                                                       |
 | &nbsp;&nbsp;› `price_in_limit_dollars` | string     | The price of the product in limit dollars.                                                                                     |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "cficode": "123456",
+      "class": "Coin",
+      "id": "product1",
+      "name": "Product A",
+      "price_in_limit_dollars": "50.00"
+    },
+    {
+      "cficode": "654321",
+      "class": "Equity",
+      "id": "product2",
+      "name": "Product B",
+      "price_in_limit_dollars": "75.00"
+    }
+  ]
+}
+
+```
 
 ## GetTradableProductDetails
 
@@ -312,6 +414,54 @@ Retrieve details for the given tradable products.
 | &nbsp;&nbsp;&nbsp;&nbsp;› `trading_symbol`  | string              | Trading symbol ID.                              |
 | &nbsp;&nbsp;&nbsp;&nbsp;› `venue`           | string              | The unique identifier of the venue.             |
 
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "base": "product1",
+      "display_name": "Product A",
+      "id": "tradable_product1",
+      "is_delisted": false,
+      "quote": "quote1",
+      "quote_info": {
+        "implied": "implied1",
+        "l2": "l2_1",
+        "primary": "primary1"
+      },
+      "route": "route1",
+      "trade_info": {
+        "base_increment": "0.01",
+        "flags": 7,
+        "quote_increment": "0.001",
+        "trading_symbol": "ABC",
+        "venue": "venue1"
+      }
+    },
+    {
+      "base": "product2",
+      "display_name": "Product B",
+      "id": "tradable_product2",
+      "is_delisted": true,
+      "quote": "quote2",
+      "quote_info": {
+        "implied": "implied2",
+        "l2": "l2_2",
+        "primary": "primary2"
+      },
+      "route": "route2",
+      "trade_info": {
+        "base_increment": "0.1",
+        "flags": 15,
+        "quote_increment": "0.01",
+        "trading_symbol": "XYZ",
+        "venue": "venue2"
+      }
+    }
+  ]
+}
+```
+
 ## GetCanonicalTradableProduct
 
 ### Description
@@ -357,6 +507,53 @@ Retrieve the canonical tradable product for the given products. A canonical trad
 | &nbsp;&nbsp;&nbsp;&nbsp;› `trading_symbol`  | string              | Trading symbol ID.                              |
 | &nbsp;&nbsp;&nbsp;&nbsp;› `venue`           | string              | The unique identifier of the venue.             |
 
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "base": "product1",
+      "display_name": "Product A",
+      "id": "tradable_product1",
+      "is_delisted": false,
+      "quote": "quote1",
+      "quote_info": {
+        "implied": "implied1",
+        "l2": "l2_1",
+        "primary": "primary1"
+      },
+      "route": "route1",
+      "trade_info": {
+        "base_increment": "0.01",
+        "flags": 7,
+        "quote_increment": "0.001",
+        "trading_symbol": "ABC",
+        "venue": "venue1"
+      }
+    },
+    {
+      "base": "product2",
+      "display_name": "Product B",
+      "id": "tradable_product2",
+      "is_delisted": true,
+      "quote": "quote2",
+      "quote_info": {
+        "l2": "l2_2",
+        "primary": "primary2"
+      },
+      "route": "route2",
+      "trade_info": {
+        "base_increment": "0.1",
+        "flags": 15,
+        "quote_increment": "0.01",
+        "trading_symbol": "XYZ",
+        "venue": "venue2"
+      }
+    }
+  ]
+}
+```
+
 ## GetQuoteSymbolDetails
 
 ### Description
@@ -387,6 +584,22 @@ Retrieve details for the given quote symbols.
 | `response`           | *object[]* |                                                 |
 | &nbsp;&nbsp;› `id`   | string     | The unique identifier of the quote symbol.      |
 | &nbsp;&nbsp;› `name` | string     | The name of the quote symbol.                   |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "id": "quote1",
+      "name": "Quote Symbol A"
+    },
+    {
+      "id": "quote2",
+      "name": "Quote Symbol B"
+    }
+  ]
+}
+```
 
 # Orderflow
 
@@ -431,6 +644,13 @@ Send a limit order with the given parameters.
 | `id`       | number | User-defined unique identifier for the request. |
 | `response` | number | The order ID value.                             |
 
+```json
+{
+  "id": 2,
+  "response": 12345
+}
+```
+
 ## CancelOrder
 
 ### Description
@@ -460,6 +680,13 @@ Cancel the order with the given order ID.
 | `id`       | number | User-defined unique identifier for the request. |
 | `response` | null   | null                                            |
 
+```json
+{
+  "id": 2,
+  "response": null
+}
+```
+
 ## ListOpen
 
 ### Description
@@ -479,7 +706,6 @@ List open orders based on the given scope and set.
 | &nbsp;&nbsp;› `type`  | string   | Yes      | Specifies the type of the set: `Firm`, `Desk`, `DeskDefault`, `Trader`, `TraderDefault`, `Account`, `AccountDefault`.                                 |
 | &nbsp;&nbsp;› `value` | Varies   | No       | An optional value associated with the set, which can be of various types depending on the set type. Refer to the specific set type for details.       |
 
-
 ```json
 {
   "id": 10,
@@ -495,6 +721,13 @@ List open orders based on the given scope and set.
 | ---------- | -------- | ----------------------------------------------- |
 | `id`       | number   | User-defined unique identifier for the request. |
 | `response` | number[] | An array of order ID.                           |
+
+```json
+{
+  "id": 2,
+  "response": [1, 3, 5]
+}
+```
 
 ## GetOrderState
 
@@ -524,6 +757,13 @@ Retrieve the state of orders based on the given order IDs.
 | ---------- | -------- | ----------------------------------------------- |
 | `id`       | number   | User-defined unique identifier for the request. |
 | `response` | number[] | An array of order state bigflags.               |
+
+```json
+{
+  "id": 2,
+  "response": [1, 3, 5]
+}
+```
 
 ## SubscribeOrderState
 
@@ -574,6 +814,13 @@ Retrieve the reason for order rejection based on the given order IDs.
 | `id`       | number   | User-defined unique identifier for the request. |
 | `response` | string[] | An array of reject reason values.               |
 
+```json
+{
+  "id": 2,
+  "response": ["NotEIP1559", "NonceOverflow", "WouldRevert"]
+}
+```
+
 ## GetOrderDetails
 
 ### Description
@@ -613,6 +860,31 @@ Retrieve details of orders based on the given order IDs.
 | &nbsp;&nbsp;&nbsp;&nbsp;› `type`  | string     | Order parameters (e.g. for DeFi).                                |
 | &nbsp;&nbsp;&nbsp;&nbsp;› `value` | Varies     | Specific items based on the `type` of the estimate order params. |
 
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "account": "account123",
+      "dir": "Buy",
+      "price": "100.50",
+      "quantity": "10",
+      "quote_id": "quote456",
+      "target": "product789",
+      "timestamp": "2023-11-04T15:30:00Z",
+      "params": {
+        "type": "Ethereum",
+        "value": {
+          "gas": 21000,
+          "gas_price": [100, 200],
+          "nonce": 3
+        }
+      }
+    }
+  ]
+}
+```
+
 ## ListFills
 
 ### Description
@@ -647,6 +919,16 @@ List fills based on the given scope and set.
 | ---------- | ------------------ | -------------------------------------------------------------- |
 | `id`       | number             | User-defined unique identifier for the request.                |
 | `response` | [string, string][] | An array of tuples representing `OrderId` and `FillId` values. |
+
+```json
+{
+  "id": 2,
+  "response": [
+    ["order123", "fill456"],
+    ["order789", "fill101"]
+  ]
+}
+```
 
 ## GetFillDetails
 
@@ -694,6 +976,30 @@ Retrieve details of fills based on the given fill IDs.
 | &nbsp;&nbsp;› `trade_time`        | string              | The timestamp when the counterparty claims the trade happened, or the time of reception if unrecoverable. |
 | &nbsp;&nbsp;› `warnings`          | number[]            | An array of bit flags indicating warnings about the fill that don't quite make it aberrant.               |
 
+```json
+{
+  "id": 2,
+  "response": {
+    "dir": "Buy",
+    "exchange_fill_id": "exch123",
+    "exchange_order_id": "order456",
+    "fill_id": "fill789",
+    "price": "100.50",
+    "quantity": "10.25",
+    "recv_time": "2023-11-05T12:30:45Z",
+    "target": "product123",
+    "trade_time": "2023-11-05T12:35:30Z",
+    "warnings": [1, 2],
+    "info": {
+      "problems": 3,
+      "recv_time": "2023-11-05T12:30:45Z",
+      "trade_time": "2023-11-05T12:35:30Z",
+      "warnings": [4, 5]
+    }
+  }
+}
+```
+
 # Limits
 
 ## SetLimits
@@ -728,6 +1034,13 @@ Set limits based on the given Limit array.
 | ---------- | ------ | ----------------------------------------------- |
 | `id`       | number | User-defined unique identifier for the request. |
 | `response` | null   | null                                            |
+
+```json
+{
+  "id": 2,
+  "response": null
+}
+```
 
 ## GetLimits
 
@@ -777,6 +1090,23 @@ Retrieve limits based on the given LimitSet and LimitScope arrays.
 | &nbsp;&nbsp;› `type`  | string     | The type of trading limit: `FillRecencyThreshold`, `FillRetireThreshold`, `OutRetireThreshold`, `NotOutThreshold`, `MaxPriceDeviation`, `SetEnforcing`, `MaxOpen`, `MaxOpenAndRecentlyFilled`, `MaxFilled`. |
 | &nbsp;&nbsp;› `value` | Varies     | The value associated with the trading limit, which can be of various types depending on the limit type. Refer to the specific limit type for details.                                                       |
 
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "type": "MaxPriceDeviation",
+      "value": 0.02
+    },
+    {
+      "type": "MaxOpen",
+      "value": 100
+    }
+    // Add more limit types and values as needed
+  ]
+}
+```
+
 ## GetGlobalLimits
 
 ### Description
@@ -807,6 +1137,23 @@ Retrieve global limits based on the given GlobalLimitName array.
 | `response`            | *object[]* |                                                                                                                                                                                                             |
 | &nbsp;&nbsp;› `type`  | string     | The type of trading limit: `FillRecencyThreshold`, `FillRetireThreshold`, `OutRetireThreshold`, `NotOutThreshold`, `MaxPriceDeviation`, `SetEnforcing`, `MaxOpen`, `MaxOpenAndRecentlyFilled`, `MaxFilled`. |
 | &nbsp;&nbsp;› `value` | Varies     | The value associated with the trading limit, which can be of various types depending on the limit type. Refer to the specific limit type for details.                                                       |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "type": "MaxPriceDeviation",
+      "value": 0.02
+    },
+    {
+      "type": "MaxOpen",
+      "value": 100
+    }
+    // Add more limit types and values as needed
+  ]
+}
+```
 
 # Halts
 
@@ -839,6 +1186,36 @@ Retrieve information about trading halts.
 | &nbsp;&nbsp;› `type`  | string     | Specifies the type of the halt. Possible values: `Global`, `TradableProduct`, `Venue`, `Route`, `VenueRoute`. |
 | &nbsp;&nbsp;› `value` | Varies     | An array with specific items based on the `type` of the halt.                                                 |
 
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "type": "Global",
+      "value": "Market under maintenance"
+    },
+    {
+      "type": "TradableProduct",
+      "value": [
+        {
+          "tradable_product_id": "12345",
+          "reason": "Insufficient liquidity"
+        },
+        {
+          "tradable_product_id": "67890",
+          "reason": "Technical issue"
+        }
+      ]
+    },
+    {
+      "type": "Venue",
+      "value": "Venue X is temporarily closed"
+    }
+    // Add more halt types and specific items as needed
+  ]
+}
+```
+
 ## Halt
 
 ### Description
@@ -870,6 +1247,13 @@ Initiate a trading halt for a given condition.
 | `id`       | number | User-defined unique identifier for the request. |
 | `response` | null   | null                                            |
 
+```json
+{
+  "id": 2,
+  "response": null
+}
+```
+
 ## Resume
 
 ### Description
@@ -900,6 +1284,13 @@ Resume trading after a halt for a given condition.
 | ---------- | ------ | ----------------------------------------------- |
 | `id`       | number | User-defined unique identifier for the request. |
 | `response` | null   | null                                            |
+
+```json
+{
+  "id": 2,
+  "response": null
+}
+```
 
 # Alerts
 
@@ -964,6 +1355,13 @@ Retrieve allowance based on the given account, route, token, and venue.
 | `id`       | number | User-defined unique identifier for the request. |
 | `response` | string | Allowance value upon successful response.       |
 
+```json
+{
+  "id": 2,
+  "response": "1000"
+}
+```
+
 ## SetAllowance
 
 ### Description
@@ -1001,6 +1399,13 @@ Set allowance based on the given account, route, amount, token, and venue.
 | `id`       | number | User-defined unique identifier for the request. |
 | `response` | null   | null                                            |
 
+```json
+{
+  "id": 2,
+  "response": null
+}
+```
+
 ## GetOrderTransaction
 
 ### Description
@@ -1033,6 +1438,24 @@ Get transaction information for given order IDs.
 | &nbsp;&nbsp;› `target` | [string, string] | An array with two items representing `VenueId` and `RouteId` as the target. |
 | &nbsp;&nbsp;› `uuid`   | string           | A unique identifier for the transaction handle.                             |
 
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "origin": ["venue123", "route456"],
+      "target": ["venue789", "route101"],
+      "uuid": "transaction123"
+    },
+    {
+      "origin": ["venue456", "route202"],
+      "target": ["venue303", "route404"],
+      "uuid": "transaction456"
+    }
+  ]
+}
+```
+
 ## EstimateOrderParams
 
 ### Description
@@ -1052,12 +1475,11 @@ Estimate order parameters based on an order prototype.
 | &nbsp;&nbsp;› `quantity` | string   | Yes      | Order quantity.                                       |
 | &nbsp;&nbsp;› `target`   | string   | Yes      | Tradable product ID.                                  |
 
-
 ```json
 {
-"id": 39,
-"order": {...},
-"type": "EstimateOrderParams"
+  "id": 39,
+  "order": {...},
+  "type": "EstimateOrderParams"
 }
 ```
 
@@ -1069,6 +1491,28 @@ Estimate order parameters based on an order prototype.
 | `response`            | *object[]* |                                                                  |
 | &nbsp;&nbsp;› `type`  | string     | Order parameters (e.g. for DeFi).                                |
 | &nbsp;&nbsp;› `value` | Varies     | Specific items based on the `type` of the estimate order params. |
+
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "type": "DeFiOrder",
+      "value": {
+        "param1": "value1",
+        "param2": "value2"
+      }
+    },
+    {
+      "type": "OtherOrder",
+      "value": {
+        "param3": "value3",
+        "param4": "value4"
+      }
+    }
+  ]
+}
+```
 
 ## GetEVMAttempts
 
@@ -1101,6 +1545,13 @@ Get the attempts for an EVM transaction.
 | ---------- | -------- | ------------------------------------------------------------------------------- |
 | `id`       | number   | User-defined unique identifier for the request.                                 |
 | `response` | string[] | An array of string values representing Ethereum Virtual Machine (EVM) attempts. |
+
+```json
+{
+  "id": 2,
+  "response": ["attempt1", "attempt2", "attempt3"]
+}
+```
 
 ## EstimateEVMRetryParams
 
@@ -1137,6 +1588,17 @@ Estimate retry parameters for an EVM transaction.
 | &nbsp;&nbsp;› `gas_price` | [number, number] | An array of two numbers representing gas prices for the transaction (`max_fee_per_gas`, `max_priority_fee_per_gas`) (optional). |
 | &nbsp;&nbsp;› `nonce`     | number           | A number representing the nonce for the transaction (optional).                                                                 |
 
+```json
+{
+  "id": 2,
+  "response": {
+    "gas": 21000,
+    "gas_price": [20, 25],
+    "nonce": 123
+  }
+}
+```
+
 ## RetryEVMTransaction
 
 ### Description
@@ -1172,6 +1634,13 @@ Retry an EVM transaction with optional gas parameters.
 | ---------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`       | number | User-defined unique identifier for the request.                                                                                                                                                 |
 | `response` | string | An EVM reject reason with various possible types: `NotEIP1559`, `InsaneGasPrice`, `NonceOverflow`, `UnknownSigner`, `UnknownTransaction`, `Malformed`, `WouldRevert`, `InternalError` or others |
+
+```json
+{
+  "id": 2,
+  "response": "NotEIP1559"
+}
+```
 
 # Market Data
 
@@ -1218,6 +1687,35 @@ Retrieve historical candle data based on the given tradable product, start time,
 | &nbsp;&nbsp;› `time`        | string     | The timestamp for the candlestick data.           |
 | &nbsp;&nbsp;› `volume`      | string     | The trading volume during the candlestick period. |
 
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "buy_volume": "123.45",
+      "close": "678.90",
+      "high": "700.00",
+      "low": "650.00",
+      "open": "670.00",
+      "sell_volume": "100.50",
+      "time": "2023-11-04T12:00:00Z",
+      "volume": "2245.75"
+    },
+    {
+      "buy_volume": "120.00",
+      "close": "680.00",
+      "high": "720.00",
+      "low": "650.00",
+      "open": "700.00",
+      "sell_volume": "105.00",
+      "time": "2023-11-04T13:00:00Z",
+      "volume": "2500.00"
+    }
+  ]
+}
+
+```
+
 ## GetHistoricalUniswapV2Pools
 
 ### Description
@@ -1260,6 +1758,35 @@ Retrieve historical data for Uniswap V2 pools.
 | &nbsp;&nbsp;› `token1_decimals` | number     | The number of decimal places for the second token.   |
 | &nbsp;&nbsp;› `token1_symbol`   | string     | The symbol of the second token.                      |
 
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "address": "0xUniswapPoolAddress1",
+      "block": 12345,
+      "timestamp": "2023-11-04T14:30:00Z",
+      "token0": "0xTokenAddress1",
+      "token0_decimals": 18,
+      "token0_symbol": "TOKEN1",
+      "token1": "0xTokenAddress2",
+      "token1_decimals": 6,
+      "token1_symbol": "TOKEN2"
+    },
+    {
+      "address": "0xUniswapPoolAddress2",
+      "block": 12346,
+      "timestamp": "2023-11-04T15:00:00Z",
+      "token0": "0xTokenAddress2",
+      "token0_decimals": 18,
+      "token0_symbol": "TOKEN2",
+      "token1": "0xTokenAddress3",
+      "token1_decimals": 18,
+      "token1_symbol": "TOKEN3"
+    }
+  ]
+}
+```
 
 ## GetTradableProductSummariesForVenue
 
@@ -1307,6 +1834,52 @@ Retrieve summaries of tradable products for a specific venue.
 | &nbsp;&nbsp;› `venue_name`            | string     | The name of the venue.                                                                                      |
 | &nbsp;&nbsp;› `volume_24h`            | string     | The 24-hour trading volume for the tradable product, or null if no data is available. (optional)            |
 
+```json
+{
+  "id": 2,
+  "response": [
+    {
+      "ask_price": "100.00",
+      "base_id": "base1",
+      "base_name": "Base Product 1",
+      "bid_price": "99.50",
+      "high_24h": "105.00",
+      "kind": "Spot",
+      "last_price": "101.75",
+      "low_24h": "98.25",
+      "open_24h": "100.50",
+      "quote_id": "quote1",
+      "quote_name": "Quote Product 1",
+      "tradable_product_id": "tp1",
+      "tradable_product_name": "Tradable Product 1",
+      "update_time": "2023-11-04T14:30:00Z",
+      "venue_id": "venue1",
+      "venue_name": "Venue 1",
+      "volume_24h": "125000.00"
+    },
+    {
+      "ask_price": null,
+      "base_id": "base2",
+      "base_name": "Base Product 2",
+      "bid_price": null,
+      "high_24h": null,
+      "kind": "Futures",
+      "last_price": null,
+      "low_24h": null,
+      "open_24h": null,
+      "quote_id": "quote2",
+      "quote_name": "Quote Product 2",
+      "tradable_product_id": "tp2",
+      "tradable_product_name": "Tradable Product 2",
+      "update_time": "2023-11-04T14:35:00Z",
+      "venue_id": "venue2",
+      "venue_name": "Venue 2",
+      "volume_24h": null
+    }
+  ]
+}
+```
+
 ## SubscribeTrades
 
 ### Description
@@ -1337,6 +1910,15 @@ Subscribe to trades for a given tradable product.
 | `price`     | string | The trade price.                  |
 | `size`      | string | The trade size.                   |
 | `time`      | string | (Optional) The time of the trade. |
+
+```json
+{
+  "direction": "Buy",
+  "price": "100.50",
+  "size": "500.00",
+  "time": "2023-11-04T15:45:00Z"
+}
+```
 
 ## SubscribeAllTrades
 
@@ -1371,6 +1953,16 @@ Subscribe to receive updates for all trades on a specific route.
 | `size`             | string | The trade size.                                    |
 | `time`             | string | (Optional) The time of the trade.                  |
 | `tradable_product` | string | The tradable product id associated with the trade. |
+
+```json
+{
+  "direction": "Buy",
+  "price": "100.50",
+  "size": "500.00",
+  "time": "2023-11-04T15:45:00Z",
+  "tradable_product": "12345"
+}
+```
 
 ## SubscribeBlockchainTrades
 
@@ -1422,12 +2014,21 @@ Subscribe to receive updates for liquidations related to a specific tradable pro
 
 ### Subscription Fields
 
-| Field       | Type   | Description                  |
-| ----------- | ------ | ---------------------------- |
-| `direction` | Dir    | The trading direction.       |
-| `price`     | string | The liquidation price.       |
-| `size`      | string | The size of the liquidation. |
-| `time`      | string | The time of the liquidation. |
+| Field       | Type   | Description                              |
+| ----------- | ------ | ---------------------------------------- |
+| `direction` | Dir    | The trading direction. (`Buy` or `Sell`) |
+| `price`     | string | The liquidation price.                   |
+| `size`      | string | The size of the liquidation.             |
+| `time`      | string | The time of the liquidation.             |
+
+```json
+{
+  "direction": "Buy",
+  "price": "95.25",
+  "size": "750.00",
+  "time": "2023-11-04T14:30:00Z"
+}
+```
 
 ## SubscribeAllLiquidations
 
@@ -1462,6 +2063,16 @@ Subscribe to receive updates for all liquidations on a specific route.
 | `size`             | string | The size of the liquidation.                          |
 | `time`             | string | The time of the liquidation.                          |
 | `tradable_product` | string | The tradable product associated with the liquidation. |
+
+```json
+{
+  "direction": "Buy",
+  "price": "95.25",
+  "size": "750.00",
+  "time": "2023-11-04T14:30:00Z",
+  "tradable_product": "BTCUSD"
+}
+```
 
 ## SubscribeBook
 
@@ -1502,6 +2113,24 @@ Subscribe to the order book for a given tradable product and width.
 | &nbsp;&nbsp;&nbsp;&nbsp;› `total` | string     | The total size of orders at or above this price.         |
 | `timestamp`                       | string     | The timestamp indicating when the book data was updated. |
 
+```json
+{
+  "book": {
+    "buy": [
+      { "price": "9500.00", "size": "2.50", "total": "2.50" },
+      { "price": "9450.00", "size": "5.00", "total": "7.50" },
+      { "price": "9400.00", "size": "10.00", "total": "17.50" }
+    ],
+    "sell": [
+      { "price": "9550.00", "size": "1.50", "total": "1.50" },
+      { "price": "9600.00", "size": "3.00", "total": "4.50" },
+      { "price": "9650.00", "size": "7.00", "total": "11.50" }
+    ]
+  },
+  "timestamp": "2023-11-04T14:45:00Z"
+}
+```
+
 ## SubscribeCandles
 
 ### Description
@@ -1510,12 +2139,12 @@ Subscribe to candles for a given tradable product and width.
 
 ### Request Fields
 
-| Field              | Type   | Required | Description                                                                                          |
-| ------------------ | ------ | -------- | ---------------------------------------------------------------------------------------------------- |
-| `id`               | number | Yes      | User-defined unique identifier for the request.                                                      |
-| `type`             | string | Yes      | Set to "SubscribeCandles".                                                                           |
-| `tradable_product` | string | Yes      | Tradable Product ID.                                                                                 |
-| `width`            | string | Yes      | Width. Allowed values: `OneSecond`, `FiveSecond`, `OneMinute`, `FifteenMinute`, `OneHour`, `OneDay`. |
+| Field              | Type   | Required | Description                                                 |
+| ------------------ | ------ | -------- | ----------------------------------------------------------- |
+| `id`               | number | Yes      | User-defined unique identifier for the request.             |
+| `type`             | string | Yes      | Set to "SubscribeCandles".                                  |
+| `tradable_product` | string | Yes      | Tradable Product ID.                                        |
+| `width`            | string | Yes      | Width. Allowed values: `1s`, `5s`, `1m`, `15m`, `1h`, `1d`. |
 
 ```json
 {
@@ -1538,6 +2167,19 @@ Subscribe to candles for a given tradable product and width.
 | `sell_volume` | string | The sell volume during the candle period.          |
 | `time`        | string | The timestamp indicating the start of the candle.  |
 | `volume`      | string | The total trading volume during the candle period. |
+
+```json
+{
+  "buy_volume": "150.00",
+  "close": "9550.00",
+  "high": "9600.00",
+  "low": "9400.00",
+  "open": "9450.00",
+  "sell_volume": "120.00",
+  "time": "2023-11-04T14:30:00Z",
+  "volume": "270.00"
+}
+```
 
 ## SubscribeConsolidatedBook
 
@@ -1580,6 +2222,42 @@ Subscribe to the consolidated book for given tradable products with specified pr
 | &nbsp;&nbsp;&nbsp;&nbsp;› `tradable_products` | string[]   | An array of Tradable Product IDs.                        |
 | `timestamp`                                   | string     | The timestamp indicating when the book data was updated. |
 
+```json
+{
+  "book": {
+    "buy": [
+      {
+        "price": "9500.00",
+        "size": "10.00",
+        "total": "30.00",
+        "tradable_products": ["product1", "product2"]
+      },
+      {
+        "price": "9400.00",
+        "size": "15.00",
+        "total": "45.00",
+        "tradable_products": ["product1"]
+      }
+    ],
+    "sell": [
+      {
+        "price": "9600.00",
+        "size": "12.00",
+        "total": "25.00",
+        "tradable_products": ["product2"]
+      },
+      {
+        "price": "9700.00",
+        "size": "8.00",
+        "total": "33.00",
+        "tradable_products": ["product1", "product2"]
+      }
+    ]
+  },
+  "timestamp": "2023-11-04T14:30:00Z"
+}
+```
+
 ## SubscribeMetrics
 
 ### Description
@@ -1613,6 +2291,17 @@ Subscribe to receive metrics updates for a specific tradable product.
 | `volume_24h` | string | The trading volume in the last 24 hours, if available.         |
 | `volume_30d` | string | The trading volume in the last 30 days, if available.          |
 
+```json
+{
+  "high_24h": "9700.00",
+  "last_price": "9600.00",
+  "low_24h": "9400.00",
+  "open_24h": "9500.00",
+  "volume_24h": "1500.00",
+  "volume_30d": "9000.00"
+}
+```
+
 ## SubscribeTopOfBook
 
 ### Description
@@ -1641,6 +2330,24 @@ Subscribe to receive updates for the top of the book prices for a specific trada
 | ----------- | ---------------------------- | -------------------------------------------------------- |
 | `book`      | DirPairFor_ArrayOf_BookLevel | An array of book levels with their details.              |
 | `timestamp` | string                       | The timestamp indicating when the book data was updated. |
+
+```json
+{
+  "book": {
+    "buy": [
+      { "price": "9500.00", "size": "2.50", "total": "2.50" },
+      { "price": "9450.00", "size": "5.00", "total": "7.50" },
+      { "price": "9400.00", "size": "10.00", "total": "17.50" }
+    ],
+    "sell": [
+      { "price": "9550.00", "size": "1.50", "total": "1.50" },
+      { "price": "9600.00", "size": "3.00", "total": "4.50" },
+      { "price": "9650.00", "size": "7.00", "total": "11.50" }
+    ]
+  },
+  "timestamp": "2023-11-04T14:45:00Z"
+}
+```
 
 ## SubscribeUniswapV2Book
 
@@ -1687,6 +2394,24 @@ Subscribe to receive updates for the implied Uniswap V2 order book for a specifi
 | &nbsp;&nbsp;&nbsp;&nbsp;› `total` | string     | The total size of orders at or above this price.         |
 | `timestamp`                       | string     | The timestamp indicating when the book data was updated. |
 
+```json
+{
+  "book": {
+    "buy": [
+      { "price": "9500.00", "size": "2.50", "total": "2.50" },
+      { "price": "9450.00", "size": "5.00", "total": "7.50" },
+      { "price": "9400.00", "size": "10.00", "total": "17.50" }
+    ],
+    "sell": [
+      { "price": "9550.00", "size": "1.50", "total": "1.50" },
+      { "price": "9600.00", "size": "3.00", "total": "4.50" },
+      { "price": "9650.00", "size": "7.00", "total": "11.50" }
+    ]
+  },
+  "timestamp": "2023-11-04T14:45:00Z"
+}
+```
+
 ## SubscribeUniswapV3Book
 
 ### Description
@@ -1732,6 +2457,24 @@ Subscribe to receive updates for the implied Uniswap V3 order book for a specifi
 | &nbsp;&nbsp;&nbsp;&nbsp;› `total` | string     | The total size of orders at or above this price.         |
 | `timestamp`                       | string     | The timestamp indicating when the book data was updated. |
 
+```json
+{
+  "book": {
+    "buy": [
+      { "price": "9500.00", "size": "2.50", "total": "2.50" },
+      { "price": "9450.00", "size": "5.00", "total": "7.50" },
+      { "price": "9400.00", "size": "10.00", "total": "17.50" }
+    ],
+    "sell": [
+      { "price": "9550.00", "size": "1.50", "total": "1.50" },
+      { "price": "9600.00", "size": "3.00", "total": "4.50" },
+      { "price": "9650.00", "size": "7.00", "total": "11.50" }
+    ]
+  },
+  "timestamp": "2023-11-04T14:45:00Z"
+}
+```
+
 ## Unsubscribe
 
 ### Description
@@ -1757,6 +2500,13 @@ Unsubscribe from previous subscriptions.
 | Type | Description |
 | ---- | ----------- |
 | null | null        |
+
+```json
+{
+  "id": 2,
+  "response": null
+}
+```
 
 # RFQs
 
@@ -1803,6 +2553,25 @@ Subscribe to RFQs for given base and quote products, quantity, and venues.
 | &nbsp;&nbsp;&nbsp;&nbsp;› `quote_id` | string   | The unique identifier of the quote product. (optional) |
 | `tradable_product`                   | string   | The tradable product associated with the RFQ.          |
 
+```json
+{
+  "sides": {
+    "buy": {
+      "price": "100.50",
+      "quantity": "500",
+      "quote_id": "QU123"
+    },
+    "sell": {
+      "price": "101.00",
+      "quantity": "300",
+      "quote_id": "QU124"
+    }
+  },
+  "tradable_product": "TP456"
+}
+
+```
+
 ## SendRfqs
 
 ### Description
@@ -1822,7 +2591,6 @@ Send request for quotes based on a query.
 | &nbsp;&nbsp;› `quote`    | string   | Yes      | The quote product for the RFQ query.              |
 | &nbsp;&nbsp;› `venues`   | string[] | Yes      | An array of venue IDs for the RFQ query.          |
 
-
 ```json
 {
 "id": 43,
@@ -1838,6 +2606,21 @@ Send request for quotes based on a query.
 | `venue_responses`                | *object* |                                                        |
 | &nbsp;&nbsp;› `price`            | string   | The price associated with the venue response.          |
 | &nbsp;&nbsp;› `tradable_product` | string   | The ID of the tradable product for the venue response. |
+
+```json
+{
+  "venue_responses": {
+    "exchangeA": {
+      "price": "100.50",
+      "tradable_product": "TP123"
+    },
+    "exchangeB": {
+      "price": "101.00",
+      "tradable_product": "TP124"
+    }
+  }
+}
+```
 
 # Secrets
 
@@ -1869,6 +2652,37 @@ List all secrets.
 | `response`           | *object[]* |                                                                                                                            |
 | &nbsp;&nbsp;› `data` | Varies     | The data associated with the secret key, which can vary based on the key type. Refer to the specific key type for details. |
 | &nbsp;&nbsp;› `type` | string     | Specifies the type of the secret key: `ExchangeKey`, `EVMNodeRpcUrl`, `EVMPrivateKey`, `BrokerKey`.                        |
+
+```json
+{
+  "id": 12345,
+  "response": [
+    {
+      "type": "ExchangeKey",
+      "data": {
+        "exchangeName": "ExchangeX",
+        "apiKey": "your-api-key",
+        "apiSecret": "your-api-secret"
+      }
+    },
+    {
+      "type": "EVMNodeRpcUrl",
+      "data": "https://eth-node.example.com"
+    },
+    {
+      "type": "EVMPrivateKey",
+      "data": "your-eth-private-key"
+    },
+    {
+      "type": "BrokerKey",
+      "data": {
+        "brokerName": "BrokerA",
+        "apiKey": "broker-api-key"
+      }
+    }
+  ]
+}
+```
 
 ## AddSecret
 
@@ -1903,6 +2717,13 @@ Add a secret with a given key and value.
 | `id`       | number | User-defined unique identifier for the request. |
 | `response` | null   | null                                            |
 
+```json
+{
+  "id": 2,
+  "response": null
+}
+```
+
 ## DeleteSecret
 
 ### Description
@@ -1933,6 +2754,13 @@ Delete a secret with a given key.
 | ---------- | ------ | ----------------------------------------------- |
 | `id`       | number | User-defined unique identifier for the request. |
 | `response` | null   | null                                            |
+
+```json
+{
+  "id": 2,
+  "response": null
+}
+```
 
 # System Configuration
 
@@ -1982,3 +2810,69 @@ Retrieve the pathmap.
 | ------- | ------ | --------------------------------------------------------- |
 | `route` | string | The route ID associated with the counterparty.            |
 | `venue` | string | The venue ID associated with the counterparty (optional). |
+
+```json
+{
+  "id": 12345,
+  "response": {
+    "core_cpty": "https://example.com/core_cpty",
+    "ext_coingecko": "https://example.com/ext_coingecko",
+    "news": "https://example.com/news",
+    "qf_api": "https://example.com/qf_api",
+    "qf_api_by_cpty": [
+      {
+        "route": "RouteA",
+        "venue": "VenueX"
+      },
+      {
+        "route": "RouteB",
+        "venue": "VenueY"
+      }
+    ],
+    "qf_hist_ohlc": "https://example.com/qf_hist_ohlc",
+    "qf_hist_ohlc_by_cpty": [
+      {
+        "route": "RouteA",
+        "venue": "VenueX"
+      },
+      {
+        "route": "RouteB",
+        "venue": "VenueY"
+      }
+    ],
+    "qf_hist_rt": "https://example.com/qf_hist_rt",
+    "qf_hist_rt_by_cpty": [
+      {
+        "route": "RouteA",
+        "venue": "VenueX"
+      },
+      {
+        "route": "RouteB",
+        "venue": "VenueY"
+      }
+    ],
+    "qf_ohlc": "https://example.com/qf_ohlc",
+    "qf_ohlc_by_cpty": [
+      {
+        "route": "RouteA",
+        "venue": "VenueX"
+      },
+      {
+        "route": "RouteB",
+        "venue": "VenueY"
+      }
+    ],
+    "qf_rt": "https://example.com/qf_rt",
+    "qf_rt_by_cpty": [
+      {
+        "route": "RouteA",
+        "venue": "VenueX"
+      },
+      {
+        "route": "RouteB",
+        "venue": "VenueY"
+      }
+    ]
+  }
+}
+```
