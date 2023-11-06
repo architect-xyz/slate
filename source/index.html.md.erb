@@ -12,7 +12,16 @@ code_clipboard: true
 
 # Introduction
 
-This document describes the WebSocket API for our platform. Below you'll find the supported `Request` types that you can use.
+This document describes the WebSocket API for the Architect trading platform. The entire API described in this document is accessed via a single websocket endpoint, with is authenticated using TLS (please speak to your Architect admin for details). 
+
+Once the websocket is established, you can send requests following the type definitions described below.
+
+There are two types of requests: 
+
+* Single-shot requests: a single response is expected to be returned for a single query
+* Subscription requests: a stream of responses is expected to be returned for a single query, until `Unsubscribe` is called
+
+In all cases, the request payloads are expected to contain an `id` that is used to correlate the requests with their corresponding responses.
 
 ## Request Types
 
